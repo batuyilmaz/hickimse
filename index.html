@@ -163,13 +163,67 @@
             text-shadow: 0px 4px 15px rgba(255, 71, 87, 0.4);
         }
 
+        /* ========================================================
+           4. MOBİL UYUMLULUK (RESPONSIVE TASARIM)
+           ======================================================== */
+        @media screen and (max-width: 768px) {
+            
+            /* Navbar'ı alt alta hizala ve ortala */
+            .top-navbar {
+                flex-direction: column;
+                padding: 15px 20px;
+                gap: 15px;
+            }
+            
+            .nav-links {
+                width: 100%;
+                justify-content: center;
+                gap: 20px;
+                flex-wrap: wrap; /* Sığmazsa alt satıra geçsin */
+            }
+
+            /* Yan boşlukları azaltarak haritaya yer aç */
+            .section {
+                padding: 30px 15px;
+            }
+
+            .main-header {
+                padding: 30px 15px 15px 15px;
+            }
+
+            /* Başlık boyutlarını telefon ekranına uyarla */
+            .main-header h1 {
+                font-size: 1.8em;
+            }
+
+            .section-title {
+                font-size: 1.4em;
+            }
+
+            /* Harita kutusunun yüksekliğini mobilde biraz küçült */
+            .map-container {
+                height: 380px; 
+            }
+
+            /* Devasa kök düğümü mobil ekran için dengele */
+            .markmap foreignObject strong em,
+            .markmap foreignObject em strong {
+                font-size: 26px !important; 
+            }
+            
+            /* Genel harita yazılarını mobilde hafif ufalt (okunabilirlik için) */
+            .markmap text {
+                font-size: 13px !important;
+            }
+        }
+
     </style>
 </head>
 <body>
 
     <!-- ÜST BAŞLIK / NAVBAR -->
     <nav class="top-navbar">
-        <div class="nav-logo">Eurasian Numerals</div>
+        <div class="nav-logo">&lt;Eurasian Numeral /&gt;</div>
         <div class="nav-links">
             <span>Hakkımda</span>
             <span>Projeler</span>
@@ -200,14 +254,14 @@
 
 ## 2500 Yıllık Belgesiz Boşluk
 - Fonetik Dondurma İllüzyonu
-- Matematiksel Ortalama (*pénkʷe)
+- Matematiksel Ortalama (\*pénkʷe)
 
 ## MÖ 4000 (PIE Checkpoint)
 - Methodological Ceiling (Metodolojik Tavan)
 - Gerçek Başlangıç Değil (Son Kontrol Noktası)
 
 ## MÖ 8000+ (Pre-Proto Layer)
-- Pre-Coalescence Matrix (*penhwe)
+- Pre-Coalescence Matrix (\*penhwe)
 - Derin Zaman Kognitif Mimarisi
                 </div>
             </div>
@@ -216,23 +270,23 @@
         <!-- 2. BÖLÜM -->
         <div class="section">
             <h2 class="section-title">2. Anadolu Kolu (Hitit/Luvi) Anomalyası</h2>
-            <div class="section-desc">İlk ayrılan en eski kolda *kʷ sesinin bulunmaması ve Laringeal (h-) korunumunun çift standardı.</div>
+            <div class="section-desc">İlk ayrılan en eski kolda \*kʷ sesinin bulunmaması ve Laringeal (h-) korunumunun çift standardı.</div>
             
             <div class="map-container">
                 <div class="markmap">
 # ***\*kʷeh (2)***
 
 ## Anadolu Kolu (MÖ 1600+ En Eski Ayrışma)
-- Luvi Dili: panta (*kʷ YOK)
+- Luvi Dili: panta (\*kʷ YOK)
 - Hitit Dili: Sümerogram Kullanımı
-- Core-IE (*pénkʷe) Öncesi Yapı
+- Core-IE (\*pénkʷe) Öncesi Yapı
 ## Laringeal Çifte Standart
 - Hititçe h- (ḫant-) vs Latince (ante)
   - Diğer 8 Kol Ses İzi Kaybetti (Coalescence)
   - Hititçe Eski Laringeal İzi Korudu
-- Ermenice h- (hink) vs Core-IE (*pénkʷe)
-  - Diğer 8 Kol *p / *kʷ Sıkışmasına Gitti
-  - Ermenice Pre-PIE *hw İzini Korudu
+- Ermenice h- (hink) vs Core-IE (\*pénkʷe)
+  - Diğer 8 Kol \*p / \*kʷ Sıkışmasına Gitti
+  - Ermenice Pre-PIE \*hw İzini Korudu
                 </div>
             </div>
         </div>
@@ -255,10 +309,10 @@
   - Latin ficus -> Bask piku (f -> p)
   - Latin filum -> Bask piru (f -> p)
 ## Cermen Sertleşmesi (Holtzmann's Law)
-- PIE Glidelik Sesi (*w) -> Cermen Patlayıcısı (ggw)
-## Pre-PIE *penhwe Modeli
-- Pre-Nasal Environment (*nhw)
-- Structural Compression -> Primary Stops (*p / *kʷ)
+- PIE Glidelik Sesi (\*w) -> Cermen Patlayıcısı (ggw)
+## Pre-PIE \*penhwe Modeli
+- Pre-Nasal Environment (\*nhw)
+- Structural Compression -> Primary Stops (\*p / \*kʷ)
                 </div>
             </div>
         </div>
@@ -272,10 +326,10 @@
                 <div class="markmap">
 # ***Pre-Proto-IE Sayı Matrisi***
 
-## Sayı: 5 (*penhwe)
+## Sayı: 5 (\*penhwe)
 - Anadolu Kolu (MÖ 1600+)
   - Luvice: panta (kʷ YOK)
-- Çekirdek PIE (Son Kontrol: *pénkʷe)
+- Çekirdek PIE (Son Kontrol: \*pénkʷe)
   - İtalik & Keltik (Asimilasyon)
     - Latince: quinque
     - Eski İrlandaca: cóic
@@ -286,12 +340,12 @@
     - Sanskritçe: páñca
     - Yunanca: pénte
   - Ermenice (Ayrık Dal)
-    - Eski Ermenice: hink (*hw laringeal izi)
+    - Eski Ermenice: hink (\*hw laringeal izi)
 
-## Sayı: 4 (*kʷetwor)
+## Sayı: 4 (\*kʷetwor)
 - Anadolu Kolu
   - Luvice: tawi
-- Çekirdek PIE (*kʷetwóres)
+- Çekirdek PIE (\*kʷetwóres)
   - P-Keltik & Oskça (kʷ -> p)
     - Gallerce: pedwar
     - Oskça: petora
@@ -311,13 +365,13 @@
 # ***Macro-Family Alignment Grid***
 
 ## Zamir Paradigmaları (M-T/S Grid)
-- 1. Tekil Şahıs: *m- (Dirençli Öz-Kimlik)
-- 2. Tekil Şahıs: *t- / *s- (Dirençli İkinci Şahıs)
+- 1. Tekil Şahıs: \*m- (Dirençli Öz-Kimlik)
+- 2. Tekil Şahıs: \*t- / \*s- (Dirençli İkinci Şahıs)
 - Temas/Ödünçleme İmkansızlığı (Typological Stability)
 ## Afroasiatic (Proto-Semitic) Ayak İzi
-- Proto-Semitic: *ḫamiš- (5)
-  - Velar/Frictional (*ḫ) + Labial (*m) Sequence
-  - Pre-PIE *penhwe Hizalanması
+- Proto-Semitic: \*ḫamiš- (5)
+  - Velar/Frictional (\*ḫ) + Labial (\*m) Sequence
+  - Pre-PIE \*penhwe Hizalanması
 ## Kognitif Sayma Algoritmaları
 - Uralic / Turkic Numeral Shifts
 - Yüzeysel Wanderwort Değil: Alt Yapısal Matematik
@@ -357,11 +411,11 @@
 # ***Kök Yapısı Evrimi***
 
 ## Erken Dönem (Biconsonantal)
-- *CV / *CVC Çekirdeği
+- \*CV / \*CVC Çekirdeği
 - Kök Genişlemesi (Root Extensions) ile Türeme
 ## Geç Dönem (PIE)
 - Ablaut Sistemi (Ünlü Değişimi: e/o/ø)
-- *CeC- / *CoC- / *CC- Katmanları
+- \*CeC- / \*CoC- / \*CC- Katmanları
 ## Yapısal Kristalizasyon
 - Laringeal Kaybının Uzun Ünlülere Etkisi
 - Morfonolojik Sıkışma
@@ -379,7 +433,7 @@
 # ***Tarım Öncesi Leksikon***
 
 ## Avcı-Toplayıcı Katmanı
-- Vahşi Hayvan Terminolojisi (*h₂ŕ̥tḱos - Ayı, Kurt)
+- Vahşi Hayvan Terminolojisi (\*h₂ŕ̥tḱos - Ayı, Kurt)
 - Doğal Elementler (Ateş, Su, Taş)
 ## Neolitik Öncesi Sınır
 - Tarım Kelimelerinin Yokluğu (Tekerlek, Saban)
