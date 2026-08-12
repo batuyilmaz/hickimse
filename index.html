@@ -119,17 +119,15 @@
         }
 
         /* ========================================================
-           MASAÜSTÜ HARİTA KUTUSU (CONTAINER)
+           TAM ORTALANMA VE ÇERÇEVE MİMARİSİ
            ======================================================== */
         .map-container {
             width: 100%;
-            height: 480px; /* Masaüstü Dikey Boy */
+            height: 480px; 
             background-color: var(--bg-map);
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            overflow: hidden; 
-            padding: 15px 40px; 
-            box-sizing: border-box;
+            overflow: hidden; /* Sadece ana kutu dışına taşmaları gizler */
             box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
         }
 
@@ -140,36 +138,36 @@
 
 
         /* ========================================================
-           1. İÇ SVG KESİLME ÖNLEYİCİ VE GENEL YAZI RENGİ
+           1. ÖLÇÜM MOTORU (MEASUREMENT) DÜZELTMESİ VE GENEL YAZI
            ======================================================== */
         .markmap svg, .markmap g, .markmap foreignObject { overflow: visible !important; }
-        .markmap text { fill: #E2E8F0 !important; font-family: inherit !important; font-size: 15px; }
-        .markmap foreignObject { color: #E2E8F0 !important; }
+        .markmap text, .markmap div { fill: #E2E8F0 !important; color: #E2E8F0 !important; font-family: inherit !important; font-size: 15px; }
 
         /* ========================================================
-           2. ALT DÜĞÜMLER İÇİN ÖZEL RENKLER
+           2. ANA DÜĞÜM (KÖK) DEV BÜYÜTME (***Metin***)
            ======================================================== */
-        .markmap foreignObject em { color: #00E5FF !important; font-style: normal !important; }       /* *Mavi* */
-        .markmap foreignObject del { color: #2ed573 !important; text-decoration: none !important; }   /* ~~Yeşil~~ */
-        .markmap foreignObject code { color: #ffa502 !important; background: none !important; padding: 0 !important; font-family: inherit !important;} /* `Sarı` */
-
-
-        /* ========================================================
-           3. ANA DÜĞÜM (KÖK) DEV BÜYÜTME HİLESİ (***Metin***)
-           ======================================================== */
-        .markmap foreignObject strong em,
-        .markmap foreignObject em strong {
-            font-size: 32px !important;      /* Orantılı devasa boyut */
-            color: #ff4757 !important;       /* Kırmızı renk */
-            font-weight: 900 !important;     /* Kalınlık */
-            font-style: normal !important;   /* İtalik görünümü iptal et */
+        .markmap strong em,
+        .markmap em strong {
+            font-size: 34px !important;      
+            color: #ff4757 !important;       
+            font-weight: 900 !important;     
+            font-style: normal !important;   
+            line-height: 1.2 !important;
             display: inline-block;
-            line-height: 1.2;
             text-shadow: 0px 4px 15px rgba(255, 71, 87, 0.4);
+            padding-right: 10px;
         }
 
         /* ========================================================
-           4. MOBİL UYUMLULUK (RESPONSIVE TASARIM)
+           3. ALT DÜĞÜMLER İÇİN ÖZEL RENKLER
+           ======================================================== */
+        .markmap em { color: #00E5FF !important; font-style: normal !important; }       /* *Mavi* */
+        .markmap del { color: #2ed573 !important; text-decoration: none !important; }   /* ~~Yeşil~~ */
+        .markmap code { color: #ffa502 !important; background: none !important; padding: 0 !important; font-family: inherit !important;} /* `Sarı` */
+
+
+        /* ========================================================
+           4. MOBİL UYUMLULUK
            ======================================================== */
         @media screen and (max-width: 768px) {
             
@@ -202,20 +200,16 @@
                 font-size: 1.4em !important;
             }
 
-            /* MOBİL HARİTA KUTUSU: Yükseklik 480'in 2/3'üne (320px) indirilir */
             .map-container {
                 height: 320px !important; 
-                padding: 10px 5px !important; /* Mobilde alan kazanmak için kenar boşlukları minimuma çekildi */
             }
 
-            /* Kök düğümü mobil kutuya uygun hale getir */
-            .markmap foreignObject strong em,
-            .markmap foreignObject em strong {
+            .markmap strong em,
+            .markmap em strong {
                 font-size: 24px !important; 
             }
             
-            /* Genel harita yazılarını mobilde hafif ufalt (iç içe geçmeyi engeller) */
-            .markmap text {
+            .markmap text, .markmap div {
                 font-size: 12px !important;
             }
         }
@@ -248,6 +242,10 @@
             
             <div class="map-container">
                 <div class="markmap">
+---
+markmap:
+  initialExpandLevel: 0
+---
 # ***Sanskritçe***
 
 ## MÖ 1500+ (Belgelenmiş Metinler)
@@ -277,6 +275,10 @@
             
             <div class="map-container">
                 <div class="markmap">
+---
+markmap:
+  initialExpandLevel: 0
+---
 # ***\*kʷeh (2)***
 
 ## Anadolu Kolu (MÖ 1600+ En Eski Ayrışma)
@@ -301,6 +303,10 @@
             
             <div class="map-container">
                 <div class="markmap">
+---
+markmap:
+  initialExpandLevel: 0
+---
 # ***Cross-Linguistic Fortition Mechanics***
 
 ## Nazal Sonrası Sıkışma (Post-Nasal Compression)
@@ -327,6 +333,10 @@
             
             <div class="map-container">
                 <div class="markmap">
+---
+markmap:
+  initialExpandLevel: 0
+---
 # ***Pre-Proto-IE Sayı Matrisi***
 
 ## Sayı: 5 (\*penhwe)
@@ -365,6 +375,10 @@
             
             <div class="map-container">
                 <div class="markmap">
+---
+markmap:
+  initialExpandLevel: 0
+---
 # ***Macro-Family Alignment Grid***
 
 ## Zamir Paradigmaları (M-T/S Grid)
@@ -389,6 +403,10 @@
             
             <div class="map-container">
                 <div class="markmap">
+---
+markmap:
+  initialExpandLevel: 0
+---
 # ***Nostratik Hipotez & Temas***
 
 ## Makro-Aile Çatısı
@@ -411,6 +429,10 @@
             
             <div class="map-container">
                 <div class="markmap">
+---
+markmap:
+  initialExpandLevel: 0
+---
 # ***Kök Yapısı Evrimi***
 
 ## Erken Dönem (Biconsonantal)
@@ -433,6 +455,10 @@
             
             <div class="map-container">
                 <div class="markmap">
+---
+markmap:
+  initialExpandLevel: 0
+---
 # ***Tarım Öncesi Leksikon***
 
 ## Avcı-Toplayıcı Katmanı
@@ -454,6 +480,10 @@
             
             <div class="map-container">
                 <div class="markmap">
+---
+markmap:
+  initialExpandLevel: 0
+---
 # ***Sentaks (Sözdizimi) Arkeolojisi***
 
 ## Ergatif-Absolutif İzler
@@ -476,6 +506,10 @@
             
             <div class="map-container">
                 <div class="markmap">
+---
+markmap:
+  initialExpandLevel: 0
+---
 # ***Hesaplamalı Filogenetik***
 
 ## Bayesyen Ağaç Modelleri
