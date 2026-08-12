@@ -119,22 +119,17 @@
         }
 
         /* ========================================================
-           HATA DÜZELTMESİ: KUTU DIŞINA TAŞMAYI ÖNLEME
+           MASAÜSTÜ HARİTA KUTUSU (CONTAINER)
            ======================================================== */
         .map-container {
             width: 100%;
-            height: 320px;
+            height: 480px; /* Masaüstü Dikey Boy */
             background-color: var(--bg-map);
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            
-            /* Dışarı taşmayı tamamen yasaklar (Ana hatayı çözer) */
             overflow: hidden; 
-            
-            /* İçeride görünmez bir tampon bölge yaratır ki yazılar duvara çarpıp kesilmesin */
             padding: 15px 40px; 
             box-sizing: border-box;
-            
             box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
         }
 
@@ -147,7 +142,6 @@
         /* ========================================================
            1. İÇ SVG KESİLME ÖNLEYİCİ VE GENEL YAZI RENGİ
            ======================================================== */
-        /* Markmap'in içindeki öğeler birbirine veya SVG sınırına taşabilir (Tampon bölgeye girer) */
         .markmap svg, .markmap g, .markmap foreignObject { overflow: visible !important; }
         .markmap text { fill: #E2E8F0 !important; font-family: inherit !important; font-size: 15px; }
         .markmap foreignObject { color: #E2E8F0 !important; }
@@ -180,46 +174,49 @@
         @media screen and (max-width: 768px) {
             
             .top-navbar {
-                flex-direction: column;
-                padding: 15px 20px;
-                gap: 15px;
+                flex-direction: column !important;
+                padding: 15px 20px !important;
+                gap: 15px !important;
             }
             
             .nav-links {
-                width: 100%;
-                justify-content: center;
-                gap: 20px;
-                flex-wrap: wrap; 
+                width: 100% !important;
+                justify-content: center !important;
+                gap: 15px !important;
+                flex-wrap: wrap !important; 
             }
 
             .section {
-                padding: 30px 15px;
+                padding: 30px 15px !important;
             }
 
             .main-header {
-                padding: 30px 15px 15px 15px;
+                padding: 30px 15px 15px 15px !important;
             }
 
             .main-header h1 {
-                font-size: 1.8em;
+                font-size: 1.8em !important;
             }
 
             .section-title {
-                font-size: 1.4em;
+                font-size: 1.4em !important;
             }
 
+            /* MOBİL HARİTA KUTUSU: Yükseklik 480'in 2/3'üne (320px) indirilir */
             .map-container {
-                height: 380px; 
-                padding: 10px 20px; /* Mobilde tampon bölgeyi hafif daralt */
+                height: 320px !important; 
+                padding: 10px 5px !important; /* Mobilde alan kazanmak için kenar boşlukları minimuma çekildi */
             }
 
+            /* Kök düğümü mobil kutuya uygun hale getir */
             .markmap foreignObject strong em,
             .markmap foreignObject em strong {
                 font-size: 24px !important; 
             }
             
+            /* Genel harita yazılarını mobilde hafif ufalt (iç içe geçmeyi engeller) */
             .markmap text {
-                font-size: 13px !important;
+                font-size: 12px !important;
             }
         }
 
