@@ -1,171 +1,416 @@
 <!DOCTYPE html>
-<html lang="tr" class="scroll-smooth">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Batu | Dijital Portfolyo</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Eurasian Numeral System</title>
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        .code-font { font-family: 'Fira Code', monospace; }
-        /* Özel Neon Parlama Efekti */
-        .neon-glow:hover {
-            box-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
-            border-color: rgba(6, 182, 212, 0.7);
+        /* Karanlık Tema (Dark Navy & Cyan) */
+        :root {
+            --bg-dark: #050B14;
+            --bg-container: #0B1521;
+            --bg-map: #070D16;
+            --accent-cyan: #00E5FF;
+            --text-main: #E2E8F0;
+            --text-muted: #8B949E;
+            --border-color: #162032;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+        }
+
+        /* En Üst Başlık (Görseldeki Navbar simülasyonu) */
+        .top-navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: var(--bg-dark);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-logo {
+            color: var(--accent-cyan);
+            font-weight: 700;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 22px;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            color: var(--text-muted);
+            font-size: 14px;
+            display: flex;
+            gap: 25px;
+        }
+        
+        .nav-links span {
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links span:hover {
+            color: var(--text-main);
+        }
+
+        /* Ana İçerik Konteyneri */
+        .page-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background-color: var(--bg-container);
+            border-left: 1px solid var(--border-color);
+            border-right: 1px solid var(--border-color);
+            min-height: 100vh;
+            padding-bottom: 50px;
+        }
+
+        /* Sayfa Ana Başlığı */
+        .main-header {
+            text-align: center;
+            padding: 40px 20px 20px 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .main-header h1 {
+            color: var(--text-main);
+            font-size: 2.2em;
+            margin: 0 0 10px 0;
+            font-weight: 600;
+        }
+        
+        .main-header p {
+            color: var(--accent-cyan);
+            margin: 0;
+            font-size: 1.1em;
+            letter-spacing: 0.5px;
+        }
+
+        /* Bölümler */
+        .section {
+            padding: 50px 40px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            margin-top: 0;
+            color: var(--text-main);
+            font-size: 1.6em;
+            border-left: 5px solid var(--accent-cyan); /* Cyan vurgu */
+            padding-left: 15px;
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .section-desc {
+            color: var(--text-muted);
+            font-size: 1em;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        /* Markmap Kutusu */
+        .map-container {
+            width: 100%;
+            height: 480px;
+            background-color: var(--bg-map);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .markmap {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* SVG Karanlık Mod Zorlamaları */
+        .markmap svg text {
+            fill: #E2E8F0 !important;
+        }
+        .markmap svg path {
+            stroke: #1E293B !important;
+        }
+        .markmap svg g.markmap-node circle {
+            stroke: #00E5FF !important;
+            fill: #0B1521 !important;
         }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen relative overflow-x-hidden selection:bg-cyan-500 selection:text-slate-950">
+<body>
 
-    <div class="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-cyan-900/20 rounded-full blur-[120px] pointer-events-none"></div>
-    <div class="absolute bottom-[10%] right-[-10%] w-[45vw] h-[45vw] bg-indigo-900/20 rounded-full blur-[120px] pointer-events-none"></div>
-
-    <header class="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-slate-950/70 border-b border-slate-900">
-        <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-            <a href="#" class="code-font text-cyan-400 font-bold text-lg tracking-wider">&lt;BATU /&gt;</a>
-            <nav class="flex gap-6 text-sm font-medium text-slate-400">
-                <a href="#about" class="hover:text-cyan-400 transition-colors">Hakkımda</a>
-                <a href="#projects" class="hover:text-cyan-400 transition-colors">Projeler</a>
-                <a href="#contact" class="hover:text-cyan-400 transition-colors">İletişim</a>
-            </nav>
+    <!-- ÜST BAŞLIK / NAVBAR (Görsel referans alınarak eklendi) -->
+    <nav class="top-navbar">
+        <div class="nav-logo">&lt;Eurasian Numerals;</div>
+        <div class="nav-links">
+            <span>Hakkımda</span>
+            <span>Projeler</span>
+            <span>İletişim</span>
         </div>
-    </header>
+    </nav>
 
-    <section class="min-h-screen flex items-center justify-center pt-16 px-6 max-w-5xl mx-auto">
-        <div class="text-center space-y-6">
-            <div class="inline-flex items-center gap-2 px-3 py-1 bg-slate-900 border border-slate-800 rounded-full text-xs text-cyan-400 code-font mb-4 animate-pulse">
-                <span class="w-2 h-2 rounded-full bg-cyan-400"></span> Sistem Çevrimiçi
-            </div>
-            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-slate-500">
-                Merhaba, Ben <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-400">Batu</span>
-            </h1>
-            <p class="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto font-light leading-relaxed">
-                Teknoloji optimizasyonu, self-hosted altyapılar ve donanım projeleri geliştiren bir mekanik/dijital maker. Sistemlerin mimarisini çözmeyi ve sınırları zorlamayı severim.
-            </p>
+    <div class="page-container">
+
+        <!-- Sayfa Genel Başlığı -->
+        <div class="main-header">
+            <h1>Eurasian Numeral System</h1>
+            <p>Derin Zaman Kognitif Mimarisi ve Dilbilimsel Evrim Haritası</p>
+        </div>
+
+        <!-- 1. BÖLÜM -->
+        <div class="section">
+            <h2 class="section-title">1. Zamansal Sıçrama & Metodolojik Sınırlar</h2>
+            <div class="section-desc">MÖ 1500 yazılı metinlerinin MÖ 4000 için mutlak başlangıç (baseline) kabul edilmesinin yarattığı kronolojik boşluk.</div>
             
-            <div class="flex justify-center gap-4 pt-4">
-                <a href="#projects" class="px-6 py-3 bg-gradient-to-r from-cyan-500 to-indigo-500 text-slate-950 font-semibold rounded-xl hover:opacity-90 transition-all transform hover:-translate-y-1 shadow-lg shadow-cyan-500/10">
-                    Projelerimi Gör
-                </a>
-                <a href="#contact" class="px-6 py-3 bg-slate-900 border border-slate-800 text-slate-300 font-medium rounded-xl hover:bg-slate-850 transition-all transform hover:-translate-y-1">
-                    İletişime Geç
-                </a>
+            <div class="map-container">
+                <div class="markmap">
+# Chronological Leap & Reconstruction
+## MÖ 1500+ (Belgelenmiş Metinler)
+- Sanskritçe (Rigveda)
+- Miken Yunancası
+- Hititçe
+## 2500 Yıllık Belgesiz Boşluk
+- Fonetik Dondurma İllüzyonu
+- Matematiksel Ortalama (*pénkʷe)
+## MÖ 4000 (PIE Checkpoint)
+- Methodological Ceiling (Metodolojik Tavan)
+- Gerçek Başlangıç Değil (Son Kontrol Noktası)
+## MÖ 8000+ (Pre-Proto Layer)
+- Pre-Coalescence Matrix (*penhwe)
+- Derin Zaman Kognitif Mimarisi
+                </div>
             </div>
         </div>
-    </section>
 
-    <section id="about" class="py-24 px-6 max-w-4xl mx-auto scroll-mt-16">
-        <div class="bg-slate-900/40 border border-slate-900 backdrop-blur-xl rounded-3xl p-8 md:p-12 space-y-8 shadow-2xl">
-            <div class="flex items-center gap-4 border-b border-slate-800/60 pb-6">
-                <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                <div class="w-3 h-3 rounded-full bg-green-500"></div>
-                <span class="code-font text-xs text-slate-500 ml-2">batu_bio.json</span>
-            </div>
+        <!-- 2. BÖLÜM -->
+        <div class="section">
+            <h2 class="section-title">2. Anadolu Kolu (Hitit/Luvi) Anomalyası</h2>
+            <div class="section-desc">İlk ayrılan en eski kolda *kʷ sesinin bulunmaması ve Laringeal (h-) korunumunun çift standardı.</div>
             
-            <div class="grid md:grid-cols-2 gap-8 text-slate-400 text-sm md:text-base leading-relaxed">
-                <div class="space-y-4">
-                    <h3 class="text-white font-bold text-xl flex items-center gap-2">
-                        <i class="fa-solid fa-user text-cyan-400 text-base"></i> Profil
-                    </h3>
-                    <p>
-                        Dijital dünyada merkeziyetsizliğe, veri gizliliğine ve kendi altyapımı barındırmaya (self-hosting) odaklanıyorum. Büyük bulut şirketlerine bağımlı kalmak yerine kendi ağ ekosistemimi kurmayı tercih ederim.
-                    </p>
-                    <p>
-                        Aynı zamanda veri analitiği, iktisadi mantık ve sistem optimizasyonları üzerine çalışarak teknik bilgimi yapısal bir vizyonla birleştiriyorum.
-                    </p>
-                </div>
-                
-                <div class="space-y-4">
-                    <h3 class="text-white font-bold text-xl flex items-center gap-2">
-                        <i class="fa-solid fa-code text-indigo-400 text-base"></i> İlgi Alanları
-                    </h3>
-                    <div class="flex flex-wrap gap-2 pt-2">
-                        <span class="px-3 py-1 bg-slate-950 border border-slate-800 rounded-lg text-xs code-font text-slate-300">Microcontrollers (ESP32 / Pi)</span>
-                        <span class="px-3 py-1 bg-slate-950 border border-slate-800 rounded-lg text-xs code-font text-slate-300">Self-Hosted Infrastructure</span>
-                        <span class="px-3 py-1 bg-slate-950 border border-slate-800 rounded-lg text-xs code-font text-slate-300">Network Security & VPNs</span>
-                        <span class="px-3 py-1 bg-slate-950 border border-slate-800 rounded-lg text-xs code-font text-slate-300">Data Analysis & Economics</span>
-                        <span class="px-3 py-1 bg-slate-950 border border-slate-800 rounded-lg text-xs code-font text-slate-300">Tailwind CSS & Web Dev</span>
-                    </div>
+            <div class="map-container">
+                <div class="markmap">
+# Anatolian Branch & Laryngeal Retention
+## Anadolu Kolu (MÖ 1600+ En Eski Ayrışma)
+- Luvi Dili: panta (*kʷ YOK)
+- Hitit Dili: Sümerogram Kullanımı
+- Core-IE (*pénkʷe) Öncesi Yapı
+## Laringeal Çifte Standart
+- Hititçe h- (ḫant-) vs Latince (ante)
+  - Diğer 8 Kol Ses İzi Kaybetti (Coalescence)
+  - Hititçe Eski Laringeal İzi Korudu
+- Ermenice h- (hink) vs Core-IE (*pénkʷe)
+  - Diğer 8 Kol *p / *kʷ Sıkışmasına Gitti
+  - Ermenice Pre-PIE *hw İzini Korudu
                 </div>
             </div>
         </div>
-    </section>
 
-    <section id="projects" class="py-24 px-6 max-w-5xl mx-auto scroll-mt-16">
-        <div class="text-center space-y-3 mb-16">
-            <h2 class="text-3xl font-bold tracking-tight md:text-4xl">Geliştirdiğim Projeler</h2>
-            <p class="text-slate-400 text-sm md:text-base max-w-xl mx-auto font-light">
-                Yazılım, donanım ve ağ optimizasyonu üzerine odaklandığım bazı teknik çalışmalar.
-            </p>
-        </div>
-
-        <div class="grid md:grid-cols-3 gap-6">
-            <div class="bg-slate-900/30 border border-slate-900/80 rounded-2xl p-6 space-y-4 transition-all duration-300 transform hover:-translate-y-1 neon-glow">
-                <div class="w-10 h-10 rounded-xl bg-cyan-950 border border-cyan-900/50 flex items-center justify-center text-cyan-400 text-lg">
-                    <i class="fa-solid fa-microchip"></i>
-                </div>
-                <h3 class="text-white font-semibold text-lg tracking-wide">IoT Donanım Otomasyonu</h3>
-                <p class="text-slate-400 text-xs md:text-sm font-light leading-relaxed">
-                    ESP32-S3 mimarisi ve ultrasonik sistemler kullanarak iklim ve süreç kontrolü sağlayan tam otomasyonlu donanım projeleri mühendisliği.
-                </p>
-                <div class="flex gap-2 text-[10px] code-font text-cyan-500 pt-2">
-                    <span>C++</span> <span>•</span> <span>Arduino</span> <span>•</span> <span>Hardware</span>
-                </div>
-            </div>
-
-            <div class="bg-slate-900/30 border border-slate-900/80 rounded-2xl p-6 space-y-4 transition-all duration-300 transform hover:-translate-y-1 neon-glow">
-                <div class="w-10 h-10 rounded-xl bg-indigo-950 border border-indigo-900/50 flex items-center justify-center text-indigo-400 text-lg">
-                    <i class="fa-solid fa-server"></i>
-                </div>
-                <h3 class="text-white font-semibold text-lg tracking-wide">Self-Hosted Ağ Yönetimi</h3>
-                <p class="text-slate-400 text-xs md:text-sm font-light leading-relaxed">
-                    Üçüncü parti bulut servislerini baypas ederek, yerel ağ donanımları ve SSTP/WireGuard protokolleriyle CGNAT arkasından çalışan tam şifreli kişisel bulut yapılandırması.
-                </p>
-                <div class="flex gap-2 text-[10px] code-font text-indigo-500 pt-2">
-                    <span>Networking</span> <span>•</span> <span>VPN</span> <span>•</span> <span>NAS</span>
-                </div>
-            </div>
-
-            <div class="bg-slate-900/30 border border-slate-900/80 rounded-2xl p-6 space-y-4 transition-all duration-300 transform hover:-translate-y-1 neon-glow">
-                <div class="w-10 h-10 rounded-xl bg-emerald-950 border border-emerald-900/50 flex items-center justify-center text-emerald-400 text-lg">
-                    <i class="fa-solid fa-globe"></i>
-                </div>
-                <h3 class="text-white font-semibold text-lg tracking-wide">Modern Web Arayüzleri</h3>
-                <p class="text-slate-400 text-xs md:text-sm font-light leading-relaxed">
-                    Geliştirici portfolyoları ve dinamik bloglar için Tailwind CSS altyapılı, hafif, yüksek performanslı ve mobil optimizasyonlu web tasarımları.
-                </p>
-                <div class="flex gap-2 text-[10px] code-font text-emerald-500 pt-2">
-                    <span>HTML5</span> <span>•</span> <span>Tailwind</span> <span>•</span> <span>JS</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer id="contact" class="border-t border-slate-900 py-16 px-6 bg-slate-950 relative z-10 scroll-mt-16">
-        <div class="max-w-4xl mx-auto text-center space-y-8">
-            <div class="space-y-2">
-                <h2 class="text-2xl font-bold tracking-tight">Bağlantıda Kalalım</h2>
-                <p class="text-slate-400 text-sm font-light">Yeni fikirler, projeler veya teknik iş birlikleri için yazabilirsin.</p>
-            </div>
+        <!-- 3. BÖLÜM -->
+        <div class="section">
+            <h2 class="section-title">3. Çapraz-Dilbilimsel Kompresyon (Fortition)</h2>
+            <div class="section-desc">Sürtünmeli ve gırtlaksı seslerin nazal/yapısal baskı altında patlayıcılara (h -> p) dönüşme kanıtları.</div>
             
-            <div class="flex justify-center gap-6 text-xl text-slate-400">
-                <a href="#" class="hover:text-cyan-400 transition-colors" title="GitHub"><i class="fa-brands fa-github"></i></a>
-                <a href="#" class="hover:text-cyan-400 transition-colors" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="#" class="hover:text-cyan-400 transition-colors" title="E-Posta"><i class="fa-solid fa-envelope"></i></a>
+            <div class="map-container">
+                <div class="markmap">
+# Cross-Linguistic Fortition Mechanics
+## Nazal Sonrası Sıkışma (Post-Nasal Compression)
+- Japonca Morfonolojisi
+  - yon (4) + hon -> yonpon (h -> p)
+  - san (3) + hyaku -> sanbyaku (h -> b)
+## Sürtünmeli Sertleşmesi (Fricative Fortition)
+- Baskça (Latince Ödünçlemeler)
+  - Latin ficus -> Bask piku (f -> p)
+  - Latin filum -> Bask piru (f -> p)
+## Cermen Sertleşmesi (Holtzmann's Law)
+- PIE Glidelik Sesi (*w) -> Cermen Patlayıcısı (ggw)
+## Pre-PIE *penhwe Modeli
+- Pre-Nasal Environment (*nhw)
+- Structural Compression -> Primary Stops (*p / *kʷ)
+                </div>
             </div>
-            
-            <hr class="border-slate-900 max-w-xs mx-auto">
-            
-            <p class="text-xs text-slate-600 code-font">
-                © 2026 Batu. Tüm hakları kendi sunucusunda saklıdır.
-            </p>
         </div>
-    </footer>
+
+        <!-- 4. BÖLÜM -->
+        <div class="section">
+            <h2 class="section-title">4. Pre-Proto-IE Sayı Matrisi</h2>
+            <div class="section-desc">Hint-Avrupa dillerindeki sayı köklerinin alt dallardaki asimilasyon ve sıkışma dağılımı.</div>
+            
+            <div class="map-container">
+                <div class="markmap">
+# Pre-Proto-IE Sayı Matrisi
+
+## Sayı: 5 (*penhwe)
+- Anadolu Kolu (MÖ 1600+)
+  - Luvice: panta (kʷ YOK)
+- Çekirdek PIE (Son Kontrol: *pénkʷe)
+  - İtalik & Keltik (Asimilasyon)
+    - Latince: quinque
+    - Eski İrlandaca: cóic
+  - Cermen (Sürtünmeli)
+    - İngilizce: five
+    - Almanca: fünf
+  - Hint-İran (Patlayıcı)
+    - Sanskritçe: páñca
+    - Yunanca: pénte
+  - Ermenice (Ayrık Dal)
+    - Eski Ermenice: hink (*hw laringeal izi)
+
+## Sayı: 4 (*kʷetwor)
+- Anadolu Kolu
+  - Luvice: tawi
+- Çekirdek PIE (*kʷetwóres)
+  - P-Keltik & Oskça (kʷ -> p)
+    - Gallerce: pedwar
+    - Oskça: petora
+  - Latince (kʷ Korunur)
+    - Latince: quattuor
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. BÖLÜM -->
+        <div class="section">
+            <h2 class="section-title">5. Makro-Hizalanmalar & Kognitif Izgara</h2>
+            <div class="section-desc">Makro-aileler arası temel zamir stabilizasyonu, eksiltici matematik ve kognitif hizalanmalar.</div>
+            
+            <div class="map-container">
+                <div class="markmap">
+# Macro-Family Alignment Grid
+## Zamir Paradigmaları (M-T/S Grid)
+- 1. Tekil Şahıs: *m- (Dirençli Öz-Kimlik)
+- 2. Tekil Şahıs: *t- / *s- (Dirençli İkinci Şahıs)
+- Temas/Ödünçleme İmkansızlığı (Typological Stability)
+## Afroasiatic (Proto-Semitic) Ayak İzi
+- Proto-Semitic: *ḫamiš- (5)
+  - Velar/Frictional (*ḫ) + Labial (*m) Sequence
+  - Pre-PIE *penhwe Hizalanması
+## Kognitif Sayma Algoritmaları
+- Uralic / Turkic Numeral Shifts
+- Yüzeysel Wanderwort Değil: Alt Yapısal Matematik
+                </div>
+            </div>
+        </div>
+        
+        <!-- 6. BÖLÜM (YENİ) -->
+        <div class="section">
+            <h2 class="section-title">6. Nostratik Hipotez ve Leksikal Derinlik</h2>
+            <div class="section-desc">Ural, Altay ve Kartveli dil aileleriyle Pre-PIE seviyesinde saptanan ortak kök yapıları ve derin leksikal temaslar.</div>
+            
+            <div class="map-container">
+                <div class="markmap">
+# Nostratik Hipotez & Temas
+## Makro-Aile Çatısı
+- Ural-Altay Benzerlikleri
+- Kartvelce Temas Bölgesi
+## Fonolojik Paraleller
+- Sessiz Patlayıcı Uyumları
+- Derin Zaman Ünlü Uyumu İzleri (Pre-PIE)
+## Morfolojik Ortaklıklar
+- Yönelme ve Bulunma Hâl Ekleri Temeli
+- Pronominal Köklerin Kesişimi
+                </div>
+            </div>
+        </div>
+
+        <!-- 7. BÖLÜM (YENİ) -->
+        <div class="section">
+            <h2 class="section-title">7. Kök Yapısı (Root Structure) Evrimi</h2>
+            <div class="section-desc">Hint-Avrupa kök sisteminin (PIE Root) iki sessizli (Biconsonantal) aşamadan üç sessizli aşamaya geçiş mekaniği.</div>
+            
+            <div class="map-container">
+                <div class="markmap">
+# Kök Yapısı Evrimi
+## Erken Dönem (Biconsonantal)
+- *CV / *CVC Çekirdeği
+- Kök Genişlemesi (Root Extensions) ile Türeme
+## Geç Dönem (PIE)
+- Ablaut Sistemi (Ünlü Değişimi: e/o/ø)
+- *CeC- / *CoC- / *CC- Katmanları
+## Yapısal Kristalizasyon
+- Laringeal Kaybının Uzun Ünlülere Etkisi
+- Morfonolojik Sıkışma
+                </div>
+            </div>
+        </div>
+
+        <!-- 8. BÖLÜM (YENİ) -->
+        <div class="section">
+            <h2 class="section-title">8. Tarım Öncesi Leksikon (Paleolitik Katman)</h2>
+            <div class="section-desc">Erken evrelerde tarım ve teknoloji terminolojisinin yokluğu ile avcı-toplayıcı kavramsal ağının baskınlığı.</div>
+            
+            <div class="map-container">
+                <div class="markmap">
+# Tarım Öncesi Leksikon
+## Avcı-Toplayıcı Katmanı
+- Vahşi Hayvan Terminolojisi (*h₂ŕ̥tḱos - Ayı, Kurt)
+- Doğal Elementler (Ateş, Su, Taş)
+## Neolitik Öncesi Sınır
+- Tarım Kelimelerinin Yokluğu (Tekerlek, Saban)
+- Hayvancılığın (Sığır/Koyun) İlk İzleri
+## Kronolojik Katmanlaşma
+- Erken Eklemeler vs. Ortak Kültür (Urheimat)
+                </div>
+            </div>
+        </div>
+
+        <!-- 9. BÖLÜM (YENİ) -->
+        <div class="section">
+            <h2 class="section-title">9. Sentaks (Sözdizimi) Arkeolojisi</h2>
+            <div class="section-desc">Temel sözdizimsel yapının (Özne-Nesne-Yüklem) ve ergatif hizalanma kalıntılarının rekonstrüksiyonu.</div>
+            
+            <div class="map-container">
+                <div class="markmap">
+# Sentaks (Sözdizimi) Arkeolojisi
+## Ergatif-Absolutif İzler
+- Aktif/İnaktif Hizalanma Geçmişi
+- Nötr/Geçişsiz Fiillerde Özne-Nesne Kayması
+## Temel Diziliş (Word Order)
+- SOV (Özne-Nesne-Yüklem) Çekirdeği
+- Sonek (Suffixing) Eğilimi
+## Cümle İçi Yapı
+- Wackernagel Kanunu (İkinci Pozisyon Klitikleri)
+- Sol-Dallanma (Left-Branching) Mimarisi
+                </div>
+            </div>
+        </div>
+
+        <!-- 10. BÖLÜM (YENİ) -->
+        <div class="section">
+            <h2 class="section-title">10. Hesaplamalı Filogenetik ve Yapay Zeka</h2>
+            <div class="section-desc">Makine öğrenmesi ve Bayes istatistik modelleri kullanılarak soy ağaçlarının ve ayrışma tarihlerinin hesaplanması.</div>
+            
+            <div class="map-container">
+                <div class="markmap">
+# Hesaplamalı Filogenetik
+## Bayesyen Ağaç Modelleri
+- Kognat (Kökteş) Veritabanlarının Analizi
+- Tarihsel Ayrışma Süreleri (Glottokronoloji)
+## Yapay Zeka (AI) Algoritmaları
+- Fonetik Kayma Simülasyonları ve Tahminleri
+- Derin Öğrenme ile Kayıp Seslerin Rekonstrüksiyonu
+## Model Doğrulama
+- Mevcut Genetik Verilerle (aDNA) Çapraz Kontrol
+- Kurgan ve Anadolu Hipotezlerinin Çatışması
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Markmap Autoloader (Tüm .markmap div'lerini bağımsız ağaçlara dönüştürür) -->
+    <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader"></script>
 
 </body>
 </html>
