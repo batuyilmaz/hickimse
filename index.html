@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eurasian Numeral System</title>
     <style>
-        /* Karanlık Tema (Dark Navy & Cyan) */
+        /* ========================================================
+           GENEL TEMA VE ARAYÜZ (Karanlık Tema)
+           ======================================================== */
         :root {
             --bg-dark: #050B14;
             --bg-container: #0B1521;
@@ -24,7 +26,6 @@
             color: var(--text-main);
         }
 
-        /* En Üst Başlık (Görseldeki Navbar simülasyonu) */
         .top-navbar {
             display: flex;
             justify-content: space-between;
@@ -61,7 +62,6 @@
             color: var(--text-main);
         }
 
-        /* Ana İçerik Konteyneri */
         .page-container {
             max-width: 1100px;
             margin: 0 auto;
@@ -72,7 +72,6 @@
             padding-bottom: 50px;
         }
 
-        /* Sayfa Ana Başlığı */
         .main-header {
             text-align: center;
             padding: 40px 20px 20px 20px;
@@ -93,7 +92,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* Bölümler */
         .section {
             padding: 50px 40px;
             border-bottom: 1px solid var(--border-color);
@@ -107,7 +105,7 @@
             margin-top: 0;
             color: var(--text-main);
             font-size: 1.6em;
-            border-left: 5px solid var(--accent-cyan); /* Cyan vurgu */
+            border-left: 5px solid var(--accent-cyan);
             padding-left: 15px;
             margin-bottom: 12px;
             font-weight: 500;
@@ -120,14 +118,13 @@
             line-height: 1.6;
         }
 
-        /* Markmap Kutusu */
         .map-container {
             width: 100%;
             height: 480px;
             background-color: var(--bg-map);
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            overflow: hidden;
+            overflow: visible; 
             box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
         }
 
@@ -136,24 +133,43 @@
             height: 100%;
         }
 
-        /* SVG Karanlık Mod Zorlamaları */
-        .markmap svg text {
-            fill: #E2E8F0 !important;
+
+        /* ========================================================
+           1. KESİLME ÖNLEYİCİ VE GENEL GRİ YAZI RENGİ
+           ======================================================== */
+        .markmap svg, .markmap g, .markmap foreignObject { overflow: visible !important; }
+        .markmap text { fill: #E2E8F0 !important; font-family: inherit !important; font-size: 15px; }
+        .markmap foreignObject { color: #E2E8F0 !important; }
+
+        /* ========================================================
+           2. ALT DÜĞÜMLER İÇİN ÖZEL RENKLER
+           ======================================================== */
+        .markmap foreignObject em { color: #00E5FF !important; font-style: normal !important; }       /* *Mavi* */
+        .markmap foreignObject del { color: #2ed573 !important; text-decoration: none !important; }   /* ~~Yeşil~~ */
+        .markmap foreignObject code { color: #ffa502 !important; background: none !important; padding: 0 !important; font-family: inherit !important;} /* `Sarı` */
+
+
+        /* ========================================================
+           3. ANA DÜĞÜM (KÖK) DEV BÜYÜTME HİLESİ (***Metin***)
+           ======================================================== */
+        .markmap foreignObject strong em,
+        .markmap foreignObject em strong {
+            font-size: 36px !important;      /* Devasa boyut */
+            color: #ff4757 !important;       /* Kırmızı renk */
+            font-weight: 900 !important;     /* Kalınlık */
+            font-style: normal !important;   /* İtalik görünümü iptal et */
+            display: inline-block;
+            line-height: 1.2;
+            text-shadow: 0px 4px 15px rgba(255, 71, 87, 0.4);
         }
-        .markmap svg path {
-            stroke: #1E293B !important;
-        }
-        .markmap svg g.markmap-node circle {
-            stroke: #00E5FF !important;
-            fill: #0B1521 !important;
-        }
+
     </style>
 </head>
 <body>
 
-    <!-- ÜST BAŞLIK / NAVBAR (Görsel referans alınarak eklendi) -->
+    <!-- ÜST BAŞLIK / NAVBAR -->
     <nav class="top-navbar">
-        <div class="nav-logo">&lt;Eurasian Numerals;</div>
+        <div class="nav-logo">Eurasian Numerals</div>
         <div class="nav-links">
             <span>Hakkımda</span>
             <span>Projeler</span>
@@ -163,7 +179,6 @@
 
     <div class="page-container">
 
-        <!-- Sayfa Genel Başlığı -->
         <div class="main-header">
             <h1>Eurasian Numeral System</h1>
             <p>Derin Zaman Kognitif Mimarisi ve Dilbilimsel Evrim Haritası</p>
@@ -176,17 +191,21 @@
             
             <div class="map-container">
                 <div class="markmap">
-# Chronological Leap & Reconstruction
+# ***Sanskritçe***
+
 ## MÖ 1500+ (Belgelenmiş Metinler)
-- Sanskritçe (Rigveda)
-- Miken Yunancası
-- Hititçe
+- *Sanskritçe* (Rigveda)
+- ~~Miken Yunancası~~
+- `Hititçe`
+
 ## 2500 Yıllık Belgesiz Boşluk
 - Fonetik Dondurma İllüzyonu
 - Matematiksel Ortalama (*pénkʷe)
+
 ## MÖ 4000 (PIE Checkpoint)
 - Methodological Ceiling (Metodolojik Tavan)
 - Gerçek Başlangıç Değil (Son Kontrol Noktası)
+
 ## MÖ 8000+ (Pre-Proto Layer)
 - Pre-Coalescence Matrix (*penhwe)
 - Derin Zaman Kognitif Mimarisi
@@ -201,7 +220,8 @@
             
             <div class="map-container">
                 <div class="markmap">
-# Anatolian Branch & Laryngeal Retention
+# ***\*kʷeh (2)***
+
 ## Anadolu Kolu (MÖ 1600+ En Eski Ayrışma)
 - Luvi Dili: panta (*kʷ YOK)
 - Hitit Dili: Sümerogram Kullanımı
@@ -224,7 +244,8 @@
             
             <div class="map-container">
                 <div class="markmap">
-# Cross-Linguistic Fortition Mechanics
+# ***Cross-Linguistic Fortition Mechanics***
+
 ## Nazal Sonrası Sıkışma (Post-Nasal Compression)
 - Japonca Morfonolojisi
   - yon (4) + hon -> yonpon (h -> p)
@@ -249,7 +270,7 @@
             
             <div class="map-container">
                 <div class="markmap">
-# Pre-Proto-IE Sayı Matrisi
+# ***Pre-Proto-IE Sayı Matrisi***
 
 ## Sayı: 5 (*penhwe)
 - Anadolu Kolu (MÖ 1600+)
@@ -287,7 +308,8 @@
             
             <div class="map-container">
                 <div class="markmap">
-# Macro-Family Alignment Grid
+# ***Macro-Family Alignment Grid***
+
 ## Zamir Paradigmaları (M-T/S Grid)
 - 1. Tekil Şahıs: *m- (Dirençli Öz-Kimlik)
 - 2. Tekil Şahıs: *t- / *s- (Dirençli İkinci Şahıs)
@@ -303,14 +325,15 @@
             </div>
         </div>
         
-        <!-- 6. BÖLÜM (YENİ) -->
+        <!-- 6. BÖLÜM -->
         <div class="section">
             <h2 class="section-title">6. Nostratik Hipotez ve Leksikal Derinlik</h2>
             <div class="section-desc">Ural, Altay ve Kartveli dil aileleriyle Pre-PIE seviyesinde saptanan ortak kök yapıları ve derin leksikal temaslar.</div>
             
             <div class="map-container">
                 <div class="markmap">
-# Nostratik Hipotez & Temas
+# ***Nostratik Hipotez & Temas***
+
 ## Makro-Aile Çatısı
 - Ural-Altay Benzerlikleri
 - Kartvelce Temas Bölgesi
@@ -324,14 +347,15 @@
             </div>
         </div>
 
-        <!-- 7. BÖLÜM (YENİ) -->
+        <!-- 7. BÖLÜM -->
         <div class="section">
             <h2 class="section-title">7. Kök Yapısı (Root Structure) Evrimi</h2>
             <div class="section-desc">Hint-Avrupa kök sisteminin (PIE Root) iki sessizli (Biconsonantal) aşamadan üç sessizli aşamaya geçiş mekaniği.</div>
             
             <div class="map-container">
                 <div class="markmap">
-# Kök Yapısı Evrimi
+# ***Kök Yapısı Evrimi***
+
 ## Erken Dönem (Biconsonantal)
 - *CV / *CVC Çekirdeği
 - Kök Genişlemesi (Root Extensions) ile Türeme
@@ -345,14 +369,15 @@
             </div>
         </div>
 
-        <!-- 8. BÖLÜM (YENİ) -->
+        <!-- 8. BÖLÜM -->
         <div class="section">
             <h2 class="section-title">8. Tarım Öncesi Leksikon (Paleolitik Katman)</h2>
             <div class="section-desc">Erken evrelerde tarım ve teknoloji terminolojisinin yokluğu ile avcı-toplayıcı kavramsal ağının baskınlığı.</div>
             
             <div class="map-container">
                 <div class="markmap">
-# Tarım Öncesi Leksikon
+# ***Tarım Öncesi Leksikon***
+
 ## Avcı-Toplayıcı Katmanı
 - Vahşi Hayvan Terminolojisi (*h₂ŕ̥tḱos - Ayı, Kurt)
 - Doğal Elementler (Ateş, Su, Taş)
@@ -365,14 +390,15 @@
             </div>
         </div>
 
-        <!-- 9. BÖLÜM (YENİ) -->
+        <!-- 9. BÖLÜM -->
         <div class="section">
             <h2 class="section-title">9. Sentaks (Sözdizimi) Arkeolojisi</h2>
             <div class="section-desc">Temel sözdizimsel yapının (Özne-Nesne-Yüklem) ve ergatif hizalanma kalıntılarının rekonstrüksiyonu.</div>
             
             <div class="map-container">
                 <div class="markmap">
-# Sentaks (Sözdizimi) Arkeolojisi
+# ***Sentaks (Sözdizimi) Arkeolojisi***
+
 ## Ergatif-Absolutif İzler
 - Aktif/İnaktif Hizalanma Geçmişi
 - Nötr/Geçişsiz Fiillerde Özne-Nesne Kayması
@@ -386,14 +412,15 @@
             </div>
         </div>
 
-        <!-- 10. BÖLÜM (YENİ) -->
+        <!-- 10. BÖLÜM -->
         <div class="section">
             <h2 class="section-title">10. Hesaplamalı Filogenetik ve Yapay Zeka</h2>
             <div class="section-desc">Makine öğrenmesi ve Bayes istatistik modelleri kullanılarak soy ağaçlarının ve ayrışma tarihlerinin hesaplanması.</div>
             
             <div class="map-container">
                 <div class="markmap">
-# Hesaplamalı Filogenetik
+# ***Hesaplamalı Filogenetik***
+
 ## Bayesyen Ağaç Modelleri
 - Kognat (Kökteş) Veritabanlarının Analizi
 - Tarihsel Ayrışma Süreleri (Glottokronoloji)
@@ -409,7 +436,7 @@
 
     </div>
 
-    <!-- Markmap Autoloader (Tüm .markmap div'lerini bağımsız ağaçlara dönüştürür) -->
+    <!-- Markmap Autoloader -->
     <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader"></script>
 
 </body>
