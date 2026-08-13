@@ -3,98 +3,201 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eurasian Numeral System</title>
+    <title>Eurasian Numeral System | Dashboard</title>
     <style>
         /* ========================================================
-           GENEL TEMA VE ARAYÜZ (Karanlık Tema)
+           GENEL TEMA VE ARAYÜZ (Premium Modern Dark Theme)
            ======================================================== */
         :root {
-            --bg-dark: #050B14;
-            --bg-container: #0B1521;
-            --bg-map: #070D16;
-            --accent-cyan: #00E5FF;
-            --text-main: #E2E8F0;
-            --text-muted: #8B949E;
-            --border-color: #162032;
+            --bg-dark: #020617;        
+            --bg-container: #0f172a;   
+            --bg-map: #0b1120;         
+            --bg-notes: rgba(15, 23, 42, 0.6); 
+            --accent-cyan: #38bdf8;    
+            --accent-purple: #818cf8;  
+            --text-main: #f8fafc;      
+            --text-muted: #94a3b8;     
+            --border-color: #1e293b;   
         }
 
         body {
             margin: 0;
             padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--bg-dark);
+            background-image: radial-gradient(circle at top right, rgba(56, 189, 248, 0.05), transparent 40%),
+                              radial-gradient(circle at bottom left, rgba(129, 140, 248, 0.05), transparent 40%);
             color: var(--text-main);
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
 
+        /* ========================================================
+           ÜST MENÜ (Sabitlik İptal Edildi - Doğal Kayma)
+           ======================================================== */
         .top-navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 20px 40px;
-            background-color: var(--bg-dark);
-            border-bottom: 1px solid var(--border-color);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            background-color: rgba(15, 23, 42, 0.7); 
+            backdrop-filter: blur(12px); 
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            /* position: sticky KULLANILMADI -> Aşağı kaydırınca kaybolur */
         }
 
         .nav-logo {
             color: var(--accent-cyan);
-            font-weight: 700;
+            font-weight: 800;
             font-family: 'Courier New', Courier, monospace;
-            font-size: 22px;
+            font-size: 24px;
             letter-spacing: 1px;
+            text-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
         }
 
         .nav-links {
-            color: var(--text-muted);
-            font-size: 14px;
             display: flex;
-            gap: 25px;
+            gap: 30px;
         }
         
         .nav-links span {
+            color: var(--text-muted);
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
             cursor: pointer;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            padding: 8px 12px;
+            border-radius: 6px;
         }
 
         .nav-links span:hover {
             color: var(--text-main);
+            background-color: rgba(255, 255, 255, 0.05);
         }
 
-        .page-container {
-            max-width: 1100px;
+        /* ========================================================
+           SAYFA ANA YERLEŞİMİ (Layout)
+           ======================================================== */
+        .app-layout {
+            display: flex;
+            max-width: 1400px;
             margin: 0 auto;
-            background-color: var(--bg-container);
+            padding: 0 20px;
+            position: relative;
+        }
+
+        /* ========================================================
+           SOL MENÜ (Timeline / ScrollSpy)
+           ======================================================== */
+        .left-sidebar {
+            width: 80px;
+            position: sticky;
+            top: 50px;
+            height: calc(100vh - 100px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 60px;
+            z-index: 50;
+        }
+
+        .timeline-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        /* Düğmeleri Birleştiren Çizgi */
+        .timeline-line {
+            position: absolute;
+            top: 10px;
+            bottom: 10px;
+            left: 50%;
+            width: 2px;
+            background: var(--border-color);
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+
+        /* Düğmeler (1-8) */
+        .timeline-dot {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--bg-dark);
+            border: 2px solid var(--border-color);
+            color: var(--text-muted);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 14px;
+            z-index: 2;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .timeline-dot:hover {
+            border-color: var(--accent-purple);
+            color: var(--text-main);
+            transform: scale(1.1);
+        }
+
+        /* Aktif Okunan Bölüm Efekti */
+        .timeline-dot.active {
+            background-color: rgba(56, 189, 248, 0.1);
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
+            transform: scale(1.15);
+        }
+
+        /* ========================================================
+           ORTA İÇERİK
+           ======================================================== */
+        .main-content {
+            flex: 1;
+            background-color: rgba(15, 23, 42, 0.4);
             border-left: 1px solid var(--border-color);
             border-right: 1px solid var(--border-color);
             min-height: 100vh;
-            padding-bottom: 50px;
+            padding-bottom: 70px;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
         }
 
         .main-header {
             text-align: center;
-            padding: 40px 20px 20px 20px;
+            padding: 60px 20px 40px 20px;
             border-bottom: 1px solid var(--border-color);
         }
 
         .main-header h1 {
-            color: var(--text-main);
-            font-size: 2.2em;
-            margin: 0 0 10px 0;
-            font-weight: 600;
+            font-size: 2.8em;
+            margin: 0 0 15px 0;
+            font-weight: 800;
+            background: linear-gradient(to right, var(--accent-cyan), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
         }
         
         .main-header p {
-            color: var(--accent-cyan);
+            color: var(--text-muted);
             margin: 0;
-            font-size: 1.1em;
+            font-size: 1.2em;
+            font-weight: 400;
             letter-spacing: 0.5px;
         }
 
         .section {
-            padding: 50px 40px;
-            border-bottom: 1px solid var(--border-color);
+            padding: 60px 40px;
+            border-bottom: 1px dashed var(--border-color);
+            scroll-margin-top: 40px; /* Kaydırmalarda başlığın üstte ezilmesini önler */
         }
 
         .section:last-child {
@@ -104,128 +207,195 @@
         .section-title {
             margin-top: 0;
             color: var(--text-main);
-            font-size: 1.6em;
-            border-left: 5px solid var(--accent-cyan);
-            padding-left: 15px;
-            margin-bottom: 12px;
-            font-weight: 500;
+            font-size: 1.8em;
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .section-title::before {
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 24px;
+            background: linear-gradient(to bottom, var(--accent-cyan), var(--accent-purple));
+            margin-right: 15px;
+            border-radius: 4px;
+            box-shadow: 0 0 10px var(--accent-cyan);
         }
 
         .section-desc {
             color: var(--text-muted);
-            font-size: 1em;
-            margin-bottom: 25px;
-            line-height: 1.6;
+            font-size: 1.05em;
+            margin-bottom: 30px;
+            line-height: 1.7;
+            padding-left: 20px;
         }
 
         /* ========================================================
-           HARİTA KUTUSU MİMARİSİ
+           HARİTA VE NOTLAR (İkili Grid Mimarisi)
            ======================================================== */
+        .section-body {
+            display: grid;
+            grid-template-columns: 2fr 1fr; /* Harita %66, Notlar %33 alan kaplar */
+            gap: 25px;
+        }
+
         .map-container {
             width: 100%;
-            height: 480px; 
-            background-color: var(--bg-map);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
+            height: 500px; 
+            background: radial-gradient(circle at center, #0f172a 0%, #0b1120 100%);
+            border: 1px solid rgba(56, 189, 248, 0.15);
+            border-radius: 12px;
             overflow: hidden; 
-            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 0 30px rgba(56, 189, 248, 0.03);
             position: relative;
+            transition: border-color 0.3s ease;
+        }
+        
+        .map-container:hover {
+            border-color: rgba(56, 189, 248, 0.4);
         }
 
         .markmap {
             width: 100%;
             height: 100%;
-            cursor: default; /* Arka planda sürükleme elini iptal eder */
+            cursor: default; 
         }
 
+        /* NOTLAR KUTUSU MİMARİSİ */
+        .notes-container {
+            background-color: var(--bg-notes);
+            border: 1px solid rgba(129, 140, 248, 0.2);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Notlar Kutusu Üst Parlama Efekti */
+        .notes-container::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(to right, var(--accent-cyan), var(--accent-purple));
+        }
+
+        .notes-title {
+            color: var(--accent-purple);
+            font-size: 1.1em;
+            font-weight: 600;
+            margin-top: 0;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .notes-content {
+            color: var(--text-muted);
+            font-size: 0.95em;
+            line-height: 1.7;
+        }
 
         /* ========================================================
-           TÜKETİCİ / TIKLAMA ENGELİNİ KALDIRAN KRİTİK KOD
+           MARKMAP KONTROLLERİ VE RENKLERİ
            ======================================================== */
         .markmap svg, .markmap g { overflow: visible !important; }
-        
-        .markmap foreignObject { 
-            overflow: visible !important; 
-            pointer-events: none !important; 
-        }
+        .markmap foreignObject { overflow: visible !important; pointer-events: none !important; }
+        .markmap text, .markmap div { fill: #f8fafc !important; color: #f8fafc !important; font-family: inherit !important; font-size: 15px; }
 
-        .markmap text, .markmap div { fill: #E2E8F0 !important; color: #E2E8F0 !important; font-family: inherit !important; font-size: 15px; }
-
-        /* ========================================================
-           ANA DÜĞÜM (KÖK) DEV BÜYÜTME (***Metin***)
-           ======================================================== */
         .markmap strong em,
         .markmap em strong {
-            font-size: 34px !important;      
+            font-size: 30px !important;      
             color: #ff4757 !important;       
             font-weight: 900 !important;     
             font-style: normal !important;   
             line-height: 1.2 !important;
             display: inline-block;
-            text-shadow: 0px 4px 15px rgba(255, 71, 87, 0.4);
-            padding-right: 10px;
+            text-shadow: 0px 4px 15px rgba(255, 71, 87, 0.3);
+            padding-right: 12px;
             pointer-events: auto !important; 
             cursor: pointer;
         }
 
-        /* ========================================================
-           DÜĞÜM YUVARLAKLARINI BÜYÜTME
-           ======================================================== */
         .markmap-node circle, .markmap circle {
             r: 8px !important; 
             stroke-width: 3px !important;
             cursor: pointer !important;
             pointer-events: auto !important;
-            transition: r 0.2s ease, stroke-width 0.2s ease; 
+            transition: r 0.2s cubic-bezier(0.4, 0, 0.2, 1), stroke-width 0.2s ease; 
         }
         .markmap-node circle:hover, .markmap circle:hover {
             r: 12px !important; 
             stroke-width: 4px !important;
+            filter: drop-shadow(0 0 8px rgba(255,255,255,0.5));
         }
 
-        /* ========================================================
-           ALT DÜĞÜMLER İÇİN ÖZEL RENKLER
-           ======================================================== */
-        .markmap em { color: #00E5FF !important; font-style: normal !important; pointer-events: auto !important; cursor: pointer; }       
+        .markmap em { color: var(--accent-cyan) !important; font-style: normal !important; pointer-events: auto !important; cursor: pointer; }       
         .markmap del { color: #2ed573 !important; text-decoration: none !important; pointer-events: auto !important; cursor: pointer; }   
-        .markmap code { color: #ffa502 !important; background: none !important; padding: 0 !important; font-family: inherit !important; pointer-events: auto !important; cursor: pointer;} 
+        .markmap code { color: #f59e0b !important; background: none !important; padding: 0 !important; font-family: inherit !important; pointer-events: auto !important; cursor: pointer;} 
 
         /* ========================================================
-           MOBİL UYUMLULUK
+           MOBİL UYUMLULUK (Responsive)
            ======================================================== */
+        @media screen and (max-width: 1024px) {
+            .section-body {
+                grid-template-columns: 1fr; /* Harita ve Notlar alt alta biner */
+            }
+            .left-sidebar {
+                display: none; /* Mobilde ve dar ekranda sol menüyü gizle */
+            }
+        }
+
         @media screen and (max-width: 768px) {
             .top-navbar {
                 flex-direction: column !important;
-                padding: 15px 20px !important;
-                gap: 15px !important;
+                padding: 20px !important;
+                gap: 20px !important;
             }
             .nav-links {
                 width: 100% !important;
-                justify-content: center !important;
-                gap: 15px !important;
-                flex-wrap: wrap !important; 
+                justify-content: space-between !important;
+                gap: 10px !important;
             }
-            .section {
-                padding: 30px 15px !important;
+            .nav-links span {
+                padding: 6px 10px;
+                font-size: 13px;
+                background-color: rgba(255, 255, 255, 0.03);
+                border: 1px solid rgba(255, 255, 255, 0.05);
             }
             .main-header {
-                padding: 30px 15px 15px 15px !important;
+                padding: 40px 15px 25px 15px !important;
             }
             .main-header h1 {
-                font-size: 1.8em !important;
+                font-size: 2em !important;
+            }
+            .section {
+                padding: 40px 20px !important;
             }
             .section-title {
-                font-size: 1.4em !important;
+                font-size: 1.5em !important;
+            }
+            .section-desc {
+                padding-left: 0;
             }
             .map-container {
-                height: 240px !important; 
+                height: 350px !important; 
+                border-radius: 8px;
             }
             .markmap strong em,
             .markmap em strong {
-                font-size: 24px !important; 
+                font-size: 20px !important; 
             }
             .markmap text, .markmap div {
-                font-size: 12px !important;
+                font-size: 13px !important;
             }
         }
     </style>
@@ -234,301 +404,356 @@
 
     <!-- ÜST BAŞLIK / NAVBAR -->
     <nav class="top-navbar">
-        <div class="nav-logo">&lt;Eurasian Numerals /&gt;</div>
+        <div class="nav-logo">Eurasian Numerals</div>
         <div class="nav-links">
-            <span>Hakkımda</span>
+            <span>Outis</span>
             <span>Projeler</span>
             <span>İletişim</span>
         </div>
     </nav>
 
-    <div class="page-container">
-
-        <div class="main-header">
-            <h1>Eurasian Numeral System</h1>
-            <p>Derin Zaman Kognitif Mimarisi ve Dilbilimsel Evrim Haritası</p>
-        </div>
-
-        <!-- 1. BÖLÜM -->
-        <div class="section">
-            <h2 class="section-title">1. Zamansal Sıçrama & Metodolojik Sınırlar</h2>
-            <div class="section-desc">MÖ 1500 yazılı metinlerinin MÖ 4000 için mutlak başlangıç (baseline) kabul edilmesinin yarattığı kronolojik boşluk.</div>
-            
-            <div class="map-container">
-                <div class="markmap">
-# ***Sanskritçe***
-
-## MÖ 1500+ (Belgelenmiş Metinler)
-- *Sanskritçe* (Rigveda)
-- ~~Miken Yunancası~~
-- `Hititçe`
-
-## 2500 Yıllık Belgesiz Boşluk
-- Fonetik Dondurma İllüzyonu
-- Matematiksel Ortalama (*pénkʷe)
-
-## MÖ 4000 (PIE Checkpoint)
-- Methodological Ceiling (Metodolojik Tavan)
-- Gerçek Başlangıç Değil (Son Kontrol Noktası)
-
-## MÖ 8000+ (Pre-Proto Layer)
-- Pre-Coalescence Matrix (*penhwe)
-- Derin Zaman Kognitif Mimarisi
-                </div>
-            </div>
-        </div>
-
-        <!-- 2. BÖLÜM -->
-        <div class="section">
-            <h2 class="section-title">2. Anadolu Kolu (Hitit/Luvi) Anomalyası</h2>
-            <div class="section-desc">İlk ayrılan en eski kolda *kʷ sesinin bulunmaması ve Laringeal (h-) korunumunun çift standardı.</div>
-            
-            <div class="map-container">
-                <div class="markmap">
-# ***&#42;kʷex (2)***
-
-## *kʷex (Steppe Influenced Group)
-- indo e
-  - dad
-  - awd
-
-## *kʲud (Caucasian Mesopotamian Group)
-- Hititçe h- (ḫant-) vs Latince (ante)
-  - Diğer 8 Kol Ses İzi Kaybetti (Coalescence)
-  - Hititçe E
-                </div>
-            </div>
-        </div>
-
-        <!-- 3. BÖLÜM -->
-        <div class="section">
-            <h2 class="section-title">3. Çapraz-Dilbilimsel Kompresyon (Fortition)</h2>
-            <div class="section-desc">Sürtünmeli ve gırtlaksı seslerin nazal/yapısal baskı altında patlayıcılara (h -> p) dönüşme kanıtları.</div>
-            
-            <div class="map-container">
-                <div class="markmap">
-# ***Cross-Linguistic Fortition Mechanics***
-
-## Nazal Sonrası Sıkışma (Post-Nasal Compression)
-- Japonca Morfonolojisi
-  - yon (4) + hon -> yonpon (h -> p)
-  - san (3) + hyaku -> sanbyaku (h -> b)
-## Sürtünmeli Sertleşmesi (Fricative Fortition)
-- Baskça (Latince Ödünçlemeler)
-  - Latin ficus -> Bask piku (f -> p)
-  - Latin filum -> Bask piru (f -> p)
-## Cermen Sertleşmesi (Holtzmann's Law)
-- PIE Glidelik Sesi (*w) -> Cermen Patlayıcısı (ggw)
-## Pre-PIE *penhwe Modeli
-- Pre-Nasal Environment (*nhw)
-- Structural Compression -> Primary Stops (*p / *kʷ)
-                </div>
-            </div>
-        </div>
-
-        <!-- 4. BÖLÜM -->
-        <div class="section">
-            <h2 class="section-title">4. Pre-Proto-IE Sayı Matrisi</h2>
-            <div class="section-desc">Hint-Avrupa dillerindeki sayı köklerinin alt dallardaki asimilasyon ve sıkışma dağılımı.</div>
-            
-            <div class="map-container">
-                <div class="markmap">
-# ***Pre-Proto-IE Sayı Matrisi***
-
-## Sayı: 5 (*penhwe)
-- Anadolu Kolu (MÖ 1600+)
-  - Luvice: panta (kʷ YOK)
-- Çekirdek PIE (Son Kontrol: *pénkʷe)
-  - İtalik & Keltik (Asimilasyon)
-    - Latince: quinque
-    - Eski İrlandaca: cóic
-  - Cermen (Sürtünmeli)
-    - İngilizce: five
-    - Almanca: fünf
-  - Hint-İran (Patlayıcı)
-    - Sanskritçe: páñca
-    - Yunanca: pénte
-  - Ermenice (Ayrık Dal)
-    - Eski Ermenice: hink (*hw laringeal izi)
-
-## Sayı: 4 (*kʷetwor)
-- Anadolu Kolu
-  - Luvice: tawi
-- Çekirdek PIE (*kʷetwóres)
-  - P-Keltik & Oskça (kʷ -> p)
-    - Gallerce: pedwar
-    - Oskça: petora
-  - Latince (kʷ Korunur)
-    - Latince: quattuor
-                </div>
-            </div>
-        </div>
-
-        <!-- 5. BÖLÜM -->
-        <div class="section">
-            <h2 class="section-title">5. Makro-Hizalanmalar & Kognitif Izgara</h2>
-            <div class="section-desc">Makro-aileler arası temel zamir stabilizasyonu, eksiltici matematik ve kognitif hizalanmalar.</div>
-            
-            <div class="map-container">
-                <div class="markmap">
-# ***Macro-Family Alignment Grid***
-
-## Zamir Paradigmaları (M-T/S Grid)
-- 1. Tekil Şahıs: *m- (Dirençli Öz-Kimlik)
-- 2. Tekil Şahıs: *t- / *s- (Dirençli İkinci Şahıs)
-- Temas/Ödünçleme İmkansızlığı (Typological Stability)
-## Afroasiatic (Proto-Semitic) Ayak İzi
-- Proto-Semitic: *ḫamiš- (5)
-  - Velar/Frictional (*ḫ) + Labial (*m) Sequence
-  - Pre-PIE *penhwe Hizalanması
-## Kognitif Sayma Algoritmaları
-- Uralic / Turkic Numeral Shifts
-- Yüzeysel Wanderwort Değil: Alt Yapısal Matematik
-                </div>
-            </div>
-        </div>
+    <div class="app-layout">
         
-        <!-- 6. BÖLÜM -->
-        <div class="section">
-            <h2 class="section-title">6. Nostratik Hipotez ve Leksikal Derinlik</h2>
-            <div class="section-desc">Ural, Altay ve Kartveli dil aileleriyle Pre-PIE seviyesinde saptanan ortak kök yapıları ve derin leksikal temaslar.</div>
-            
-            <div class="map-container">
-                <div class="markmap">
-# ***Nostratik Hipotez & Temas***
+        <!-- SOL ZAMAN ÇİZELGESİ (Timeline Navigation) -->
+        <aside class="left-sidebar">
+            <nav class="timeline-container">
+                <div class="timeline-line"></div>
+                <a href="#bolum-1" class="timeline-dot active">1</a>
+                <a href="#bolum-2" class="timeline-dot">2</a>
+                <a href="#bolum-3" class="timeline-dot">3</a>
+                <a href="#bolum-4" class="timeline-dot">4</a>
+                <a href="#bolum-5" class="timeline-dot">5</a>
+                <a href="#bolum-6" class="timeline-dot">6</a>
+                <a href="#bolum-7" class="timeline-dot">7</a>
+                <a href="#bolum-8" class="timeline-dot">8</a>
+            </nav>
+        </aside>
 
-## Makro-Aile Çatısı
-- Ural-Altay Benzerlikleri
-- Kartvelce Temas Bölgesi
-## Fonolojik Paraleller
-- Sessiz Patlayıcı Uyumları
-- Derin Zaman Ünlü Uyumu İzleri (Pre-PIE)
-## Morfolojik Ortaklıklar
-- Yönelme ve Bulunma Hâl Ekleri Temeli
-- Pronominal Köklerin Kesişimi
+        <!-- ORTA İÇERİK -->
+        <main class="main-content">
+
+            <div class="main-header">
+                <h1>Eurasian Numeral System</h1>
+                <p>Eurasian Numbers (1-7, 10)</p>
+            </div>
+
+            <!-- 1. BÖLÜM -->
+            <div id="bolum-1" class="section">
+                <h2 class="section-title">*1* (The Beginning of Everything)</h2>
+                <div class="section-desc">dadadd</div>
+                
+                <div class="section-body">
+                    <div class="map-container">
+                        <div class="markmap">
+# ***\*hoikʷ (1)***
+
+## Fusional Languages
+- Afro-Asiatic
+- Indo-Europea
+
+## Agglutinative Languages
+- Ural-Turkic
+- Mongol-Tunguz
+- Basque
+- Etruscan
+- Nakh Languages
+
+                        </div>
+                    </div>
+
+                    <!-- NOTLAR KISMI -->
+                    <div class="notes-container">
+                        <h3 class="notes-title">📝 Notlar</h3>
+                        <div class="notes-content">
+                            Bu bölümdeki kronolojik boşluklar, filogenetik ağaçların yeniden inşasında standart karşılaştırmalı yöntemin yetersiz kaldığı alanları göstermektedir. 
+                            <br><br>
+                            Özellikle Sanskritçe ve Hititçe arasındaki yazılı metin uçurumu, rekonstrüksiyon sürecinde "donmuş" bir fonetik algı yaratır.
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- 7. BÖLÜM -->
-        <div class="section">
-            <h2 class="section-title">7. Kök Yapısı (Root Structure) Evrimi</h2>
-            <div class="section-desc">Hint-Avrupa kök sisteminin (PIE Root) iki sessizli (Biconsonantal) aşamadan üç sessizli aşamaya geçiş mekaniği.</div>
-            
-            <div class="map-container">
-                <div class="markmap">
-# ***Kök Yapısı Evrimi***
+            <!-- 2. BÖLÜM -->
+            <div id="bolum-2" class="section">
+                <h2 class="section-title">*2*</h2>
+                <div class="section-desc">iki</div>
+                
+                <div class="section-body">
+                    <div class="map-container">
+                        <div class="markmap">
+# ***\*kekʷ (2)***
 
-## Erken Dönem (Biconsonantal)
-- *CV / *CVC Çekirdeği
-- Kök Genişlemesi (Root Extensions) ile Türeme
-## Geç Dönem (PIE)
-- Ablaut Sistemi (Ünlü Değişimi: e/o/ø)
-- *CeC- / *CoC- / *CC- Katmanları
-## Yapısal Kristalizasyon
-- Laringeal Kaybının Uzun Ünlülere Etkisi
-- Morfonolojik Sıkışma
+## Fusional Languages
+- Afro-Asiatic
+- Indo-Europea
+
+## Agglutinative Languages
+- Ural-Turkic
+- Mongol-Tunguz
+- Basque
+- Etruscan
+- Nakh Languages
+
+                        </div>
+                    </div>
+
+                    <!-- NOTLAR KISMI -->
+                    <div class="notes-container">
+                        <h3 class="notes-title">📝 Notlar</h3>
+                        <div class="notes-content">
+                            Anadolu kolunun Ana Hint-Avrupa (PIE) gövdesinden erken ayrılışı, laringeal kuramının en güçlü kanıtıdır. 
+                            <br><br>
+                            Luvi dilinde <b>*kʷ</b> sesinin olmayışı, labiovelar seslerin sanılandan çok daha sonra (merkezi çekirdekte) birleştiğine işaret etmektedir.
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- 8. BÖLÜM -->
-        <div class="section">
-            <h2 class="section-title">8. Tarım Öncesi Leksikon (Paleolitik Katman)</h2>
-            <div class="section-desc">Erken evrelerde tarım ve teknoloji terminolojisinin yokluğu ile avcı-toplayıcı kavramsal ağının baskınlığı.</div>
-            
-            <div class="map-container">
-                <div class="markmap">
-# ***Tarım Öncesi Leksikon***
+            <!-- 3. BÖLÜM -->
+            <div id="bolum-3" class="section">
+                <h2 class="section-title">*3*</h2>
+                <div class="section-desc">üç</div>
+                
+                <div class="section-body">
+                    <div class="map-container">
+                        <div class="markmap">
+# ***\*kwed (3)***
 
-## Avcı-Toplayıcı Katmanı
-- Vahşi Hayvan Terminolojisi (*h₂ŕ̥tḱos - Ayı, Kurt)
-- Doğal Elementler (Ateş, Su, Taş)
-## Neolitik Öncesi Sınır
-- Tarım Kelimelerinin Yokluğu (Tekerlek, Saban)
-- Hayvancılığın (Sığır/Koyun) İlk İzleri
-## Kronolojik Katmanlaşma
-- Erken Eklemeler vs. Ortak Kültür (Urheimat)
+## Fusional Languages
+- Afro-Asiatic
+- Indo-Europea
+
+## Agglutinative Languages
+- Ural-Turkic
+- Mongol-Tunguz
+- Basque
+- Etruscan
+- Nakh Languages
+
+                        </div>
+                    </div>
+
+                    <!-- NOTLAR KISMI -->
+                    <div class="notes-container">
+                        <h3 class="notes-title">📝 Notlar</h3>
+                        <div class="notes-content">
+                            Dünya dillerinde yaygın olarak görülen "Sertleşme (Fortition)" kuralları, PIE sayı sisteminin evrimine ışık tutar.
+                            <br><br>
+                            Japonca ve Baskça örnekleri, nazal seslerin veya yabancı köklerin nasıl baskı altında kalarak patlayıcı (p, b) seslere evrildiğinin canlı kanıtıdır.
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- 9. BÖLÜM -->
-        <div class="section">
-            <h2 class="section-title">9. Sentaks (Sözdizimi) Arkeolojisi</h2>
-            <div class="section-desc">Temel sözdizimsel yapının (Özne-Nesne-Yüklem) ve ergatif hizalanma kalıntılarının rekonstrüksiyonu.</div>
-            
-            <div class="map-container">
-                <div class="markmap">
-# ***Sentaks (Sözdizimi) Arkeolojisi***
+            <!-- 4. BÖLÜM -->
+            <div id="bolum-4" class="section">
+                <h2 class="section-title">*4*</h2>
+                <div class="section-desc">dört</div>
+                
+                <div class="section-body">
+                    <div class="map-container">
+                        <div class="markmap">
+# ***\*thtp (4)***
 
-## Ergatif-Absolutif İzler
-- Aktif/İnaktif Hizalanma Geçmişi
-- Nötr/Geçişsiz Fiillerde Özne-Nesne Kayması
-## Temel Diziliş (Word Order)
-- SOV (Özne-Nesne-Yüklem) Çekirdeği
-- Sonek (Suffixing) Eğilimi
-## Cümle İçi Yapı
-- Wackernagel Kanunu (İkinci Pozisyon Klitikleri)
-- Sol-Dallanma (Left-Branching) Mimarisi
+## Fusional Languages
+- Afro-Asiatic
+- Indo-Europea
+
+## Agglutinative Languages
+- Ural-Turkic
+- Mongol-Tunguz
+- Basque
+- Etruscan
+- Nakh Languages
+
+                        </div>
+                    </div>
+
+                    <!-- NOTLAR KISMI -->
+                    <div class="notes-container">
+                        <h3 class="notes-title">📝 Notlar</h3>
+                        <div class="notes-content">
+                            Pre-Proto-IE dönemi matrisi, özellikle "4" ve "5" sayılarındaki karmaşayı açıklar.
+                            <br><br>
+                            Özellikle Kelt dillerindeki P-Keltik ve Q-Keltik ayrımı (*kʷ -> p değişimi), sayılar üzerinden dil ailelerinin göç yollarını izlememizi sağlar.
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- 10. BÖLÜM -->
-        <div class="section">
-            <h2 class="section-title">10. Hesaplamalı Filogenetik ve Yapay Zeka</h2>
-            <div class="section-desc">Makine öğrenmesi ve Bayes istatistik modelleri kullanılarak soy ağaçlarının ve ayrışma tarihlerinin hesaplanması.</div>
-            
-            <div class="map-container">
-                <div class="markmap">
-# ***Hesaplamalı Filogenetik***
+            <!-- 5. BÖLÜM -->
+            <div id="bolum-5" class="section">
+                <h2 class="section-title">*5*</h2>
+                <div class="section-desc">beş</div>
+                
+                <div class="section-body">
+                    <div class="map-container">
+                        <div class="markmap">
+# ***\*penh (5)***
 
-## Bayesyen Ağaç Modelleri
-- Kognat (Kökteş) Veritabanlarının Analizi
-- Tarihsel Ayrışma Süreleri (Glottokronoloji)
-## Yapay Zeka (AI) Algoritmaları
-- Fonetik Kayma Simülasyonları ve Tahminleri
-- Derin Öğrenme ile Kayıp Seslerin Rekonstrüksiyonu
-## Model Doğrulama
-- Mevcut Genetik Verilerle (aDNA) Çapraz Kontrol
-- Kurgan ve Anadolu Hipotezlerinin Çatışması
+## Fusional Languages
+- Afro-Asiatic
+- Indo-Europea
+
+## Agglutinative Languages
+- Ural-Turkic
+- Mongol-Tunguz
+- Basque
+- Etruscan
+- Nakh Languages
+
+                        </div>
+                    </div>
+
+                    <!-- NOTLAR KISMI -->
+                    <div class="notes-container">
+                        <h3 class="notes-title">📝 Notlar</h3>
+                        <div class="notes-content">
+                            Avrasya dillerindeki "M-T" şahıs zamiri yapısı, tesadüf veya ödünçleme olamayacak kadar derine işlenmiştir. 
+                            <br><br>
+                            Afroasyatik aile ile PIE sayısal sistemi arasındaki <i>*ḫamiš-</i> vs <i>*penhwe</i> benzerliği, tek kökenden ziyade bölgesel kognitif sayma hizalanmalarını işaret eder.
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+            
+            <!-- 6. BÖLÜM -->
+            <div id="bolum-6" class="section">
+                <h2 class="section-title">*6*</h2>
+                <div class="section-desc">altı</div>
+                
+                <div class="section-body">
+                    <div class="map-container">
+                        <div class="markmap">
+# ***\*hetp (6)***
 
+## Fusional Languages
+- Afro-Asiatic
+- Indo-Europea
+
+## Agglutinative Languages
+- Ural-Turkic
+- Mongol-Tunguz
+- Basque
+- Etruscan
+- Nakh Languages
+
+                        </div>
+                    </div>
+
+                    <!-- NOTLAR KISMI -->
+                    <div class="notes-container">
+                        <h3 class="notes-title">📝 Notlar</h3>
+                        <div class="notes-content">
+                            Nostratik hipotez hala tartışmalı olsa da, Kartvelce (Kafkas) dillerinin PIE öncesi dönem ile kurduğu morfolojik temaslar yadsınamaz. 
+                            <br><br>
+                            Buradaki temel bulgu, Ural dilleriyle paylaşılan bulunma/yönelme eklerinin leksikal bir ödünçleme değil, çekirdek yapının ta kendisi olmasıdır.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 7. BÖLÜM -->
+            <div id="bolum-7" class="section">
+                <h2 class="section-title">*7*</h2>
+                <div class="section-desc">yedi</div>
+                
+                <div class="section-body">
+                    <div class="map-container">
+                        <div class="markmap">
+# ***\*sept (7)***
+
+## Fusional Languages
+- Afro-Asiatic
+- Indo-Europea
+
+## Agglutinative Languages
+- Ural-Turkic
+- Mongol-Tunguz
+- Basque
+- Etruscan
+- Nakh Languages
+
+                        </div>
+                    </div>
+
+                    <!-- NOTLAR KISMI -->
+                    <div class="notes-container">
+                        <h3 class="notes-title">📝 Notlar</h3>
+                        <div class="notes-content">
+                            PIE dilinin Ablaut sistemi (ünlü değişimi) aslında erken dönemdeki laringeal kayıplarının yapısal bir telafisidir. 
+                            <br><br>
+                            İki sessizli (Biconsonantal) kökler, zamanla ekler alarak üç sessizli formlara kristalize olmuştur.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 8. BÖLÜM -->
+            <div id="bolum-8" class="section">
+                <h2 class="section-title">*10*</h2>
+                <div class="section-desc">on</div>
+                
+                <div class="section-body">
+                    <div class="map-container">
+                        <div class="markmap">
+# ***\*ter (10)***
+
+## Fusional Languages
+- Afro-Asiatic
+- Indo-Europea
+
+## Agglutinative Languages
+- Ural-Turkic
+- Mongol-Tunguz
+- Basque
+- Etruscan
+- Nakh Languages
+
+                        </div>
+                    </div>
+
+                    <!-- NOTLAR KISMI -->
+                    <div class="notes-container">
+                        <h3 class="notes-title">📝 Notlar</h3>
+                        <div class="notes-content">
+                            Geleneksel dilbilimin tıkandığı noktalarda yapay zeka destekli filogenetik analizler devreye girer. 
+                            <br><br>
+                            Bayes istatistikleri ve antik DNA (aDNA) verileri, Kurgan hipotezi ile Anadolu hipotezi arasındaki tartışmaları sayısal zeminde çözme potansiyeline sahiptir.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
     </div>
 
-    <!-- D3 ve Markmap Resmi Kütüphaneleri (Tam Kontrol İçin) -->
+    <!-- D3 ve Markmap Resmi Kütüphaneleri -->
     <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
     <script src="https://cdn.jsdelivr.net/npm/markmap-lib"></script>
     <script src="https://cdn.jsdelivr.net/npm/markmap-view"></script>
 
     <!-- =========================================================================
-         RESMİ API İLE KUSURSUZ ODAKLANMA VE SÜRÜKLEME ENGELİ
+         SİSTEM MOTORU: ODAKLANMA, SÜRÜKLEME ENGELİ VE SCROLLSPY
          ========================================================================= -->
     <script>
         window.addEventListener('DOMContentLoaded', () => {
             const { Transformer, Markmap } = window.markmap;
             const transformer = new Transformer();
 
+            // 1. HARİTALARI (MARKMAP) RENDER ETME
             document.querySelectorAll('.markmap').forEach(container => {
-                
-                // 1. Markdown metnini kopyala ve SVG için kutuyu temizle
                 const markdownText = container.textContent;
                 container.innerHTML = '<svg style="width: 100%; height: 100%;"></svg>';
                 const svg = container.querySelector('svg');
 
-                // 2. Metni Markmap verisine çevir
                 const { root } = transformer.transform(markdownText);
-
-                // 3. Markmap motorunu tam yetkiyle kur
                 const mm = Markmap.create(svg, {
-                    autoFit: true,      // Açılışta tam ortala
-                    duration: 400       // Düğüm açılma animasyon hızı (Hızlı ve pürüzsüz)
+                    autoFit: true,      
+                    duration: 400       
                 }, root);
 
-                // 4. SÜRÜKLEME (PAN) KORUMASI
+                // Sürükleme (Pan) Engeli
                 container.addEventListener('mousedown', (e) => {
                     if (!e.target.closest('.markmap-node') && e.target.tagName !== 'circle' && e.target.tagName !== 'text') {
                         e.stopPropagation();
@@ -541,16 +766,54 @@
                     }
                 }, { capture: true, passive: false });
 
-                // 5. KESİN OTOMATİK ODAKLANMA (AUTO-FIT) - RESMİ API
+                // Düğüme tıklanınca merkez odaklanması
                 container.addEventListener('click', (e) => {
                     if (e.target.closest('.markmap-node') || e.target.tagName === 'circle' || e.target.tagName === 'text') {
-                        // Animasyonun (400ms) bitmesini bekle ve hemen ardından hizala
-                        setTimeout(() => {
-                            mm.fit(); // Bütün zoom/pan ayarlarını sıfırlar ve tam merkeze çiviler!
-                        }, 450); 
+                        setTimeout(() => { mm.fit(); }, 450); 
                     }
                 }, true); 
             });
+
+            // 2. SOL MENÜ (SCROLLSPY VE SMOOTH SCROLL) SİSTEMİ
+            const timelineDots = document.querySelectorAll('.timeline-dot');
+            const sections = document.querySelectorAll('.section');
+
+            // Tıklayınca Pürüzsüz Kayma
+            timelineDots.forEach(dot => {
+                dot.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    
+                    if(targetSection) {
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Ekranda Görünen Bölüme Göre Sol Menüyü Aktif Yapma (Intersection Observer)
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.5 // Bölümün %50'si ekrana girince tetikler
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Bütün noktalardan active sınıfını kaldır
+                        timelineDots.forEach(dot => dot.classList.remove('active'));
+                        // Ekrana giren bölümün ID'sine sahip noktaya active sınıfını ekle
+                        const activeDot = document.querySelector(`.timeline-dot[href="#${entry.target.id}"]`);
+                        if(activeDot) activeDot.classList.add('active');
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(sec => observer.observe(sec));
         });
     </script>
 
