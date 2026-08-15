@@ -3,103 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eurasian Numeral System | Dashboard</title>
+    <title>Nostratic Numbers - hickimse.com</title>
     <style>
         /* ========================================================
-           GENEL TEMA VE ARAYÜZ (Premium Modern Dark Theme)
+           GENEL TEMA VE ARAYÜZ (Premium Academia Dashboard)
            ======================================================== */
         :root {
-            --bg-dark: #020617;        
-            --bg-container: #0f172a;   
-            --bg-map: #0b1120;         
-            --bg-notes: rgba(15, 23, 42, 0.6); 
-            --accent-cyan: #38bdf8;    
-            --accent-purple: #818cf8;  
-            --text-main: #f8fafc;      
-            --text-muted: #94a3b8;     
-            --border-color: #1e293b;   
+            --bg-page: #F0F2F5;        
+            --bg-container: #FFFFFF;   
+            --bg-map: #FAFAFB;         
+            --bg-notes: #F8FAFC;       
+            --accent-primary: #1A56A6; /* Academia Mavi */
+            --accent-hover: #0F3D7A;   
+            --text-main: #111827;      /* Koyu Antrasit Siyah */
+            --text-muted: #64748B;     
+            --border-color: #E2E8F0;   
         }
 
         body {
             margin: 0;
             padding: 0;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-dark);
-            background-image: radial-gradient(circle at top right, rgba(56, 189, 248, 0.05), transparent 40%),
-                              radial-gradient(circle at bottom left, rgba(129, 140, 248, 0.05), transparent 40%);
+            background-color: var(--bg-page);
             color: var(--text-main);
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
         }
 
+        /* Akademik başlıklar için Serif font */
+        h1, h2, .serif-font {
+            font-family: "Georgia", "Times New Roman", serif;
+        }
+
         /* ========================================================
-           ÜST MENÜ (Sabitlik İptal Edildi - Doğal Kayma)
+           ÜST MENÜ
            ======================================================== */
         .top-navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 40px;
-            background-color: rgba(15, 23, 42, 0.7); 
-            backdrop-filter: blur(12px); 
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            /* position: sticky KULLANILMADI -> Aşağı kaydırınca kaybolur */
+            padding: 16px 48px;
+            background-color: #FFFFFF; 
+            border-bottom: 1px solid #E5E7EB;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02); 
         }
 
         .nav-logo {
-            color: var(--accent-cyan);
+            color: #0F172A;
             font-weight: 800;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 24px;
-            letter-spacing: 1px;
-            text-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+            font-family: -apple-system, sans-serif;
+            font-size: 22px;
+            letter-spacing: -0.5px;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        
+        .nav-logo:hover {
+            color: var(--accent-primary);
         }
 
         .nav-links {
             display: flex;
-            gap: 30px;
+            gap: 24px;
         }
         
-        .nav-links span {
-            color: var(--text-muted);
+        .nav-links a {
+            color: #475569;
             font-size: 14px;
-            font-weight: 500;
-            letter-spacing: 0.5px;
+            font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             padding: 8px 12px;
             border-radius: 6px;
+            text-decoration: none;
         }
 
-        .nav-links span:hover {
-            color: var(--text-main);
-            background-color: rgba(255, 255, 255, 0.05);
+        .nav-links a:hover {
+            color: var(--accent-primary);
+            background-color: #F1F5F9; 
         }
 
         /* ========================================================
-           SAYFA ANA YERLEŞİMİ (Layout)
+           SAYFA ANA YERLEŞİMİ (Kusursuz Ortalama & Geniş Alan)
            ======================================================== */
         .app-layout {
-            display: flex;
-            max-width: 1400px;
-            margin: 0 auto;
+            display: grid;
+            /* Sol menü 80px, Sağ boşluk 80px, Orta alan esnek (Maksimum denge) */
+            grid-template-columns: 80px minmax(0, 1fr) 80px; 
+            max-width: 1600px; /* Ekran genişliği artırıldı */
+            margin: 40px auto 0 auto; 
             padding: 0 20px;
-            position: relative;
+            gap: 40px; /* Menü ile içerik arasındaki mesafe */
         }
 
         /* ========================================================
            SOL MENÜ (Timeline / ScrollSpy)
            ======================================================== */
         .left-sidebar {
-            width: 80px;
             position: sticky;
             top: 50px;
             height: calc(100vh - 100px);
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding-top: 60px;
+            padding-top: 30px;
             z-index: 50;
         }
 
@@ -107,97 +114,103 @@
             position: relative;
             display: flex;
             flex-direction: column;
-            gap: 30px;
+            gap: 35px;
         }
 
-        /* Düğmeleri Birleştiren Çizgi */
         .timeline-line {
             position: absolute;
             top: 10px;
             bottom: 10px;
             left: 50%;
             width: 2px;
-            background: var(--border-color);
+            background: #CBD5E1; 
             transform: translateX(-50%);
             z-index: 1;
         }
 
-        /* Düğmeler (1-8) */
         .timeline-dot {
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background-color: var(--bg-dark);
-            border: 2px solid var(--border-color);
-            color: var(--text-muted);
+            background-color: #FFFFFF;
+            border: 2px solid #CBD5E1;
+            color: #64748B;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-weight: bold;
+            font-weight: 700;
             font-size: 14px;
             z-index: 2;
             cursor: pointer;
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
         }
 
         .timeline-dot:hover {
-            border-color: var(--accent-purple);
-            color: var(--text-main);
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
             transform: scale(1.1);
         }
 
-        /* Aktif Okunan Bölüm Efekti */
         .timeline-dot.active {
-            background-color: rgba(56, 189, 248, 0.1);
-            border-color: var(--accent-cyan);
-            color: var(--accent-cyan);
-            box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
+            background-color: var(--accent-primary);
+            border-color: var(--accent-primary);
+            color: #FFFFFF;
             transform: scale(1.15);
+            box-shadow: 0 4px 12px rgba(26, 86, 166, 0.25); 
         }
 
         /* ========================================================
-           ORTA İÇERİK
+           SAĞ BOŞLUK (Dengeleyici)
+           ======================================================== */
+        .right-spacer {
+            display: block; /* Sol menünün ağırlığını sağdan dengeler */
+        }
+
+        /* ========================================================
+           ORTA İÇERİK (Kağıt/Dashboard Kartı)
            ======================================================== */
         .main-content {
-            flex: 1;
-            background-color: rgba(15, 23, 42, 0.4);
-            border-left: 1px solid var(--border-color);
-            border-right: 1px solid var(--border-color);
+            background-color: var(--bg-container);
+            border: 1px solid #E2E8F0;
+            border-radius: 16px; 
             min-height: 100vh;
-            padding-bottom: 70px;
-            box-shadow: 0 0 50px rgba(0,0,0,0.5);
+            padding-bottom: 50px;
+            /* Premium derinlik gölgesi */
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04), 0 2px 10px rgba(0, 0, 0, 0.02);
+            overflow: hidden; 
         }
 
         .main-header {
             text-align: center;
-            padding: 60px 20px 40px 20px;
-            border-bottom: 1px solid var(--border-color);
+            padding: 80px 20px 50px 20px;
+            background-color: #FFFFFF;
+            border-bottom: 1px solid #F1F5F9;
         }
 
         .main-header h1 {
-            font-size: 2.8em;
-            margin: 0 0 15px 0;
-            font-weight: 800;
-            background: linear-gradient(to right, var(--accent-cyan), var(--accent-purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: -1px;
+            font-size: 3.2em;
+            margin: 0 0 12px 0;
+            font-weight: 700;
+            color: #0F172A;
+            letter-spacing: -0.5px;
         }
         
         .main-header p {
-            color: var(--text-muted);
+            color: var(--accent-primary); 
             margin: 0;
             font-size: 1.2em;
-            font-weight: 400;
-            letter-spacing: 0.5px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            font-family: -apple-system, sans-serif;
         }
 
         .section {
-            padding: 60px 40px;
-            border-bottom: 1px dashed var(--border-color);
-            scroll-margin-top: 40px; /* Kaydırmalarda başlığın üstte ezilmesini önler */
+            padding: 70px 60px;
+            border-bottom: 1px solid #F1F5F9; 
+            scroll-margin-top: 40px; 
         }
 
         .section:last-child {
@@ -207,10 +220,10 @@
         .section-title {
             margin-top: 0;
             color: var(--text-main);
-            font-size: 1.8em;
+            font-size: 2.2em;
             display: flex;
             align-items: center;
-            margin-bottom: 15px;
+            margin-bottom: 18px;
             font-weight: 600;
             letter-spacing: -0.5px;
         }
@@ -218,20 +231,20 @@
         .section-title::before {
             content: '';
             display: inline-block;
-            width: 4px;
-            height: 24px;
-            background: linear-gradient(to bottom, var(--accent-cyan), var(--accent-purple));
-            margin-right: 15px;
+            width: 6px;
+            height: 28px;
+            background: var(--accent-primary);
+            margin-right: 18px;
             border-radius: 4px;
-            box-shadow: 0 0 10px var(--accent-cyan);
         }
 
         .section-desc {
-            color: var(--text-muted);
-            font-size: 1.05em;
-            margin-bottom: 30px;
+            color: #475569;
+            font-size: 1.1em;
+            margin-bottom: 35px;
             line-height: 1.7;
-            padding-left: 20px;
+            padding-left: 24px;
+            font-family: -apple-system, sans-serif;
         }
 
         /* ========================================================
@@ -239,24 +252,23 @@
            ======================================================== */
         .section-body {
             display: grid;
-            grid-template-columns: 2fr 1fr; /* Harita %66, Notlar %33 alan kaplar */
-            gap: 25px;
+            grid-template-columns: 2fr 1fr; 
+            gap: 30px;
         }
 
+        /* Kanvas Desenli Harita Kutusu */
         .map-container {
             width: 100%;
-            height: 500px; 
-            background: radial-gradient(circle at center, #0f172a 0%, #0b1120 100%);
-            border: 1px solid rgba(56, 189, 248, 0.15);
+            height: 550px; /* Harita yüksekliği hafif artırıldı */
+            background-color: var(--bg-map);
+            /* Modern Nokta (Dot-Grid) Deseni */
+            background-image: radial-gradient(#CBD5E1 1px, transparent 1px);
+            background-size: 20px 20px;
+            border: 1px solid #E2E8F0;
             border-radius: 12px;
             overflow: hidden; 
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 0 30px rgba(56, 189, 248, 0.03);
             position: relative;
-            transition: border-color 0.3s ease;
-        }
-        
-        .map-container:hover {
-            border-color: rgba(56, 189, 248, 0.4);
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.01);
         }
 
         .markmap {
@@ -265,92 +277,114 @@
             cursor: default; 
         }
 
-        /* NOTLAR KUTUSU MİMARİSİ */
+        /* NOTLAR KUTUSU (Renklendirilmiş Modern Tasarım) */
         .notes-container {
             background-color: var(--bg-notes);
-            border: 1px solid rgba(129, 140, 248, 0.2);
-            border-radius: 12px;
-            padding: 25px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid #E2E8F0; 
+            border-top: 4px solid var(--accent-primary); 
+            border-radius: 10px;
+            padding: 30px 25px;
             position: relative;
             overflow: hidden;
-        }
-
-        /* Notlar Kutusu Üst Parlama Efekti */
-        .notes-container::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 3px;
-            background: linear-gradient(to right, var(--accent-cyan), var(--accent-purple));
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
         }
 
         .notes-title {
-            color: var(--accent-purple);
-            font-size: 1.1em;
-            font-weight: 600;
+            color: var(--accent-primary);
+            font-size: 1.05em;
+            font-weight: 700;
             margin-top: 0;
-            margin-bottom: 15px;
+            margin-bottom: 18px;
             display: flex;
             align-items: center;
-            gap: 8px;
-            letter-spacing: 1px;
+            gap: 10px;
             text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: -apple-system, sans-serif;
         }
 
         .notes-content {
-            color: var(--text-muted);
-            font-size: 0.95em;
-            line-height: 1.7;
+            color: #334155;
+            font-size: 1em;
+            line-height: 1.8;
         }
 
         /* ========================================================
-           MARKMAP KONTROLLERİ VE RENKLERİ
+           FOOTER (Alt Bilgi)
+           ======================================================== */
+        .site-footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #94A3B8;
+            font-size: 14px;
+            font-weight: 500;
+            background-color: transparent;
+            margin-top: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        /* ========================================================
+           MARKMAP KONTROLLERİ VE RENKLERİ (Aydınlık Tema)
            ======================================================== */
         .markmap svg, .markmap g { overflow: visible !important; }
         .markmap foreignObject { overflow: visible !important; pointer-events: none !important; }
-        .markmap text, .markmap div { fill: #f8fafc !important; color: #f8fafc !important; font-family: inherit !important; font-size: 15px; }
+        
+        .markmap text, .markmap div { fill: var(--text-main) !important; color: var(--text-main) !important; font-family: -apple-system, sans-serif !important; font-size: 15px; }
 
         .markmap strong em,
         .markmap em strong {
-            font-size: 30px !important;      
-            color: #ff4757 !important;       
-            font-weight: 900 !important;     
+            font-size: 28px !important;      
+            color: var(--accent-primary) !important;       
+            font-weight: 800 !important;     
             font-style: normal !important;   
             line-height: 1.2 !important;
             display: inline-block;
-            text-shadow: 0px 4px 15px rgba(255, 71, 87, 0.3);
             padding-right: 12px;
             pointer-events: auto !important; 
             cursor: pointer;
+            font-family: "Georgia", serif;
         }
 
         .markmap-node circle, .markmap circle {
-            r: 8px !important; 
+            r: 7px !important; 
             stroke-width: 3px !important;
+            stroke: var(--accent-primary) !important;
+            fill: #FFFFFF !important;
             cursor: pointer !important;
             pointer-events: auto !important;
-            transition: r 0.2s cubic-bezier(0.4, 0, 0.2, 1), stroke-width 0.2s ease; 
+            transition: r 0.2s ease, stroke-width 0.2s ease; 
         }
         .markmap-node circle:hover, .markmap circle:hover {
-            r: 12px !important; 
+            r: 10px !important; 
             stroke-width: 4px !important;
-            filter: drop-shadow(0 0 8px rgba(255,255,255,0.5));
         }
 
-        .markmap em { color: var(--accent-cyan) !important; font-style: normal !important; pointer-events: auto !important; cursor: pointer; }       
-        .markmap del { color: #2ed573 !important; text-decoration: none !important; pointer-events: auto !important; cursor: pointer; }   
-        .markmap code { color: #f59e0b !important; background: none !important; padding: 0 !important; font-family: inherit !important; pointer-events: auto !important; cursor: pointer;} 
+        .markmap em { color: #E83E8C !important; font-style: normal !important; pointer-events: auto !important; cursor: pointer; }       
+        .markmap del { color: #64748B !important; text-decoration: line-through !important; pointer-events: auto !important; cursor: pointer; }   
+        .markmap code { color: #0F766E !important; background: none !important; padding: 0 !important; font-family: monospace !important; pointer-events: auto !important; cursor: pointer;} 
 
         /* ========================================================
            MOBİL UYUMLULUK (Responsive)
            ======================================================== */
-        @media screen and (max-width: 1024px) {
+        @media screen and (max-width: 1150px) {
+            .app-layout {
+                grid-template-columns: 60px minmax(0, 1fr) 60px; /* Menü alanı daralır */
+                gap: 20px;
+            }
+        }
+
+        @media screen and (max-width: 950px) {
+            .app-layout {
+                display: flex; /* Mobilde Grid iptal, tek sütun */
+                flex-direction: column;
+                margin-top: 20px;
+                padding: 0 15px;
+            }
+            .left-sidebar, .right-spacer {
+                display: none; /* Mobilde yan boşluklar ve menü gizlenir */
+            }
             .section-body {
                 grid-template-columns: 1fr; /* Harita ve Notlar alt alta biner */
-            }
-            .left-sidebar {
-                display: none; /* Mobilde ve dar ekranda sol menüyü gizle */
             }
         }
 
@@ -358,41 +392,41 @@
             .top-navbar {
                 flex-direction: column !important;
                 padding: 20px !important;
-                gap: 20px !important;
+                gap: 15px !important;
             }
             .nav-links {
                 width: 100% !important;
-                justify-content: space-between !important;
+                justify-content: center !important;
+                flex-wrap: wrap;
                 gap: 10px !important;
             }
-            .nav-links span {
+            .nav-links a {
                 padding: 6px 10px;
                 font-size: 13px;
-                background-color: rgba(255, 255, 255, 0.03);
-                border: 1px solid rgba(255, 255, 255, 0.05);
+                background-color: #FFFFFF;
+                border: 1px solid var(--border-color);
             }
             .main-header {
-                padding: 40px 15px 25px 15px !important;
+                padding: 50px 15px 30px 15px !important;
             }
             .main-header h1 {
-                font-size: 2em !important;
+                font-size: 2.2em !important;
             }
             .section {
                 padding: 40px 20px !important;
             }
             .section-title {
-                font-size: 1.5em !important;
+                font-size: 1.6em !important;
             }
             .section-desc {
                 padding-left: 0;
             }
             .map-container {
-                height: 350px !important; 
-                border-radius: 8px;
+                height: 400px !important; 
             }
             .markmap strong em,
             .markmap em strong {
-                font-size: 20px !important; 
+                font-size: 22px !important; 
             }
             .markmap text, .markmap div {
                 font-size: 13px !important;
@@ -404,11 +438,11 @@
 
     <!-- ÜST BAŞLIK / NAVBAR -->
     <nav class="top-navbar">
-        <div class="nav-logo">Eurasian Numerals</div>
+        <a href="https://hickimse.com" class="nav-logo">hickimse.com</a>
         <div class="nav-links">
-            <span>Outis</span>
-            <span>Projeler</span>
-            <span>İletişim</span>
+            <a href="https://hickimse.com/nostraticnumbers">Nostratic Numbers</a>
+            <a href="https://hickimse.com/outis">Outis</a>
+            <a href="mailto:iletisim@hickimse.com">Contact</a>
         </div>
     </nav>
 
@@ -433,8 +467,8 @@
         <main class="main-content">
 
             <div class="main-header">
-                <h1>Eurasian Numeral System</h1>
-                <p>Eurasian Numbers (1-7, 10)</p>
+                <h1>Nostratic Numbers</h1>
+                <p>(1-7, 10)</p>
             </div>
 
             <!-- 1. BÖLÜM -->
@@ -447,27 +481,62 @@
                         <div class="markmap">
 # ***\*hoikʷ (1)***
 
-## Fusional Languages
 - Afro-Asiatic
-- Indo-Europea
+  - Semitic
+    - Akkadian
+    - Phoenician
+    - Arabic
+    - *išt- Proto Semitic?
 
-## Agglutinative Languages
-- Ural-Turkic
-- Mongol-Tunguz
+  - Berber
+
+- Indo-Anatolian
+  - Hittite
+  - Indo-European
+    - Tocharian
+    - Sanskrit
+    - Ancient Greek
+    - Albanian
+    - Armenian
+    - Proto IE?
+ 
+- Uralic
+  - Finnish
+  - Sami
+  - Hanty
+  - Hungarian
+  - Nenets 
+  - Proto Uralic?
+
+- Turkic
+  - Gokturk
+  - İdil Bulgar
+  - Chuvash
+  - Yakut
+  - Bashkir
+  - Proto Turkic?
+
+- Mongolic
+  - Mongol
+  - Buryat
+
 - Basque
-- Etruscan
-- Nakh Languages
+  - Basque
+  - Proto Basque?
 
+- Etruscan
+
+- Nakh Languages
+  - Chechen
+  - Ingush
                         </div>
                     </div>
 
                     <!-- NOTLAR KISMI -->
                     <div class="notes-container">
-                        <h3 class="notes-title">📝 Notlar</h3>
+                        <h3 class="notes-title">📝 Notes</h3>
                         <div class="notes-content">
-                            Bu bölümdeki kronolojik boşluklar, filogenetik ağaçların yeniden inşasında standart karşılaştırmalı yöntemin yetersiz kaldığı alanları göstermektedir. 
-                            <br><br>
-                            Özellikle Sanskritçe ve Hititçe arasındaki yazılı metin uçurumu, rekonstrüksiyon sürecinde "donmuş" bir fonetik algı yaratır.
+                            sdfsdfsdsdfsfs
                         </div>
                     </div>
                 </div>
@@ -483,17 +552,55 @@
                         <div class="markmap">
 # ***\*kekʷ (2)***
 
-## Fusional Languages
 - Afro-Asiatic
-- Indo-Europea
+  - Semitic
+     - *išt-
+    - Akkadian
+    - Phoenician
+    - Arabic
+    - Proto Semitic?
 
-## Agglutinative Languages
-- Ural-Turkic
-- Mongol-Tunguz
+  - Berber
+
+- Indo-Anatolian
+  - Hittite
+  - Indo-European
+    - Toharian
+    - Sanskrit
+    - Ancient Greek
+    - Albanian
+    - Armenian
+    - Proto IE?
+ 
+- Uralic
+  - Finnish
+  - Sami
+  - Hanty
+  - Hungarian
+  - Nenets 
+  - Proto Uralic?
+
+- Turkic
+  - Gokturk
+  - İdil Bulgar
+  - Chuvash
+  - Yakut
+  - Bashkir
+  - Proto Turkic?
+
+- Mongolic
+  - Mongol
+  - Buryat
+
 - Basque
-- Etruscan
-- Nakh Languages
+  - Basque
+  - Proto Basque?
 
+- Etruscan
+
+- Nakh Languages
+  - Chechen
+  - Ingush
                         </div>
                     </div>
 
@@ -519,17 +626,55 @@
                         <div class="markmap">
 # ***\*kwed (3)***
 
-## Fusional Languages
 - Afro-Asiatic
-- Indo-Europea
+  - Semitic
+     - *išt-
+    - Akkadian
+    - Phoenician
+    - Arabic
+    - Proto Semitic?
 
-## Agglutinative Languages
-- Ural-Turkic
-- Mongol-Tunguz
+  - Berber
+
+- Indo-Anatolian
+  - Hittite
+  - Indo-European
+    - Toharian
+    - Sanskrit
+    - Ancient Greek
+    - Albanian
+    - Armenian
+    - Proto IE?
+ 
+- Uralic
+  - Finnish
+  - Sami
+  - Hanty
+  - Hungarian
+  - Nenets 
+  - Proto Uralic?
+
+- Turkic
+  - Gokturk
+  - İdil Bulgar
+  - Chuvash
+  - Yakut
+  - Bashkir
+  - Proto Turkic?
+
+- Mongolic
+  - Mongol
+  - Buryat
+
 - Basque
-- Etruscan
-- Nakh Languages
+  - Basque
+  - Proto Basque?
 
+- Etruscan
+
+- Nakh Languages
+  - Chechen
+  - Ingush
                         </div>
                     </div>
 
@@ -555,17 +700,55 @@
                         <div class="markmap">
 # ***\*thtp (4)***
 
-## Fusional Languages
 - Afro-Asiatic
-- Indo-Europea
+  - Semitic
+     - *išt-
+    - Akkadian
+    - Phoenician
+    - Arabic
+    - Proto Semitic?
 
-## Agglutinative Languages
-- Ural-Turkic
-- Mongol-Tunguz
+  - Berber
+
+- Indo-Anatolian
+  - Hittite
+  - Indo-European
+    - Toharian
+    - Sanskrit
+    - Ancient Greek
+    - Albanian
+    - Armenian
+    - Proto IE?
+ 
+- Uralic
+  - Finnish
+  - Sami
+  - Hanty
+  - Hungarian
+  - Nenets 
+  - Proto Uralic?
+
+- Turkic
+  - Gokturk
+  - İdil Bulgar
+  - Chuvash
+  - Yakut
+  - Bashkir
+  - Proto Turkic?
+
+- Mongolic
+  - Mongol
+  - Buryat
+
 - Basque
-- Etruscan
-- Nakh Languages
+  - Basque
+  - Proto Basque?
 
+- Etruscan
+
+- Nakh Languages
+  - Chechen
+  - Ingush
                         </div>
                     </div>
 
@@ -591,17 +774,55 @@
                         <div class="markmap">
 # ***\*penh (5)***
 
-## Fusional Languages
 - Afro-Asiatic
-- Indo-Europea
+  - Semitic
+     - *išt-
+    - Akkadian
+    - Phoenician
+    - Arabic
+    - Proto Semitic?
 
-## Agglutinative Languages
-- Ural-Turkic
-- Mongol-Tunguz
+  - Berber
+
+- Indo-Anatolian
+  - Hittite
+  - Indo-European
+    - Toharian
+    - Sanskrit
+    - Ancient Greek
+    - Albanian
+    - Armenian
+    - Proto IE?
+ 
+- Uralic
+  - Finnish
+  - Sami
+  - Hanty
+  - Hungarian
+  - Nenets 
+  - Proto Uralic?
+
+- Turkic
+  - Gokturk
+  - İdil Bulgar
+  - Chuvash
+  - Yakut
+  - Bashkir
+  - Proto Turkic?
+
+- Mongolic
+  - Mongol
+  - Buryat
+
 - Basque
-- Etruscan
-- Nakh Languages
+  - Basque
+  - Proto Basque?
 
+- Etruscan
+
+- Nakh Languages
+  - Chechen
+  - Ingush
                         </div>
                     </div>
 
@@ -627,17 +848,55 @@
                         <div class="markmap">
 # ***\*hetp (6)***
 
-## Fusional Languages
 - Afro-Asiatic
-- Indo-Europea
+  - Semitic
+     - *išt-
+    - Akkadian
+    - Phoenician
+    - Arabic
+    - Proto Semitic?
 
-## Agglutinative Languages
-- Ural-Turkic
-- Mongol-Tunguz
+  - Berber
+
+- Indo-Anatolian
+  - Hittite
+  - Indo-European
+    - Toharian
+    - Sanskrit
+    - Ancient Greek
+    - Albanian
+    - Armenian
+    - Proto IE?
+ 
+- Uralic
+  - Finnish
+  - Sami
+  - Hanty
+  - Hungarian
+  - Nenets 
+  - Proto Uralic?
+
+- Turkic
+  - Gokturk
+  - İdil Bulgar
+  - Chuvash
+  - Yakut
+  - Bashkir
+  - Proto Turkic?
+
+- Mongolic
+  - Mongol
+  - Buryat
+
 - Basque
-- Etruscan
-- Nakh Languages
+  - Basque
+  - Proto Basque?
 
+- Etruscan
+
+- Nakh Languages
+  - Chechen
+  - Ingush
                         </div>
                     </div>
 
@@ -663,17 +922,55 @@
                         <div class="markmap">
 # ***\*sept (7)***
 
-## Fusional Languages
 - Afro-Asiatic
-- Indo-Europea
+  - Semitic
+     - *išt-
+    - Akkadian
+    - Phoenician
+    - Arabic
+    - Proto Semitic?
 
-## Agglutinative Languages
-- Ural-Turkic
-- Mongol-Tunguz
+  - Berber
+
+- Indo-Anatolian
+  - Hittite
+  - Indo-European
+    - Toharian
+    - Sanskrit
+    - Ancient Greek
+    - Albanian
+    - Armenian
+    - Proto IE?
+ 
+- Uralic
+  - Finnish
+  - Sami
+  - Hanty
+  - Hungarian
+  - Nenets 
+  - Proto Uralic?
+
+- Turkic
+  - Gokturk
+  - İdil Bulgar
+  - Chuvash
+  - Yakut
+  - Bashkir
+  - Proto Turkic?
+
+- Mongolic
+  - Mongol
+  - Buryat
+
 - Basque
-- Etruscan
-- Nakh Languages
+  - Basque
+  - Proto Basque?
 
+- Etruscan
+
+- Nakh Languages
+  - Chechen
+  - Ingush
                         </div>
                     </div>
 
@@ -699,17 +996,55 @@
                         <div class="markmap">
 # ***\*ter (10)***
 
-## Fusional Languages
 - Afro-Asiatic
-- Indo-Europea
+  - Semitic
+     - *išt-
+    - Akkadian
+    - Phoenician
+    - Arabic
+    - Proto Semitic?
 
-## Agglutinative Languages
-- Ural-Turkic
-- Mongol-Tunguz
+  - Berber
+
+- Indo-Anatolian
+  - Hittite
+  - Indo-European
+    - Toharian
+    - Sanskrit
+    - Ancient Greek
+    - Albanian
+    - Armenian
+    - Proto IE?
+ 
+- Uralic
+  - Finnish
+  - Sami
+  - Hanty
+  - Hungarian
+  - Nenets 
+  - Proto Uralic?
+
+- Turkic
+  - Gokturk
+  - İdil Bulgar
+  - Chuvash
+  - Yakut
+  - Bashkir
+  - Proto Turkic?
+
+- Mongolic
+  - Mongol
+  - Buryat
+
 - Basque
-- Etruscan
-- Nakh Languages
+  - Basque
+  - Proto Basque?
 
+- Etruscan
+
+- Nakh Languages
+  - Chechen
+  - Ingush
                         </div>
                     </div>
 
@@ -726,7 +1061,15 @@
             </div>
 
         </main>
+        
+        <!-- SAĞ ZAMAN ÇİZELGESİ BOŞLUĞU (Dengeleyici Spacer) -->
+        <aside class="right-spacer"></aside>
     </div>
+
+    <!-- ALT BİLGİ (FOOTER) -->
+    <footer class="site-footer">
+        hickimse.com tüm hakları saklıdır.
+    </footer>
 
     <!-- D3 ve Markmap Resmi Kütüphaneleri -->
     <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
@@ -794,19 +1137,17 @@
                 });
             });
 
-            // Ekranda Görünen Bölüme Göre Sol Menüyü Aktif Yapma (Intersection Observer)
+            // Ekranda Görünen Bölüme Göre Sol Menüyü Aktif Yapma
             const observerOptions = {
                 root: null,
                 rootMargin: '0px',
-                threshold: 0.5 // Bölümün %50'si ekrana girince tetikler
+                threshold: 0.5 
             };
 
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        // Bütün noktalardan active sınıfını kaldır
                         timelineDots.forEach(dot => dot.classList.remove('active'));
-                        // Ekrana giren bölümün ID'sine sahip noktaya active sınıfını ekle
                         const activeDot = document.querySelector(`.timeline-dot[href="#${entry.target.id}"]`);
                         if(activeDot) activeDot.classList.add('active');
                     }
