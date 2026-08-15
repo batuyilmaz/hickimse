@@ -1,1 +1,267 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outis - hickimse.com</title>
+    <style>
+        /* ========================================================
+           GENEL TEMA VE ARAYÜZ (Premium Academia Dashboard)
+           ======================================================== */
+        :root {
+            --bg-page: #F0F2F5;        
+            --bg-container: #FFFFFF;   
+            --accent-primary: #1A56A6; /* Academia Mavi */
+            --accent-hover: #0F3D7A;   
+            --text-main: #111827;      /* Koyu Antrasit Siyah */
+            --text-muted: #64748B;     
+            --border-color: #E2E8F0;   
+        }
 
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            -webkit-font-smoothing: antialiased;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h1, h2, h3, .serif-font {
+            font-family: "Georgia", "Times New Roman", serif;
+        }
+
+        /* ========================================================
+           ÜST MENÜ (Navbar - Sabit)
+           ======================================================== */
+        .top-navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 48px;
+            background-color: #FFFFFF; 
+            border-bottom: 1px solid #E5E7EB;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02); 
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-logo {
+            color: #0F172A;
+            font-weight: 800;
+            font-size: 22px;
+            letter-spacing: -0.5px;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        
+        .nav-logo:hover {
+            color: var(--accent-primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+        }
+        
+        .nav-links a {
+            color: #475569;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            padding: 8px 12px;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+
+        /* Outis sayfasında Outis linki aktif görünür */
+        .nav-links a.active,
+        .nav-links a:hover {
+            color: var(--accent-primary);
+            background-color: #F1F5F9; 
+        }
+
+        /* ========================================================
+           BİYOGRAFİ ALANI (Merkezlenmiş Kart Düzeni)
+           ======================================================== */
+        .outis-layout {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 60px 20px;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .bio-card {
+            background-color: var(--bg-container);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            display: flex;
+            max-width: 1000px;
+            width: 100%;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05), 0 4px 15px rgba(0, 0, 0, 0.02);
+        }
+
+        /* Sol Taraf: Görsel Kutusu */
+        .bio-image-wrapper {
+            flex: 0 0 40%;
+            background-color: #E2E8F0;
+            position: relative;
+        }
+
+        .bio-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Sağ Taraf: İçerik Kutusu */
+        .bio-content {
+            flex: 1;
+            padding: 60px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .bio-content h1 {
+            font-size: 3em;
+            margin: 0 0 5px 0;
+            color: #0F172A;
+            letter-spacing: -0.5px;
+        }
+
+        .bio-subtitle {
+            color: var(--accent-primary);
+            font-weight: 600;
+            font-size: 1.1em;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 25px;
+            font-family: -apple-system, sans-serif;
+        }
+
+        .separator {
+            width: 40px;
+            height: 4px;
+            background-color: var(--accent-primary);
+            border-radius: 2px;
+            margin-bottom: 30px;
+        }
+
+        .bio-paragraph {
+            color: #334155;
+            font-size: 1.15em;
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        /* ========================================================
+           FOOTER
+           ======================================================== */
+        .site-footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: #94A3B8;
+            font-size: 14px;
+            font-weight: 500;
+            background-color: transparent;
+        }
+
+        /* Animasyonlar */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ========================================================
+           MOBİL UYUMLULUK (Responsive)
+           ======================================================== */
+        @media screen and (max-width: 900px) {
+            .bio-card {
+                flex-direction: column;
+                max-width: 600px;
+            }
+            .bio-image-wrapper {
+                height: 350px;
+                flex: none;
+            }
+            .bio-content {
+                padding: 40px 30px;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .top-navbar {
+                flex-direction: column;
+                padding: 20px;
+                gap: 15px;
+            }
+            .nav-links {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            .outis-layout {
+                padding: 30px 15px;
+            }
+            .bio-content h1 {
+                font-size: 2.4em;
+            }
+            .bio-paragraph {
+                font-size: 1.05em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="top-navbar">
+        <a href="https://hickimse.com" class="nav-logo">hickimse.com</a>
+        <div class="nav-links">
+            <a href="/nostraticnumbers">Nostratic Numbers</a>
+            <a href="/outis" class="active">Outis</a>
+            <a href="mailto:iletisim@hickimse.com">Contact</a>
+        </div>
+    </nav>
+
+    <!-- BİYOGRAFİ BÖLÜMÜ -->
+    <main class="outis-layout">
+        <article class="bio-card">
+            
+            <!-- Görsel Alanı -->
+            <div class="bio-image-wrapper">
+                <!-- Buradaki görsel linkini kendi fotoğrafınızla değiştirebilirsiniz -->
+                <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=800&auto=format&fit=crop" alt="Outis Profil">
+            </div>
+
+            <!-- Metin Alanı -->
+            <div class="bio-content">
+                <h1 class="serif-font">Batu</h1>
+                <span class="bio-subtitle">Arşiv & Düşünce Notları</span>
+                <div class="separator"></div>
+                <p class="bio-paragraph">
+                    Ekonomi ve makroekonomi alanındaki akademik formasyonunu, açık kaynaklı sistem mimarileri ve karşılaştırmalı tarihsel dilbilim analizleriyle sentezleyen bağımsız bir çalışma alanı. <strong>Outis</strong>; Thomas Hobbes'un devlet modellerinden, Daron Acemoğlu'nun kurumsal çerçevelerine ve klasik felsefi yapıbozumlara uzanan çok disiplinli okumaların, düşük seviyeli donanım konfigürasyonlarıyla kesiştiği kişisel bir kayıt defteridir.
+                </p>
+            </div>
+
+        </article>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        hickimse.com tüm hakları saklıdır.
+    </footer>
+
+</body>
+</html>
