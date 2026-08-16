@@ -53,27 +53,19 @@
         .nav-logo-container {
             display: flex;
             align-items: center;
-            gap: 12px;
             text-decoration: none;
         }
 
         .nav-logo-icon {
-            height: 36px;
+            height: 40px; /* Sadece logo kaldığı için boyutu hafifçe büyütüldü (36px -> 40px) */
             width: auto;
             display: block;
+            transition: opacity 0.2s ease, transform 0.2s ease;
         }
 
-        .nav-logo {
-            color: #0F172A;
-            font-weight: 800;
-            font-family: -apple-system, sans-serif;
-            font-size: 22px;
-            letter-spacing: -0.5px;
-            transition: color 0.2s ease;
-        }
-        
-        .nav-logo-container:hover .nav-logo {
-            color: var(--accent-primary);
+        .nav-logo-container:hover .nav-logo-icon {
+            opacity: 0.8;
+            transform: scale(1.02);
         }
 
         .nav-links {
@@ -301,8 +293,7 @@
     <!-- ÜST BAŞLIK / NAVBAR -->
     <nav class="top-navbar">
         <a href="https://hickimse.com" class="nav-logo-container" aria-label="hickimse.com Ana Sayfa">
-            <img src="../images/logo.svg" alt="hickimse.com Logo" class="nav-logo-icon">
-            <span class="nav-logo">hickimse.com</span>
+            <img src="../images/hickimse-logo.svg" alt="hickimse.com Logo" class="nav-logo-icon">
         </a>
         <div class="nav-links">
             <a href="https://hickimse.com/nostraticnumbers">Nostratic Numbers</a>
