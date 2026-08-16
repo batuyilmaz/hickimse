@@ -58,16 +58,16 @@
             transition: color 0.2s ease;
         }
         
-        .nav-logo:hover {
+        .-logo:hover {
             color: var(--accent-primary);
         }
 
-        .nav-links {
+        .-links {
             display: flex;
             gap: 24px;
         }
         
-        .nav-links a {
+        .-links a {
             color: #475569;
             font-size: 14px;
             font-weight: 600;
@@ -78,7 +78,7 @@
             text-decoration: none;
         }
 
-        .nav-links a:hover {
+        .-links a:hover {
             color: var(--accent-primary);
             background-color: #F1F5F9; 
         }
@@ -389,18 +389,18 @@
         }
 
         @media screen and (max-width: 768px) {
-            .top-navbar {
+            .top-bar {
                 flex-direction: column !important;
                 padding: 20px !important;
                 gap: 15px !important;
             }
-            .nav-links {
+            .-links {
                 width: 100% !important;
                 justify-content: center !important;
                 flex-wrap: wrap;
                 gap: 10px !important;
             }
-            .nav-links a {
+            .-links a {
                 padding: 6px 10px;
                 font-size: 13px;
                 background-color: #FFFFFF;
@@ -438,7 +438,9 @@
 
     <!-- ÜST BAŞLIK / NAVBAR -->
     <nav class="top-navbar">
-        <a href="https://hickimse.com" class="nav-logo">hickimse.com</a>
+        <a href="https://hickimse.com" class="nav-logo-container" aria-label="hickimse.com Ana Sayfa">
+            <img src="**/images/logo.svg" alt="hickimse.com Logo" class="nav-logo-icon">
+        </a>
         <div class="nav-links">
             <a href="https://hickimse.com/nostraticnumbers">Nostratic Numbers</a>
             <a href="https://hickimse.com/outis">Outis</a>
