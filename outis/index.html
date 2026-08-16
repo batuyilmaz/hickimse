@@ -25,17 +25,19 @@
             background-color: var(--bg-page);
             color: var(--text-main);
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
         }
 
+        /* Akademik başlıklar için Serif font */
         h1, h2, h3, .serif-font {
             font-family: "Georgia", "Times New Roman", serif;
         }
 
         /* ========================================================
-           ÜST MENÜ (Navbar - Sabit)
+           ÜST MENÜ (Senkronize)
            ======================================================== */
         .top-navbar {
             display: flex;
@@ -53,6 +55,7 @@
         .nav-logo {
             color: #0F172A;
             font-weight: 800;
+            font-family: -apple-system, sans-serif;
             font-size: 22px;
             letter-spacing: -0.5px;
             text-decoration: none;
@@ -79,7 +82,7 @@
             text-decoration: none;
         }
 
-        /* Outis sayfasında Outis linki aktif görünür */
+        /* Aktif sayfa vurgusu */
         .nav-links a.active,
         .nav-links a:hover {
             color: var(--accent-primary);
@@ -87,31 +90,47 @@
         }
 
         /* ========================================================
-           BİYOGRAFİ ALANI (Merkezlenmiş Kart Düzeni)
+           SAYFA ANA YERLEŞİMİ (Nostratic Numbers ile Birebir Aynı)
            ======================================================== */
-        .outis-layout {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 60px 20px;
+        .app-layout {
+            display: grid;
+            /* Sol boşluk 80px, Sağ boşluk 80px, Orta alan esnek */
+            grid-template-columns: 80px minmax(0, 1fr) 80px; 
+            max-width: 1600px; 
+            margin: 40px auto 0 auto; 
+            padding: 0 20px;
+            gap: 40px; 
+            flex: 1; /* Footer'ı alta itmesi için */
+        }
+
+        /* Sol ve Sağ Dengeleyici Boşluklar */
+        .left-sidebar, .right-spacer {
+            display: block; 
+        }
+
+        /* ========================================================
+           ORTA İÇERİK KARTI (Kağıt/Dashboard Yüzeyi)
+           ======================================================== */
+        .main-content {
+            background-color: var(--bg-container);
+            border: 1px solid #E2E8F0;
+            border-radius: 16px; 
+            min-height: calc(100vh - 200px); /* Ana sayfa ve markmap ile aynı derinlik */
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04), 0 2px 10px rgba(0, 0, 0, 0.02);
+            overflow: hidden; 
             animation: fadeIn 0.8s ease-out;
         }
 
-        .bio-card {
-            background-color: var(--bg-container);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
+        /* Biyografiye Özel Flex Layout (Kartın içine gömülü) */
+        .bio-layout {
             display: flex;
-            max-width: 1000px;
-            width: 100%;
-            overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05), 0 4px 15px rgba(0, 0, 0, 0.02);
+            flex-direction: row;
+            height: 100%;
         }
 
-        /* Sol Taraf: Görsel Kutusu */
+        /* Sol Taraf: Görsel Alanı */
         .bio-image-wrapper {
-            flex: 0 0 40%;
+            flex: 0 0 45%; /* Görselin kaplayacağı oran */
             background-color: #E2E8F0;
             position: relative;
         }
@@ -123,17 +142,17 @@
             display: block;
         }
 
-        /* Sağ Taraf: İçerik Kutusu */
+        /* Sağ Taraf: Metin Alanı */
         .bio-content {
             flex: 1;
-            padding: 60px 50px;
+            padding: 80px 60px;
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
 
         .bio-content h1 {
-            font-size: 3em;
+            font-size: 3.5em;
             margin: 0 0 5px 0;
             color: #0F172A;
             letter-spacing: -0.5px;
@@ -142,7 +161,7 @@
         .bio-subtitle {
             color: var(--accent-primary);
             font-weight: 600;
-            font-size: 1.1em;
+            font-size: 1.15em;
             text-transform: uppercase;
             letter-spacing: 1.5px;
             margin-bottom: 25px;
@@ -159,21 +178,23 @@
 
         .bio-paragraph {
             color: #334155;
-            font-size: 1.15em;
+            font-size: 1.25em;
             line-height: 1.8;
             margin: 0;
         }
 
         /* ========================================================
-           FOOTER
+           FOOTER (Alt Bilgi)
            ======================================================== */
         .site-footer {
             text-align: center;
-            padding: 30px 20px;
+            padding: 40px 20px;
             color: #94A3B8;
             font-size: 14px;
             font-weight: 500;
             background-color: transparent;
+            margin-top: 20px;
+            letter-spacing: 0.5px;
         }
 
         /* Animasyonlar */
@@ -183,82 +204,112 @@
         }
 
         /* ========================================================
-           MOBİL UYUMLULUK (Responsive)
+           MOBİL UYUMLULUK (Responsive - Sitenin Tamamıyla Birebir)
            ======================================================== */
-        @media screen and (max-width: 900px) {
-            .bio-card {
+        @media screen and (max-width: 1150px) {
+            .app-layout {
+                grid-template-columns: 60px minmax(0, 1fr) 60px;
+                gap: 20px;
+            }
+        }
+
+        @media screen and (max-width: 950px) {
+            .app-layout {
+                display: flex; 
                 flex-direction: column;
-                max-width: 600px;
+                margin-top: 20px;
+                padding: 0 15px;
+            }
+            .left-sidebar, .right-spacer {
+                display: none; 
+            }
+            /* Mobilde kart içi düzen alt alta biner */
+            .bio-layout {
+                flex-direction: column;
             }
             .bio-image-wrapper {
-                height: 350px;
+                height: 400px;
                 flex: none;
             }
             .bio-content {
-                padding: 40px 30px;
+                padding: 50px 30px;
             }
         }
 
         @media screen and (max-width: 768px) {
             .top-navbar {
-                flex-direction: column;
-                padding: 20px;
-                gap: 15px;
+                flex-direction: column !important;
+                padding: 20px !important;
+                gap: 15px !important;
             }
             .nav-links {
-                width: 100%;
-                justify-content: center;
+                width: 100% !important;
+                justify-content: center !important;
                 flex-wrap: wrap;
-                gap: 10px;
+                gap: 10px !important;
             }
-            .outis-layout {
-                padding: 30px 15px;
+            .nav-links a {
+                padding: 6px 10px;
+                font-size: 13px;
+                background-color: #FFFFFF;
+                border: 1px solid var(--border-color);
             }
             .bio-content h1 {
-                font-size: 2.4em;
+                font-size: 2.6em;
             }
             .bio-paragraph {
-                font-size: 1.05em;
+                font-size: 1.1em;
+            }
+            .bio-image-wrapper {
+                height: 300px;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- NAVBAR -->
+    <!-- ÜST BAŞLIK / NAVBAR -->
     <nav class="top-navbar">
         <a href="https://hickimse.com" class="nav-logo">hickimse.com</a>
         <div class="nav-links">
-            <a href="/nostraticnumbers">Nostratic Numbers</a>
-            <a href="/outis" class="active">Outis</a>
+            <a href="https://hickimse.com/nostraticnumbers">Nostratic Numbers</a>
+            <a href="https://hickimse.com/outis" class="active">Outis</a>
             <a href="mailto:iletisim@hickimse.com">Contact</a>
         </div>
     </nav>
 
-    <!-- BİYOGRAFİ BÖLÜMÜ -->
-    <main class="outis-layout">
-        <article class="bio-card">
+    <!-- SAYFA ANA YERLEŞİMİ (Grid) -->
+    <div class="app-layout">
+        
+        <!-- Sol Boşluk (Düzeni korumak için) -->
+        <aside class="left-sidebar"></aside>
+
+        <!-- ORTA İÇERİK KARTI (Beyaz Yüzey) -->
+        <main class="main-content bio-layout">
             
-            <!-- Görsel Alanı -->
+            <!-- Sol Taraf: Görsel Alanı -->
             <div class="bio-image-wrapper">
-                <!-- Buradaki görsel linkini kendi fotoğrafınızla değiştirebilirsiniz -->
                 <img src="../images/outis.jpg" alt="Outis">
             </div>
 
-            <!-- Metin Alanı -->
+            <!-- Sağ Taraf: Metin Alanı -->
             <div class="bio-content">
                 <h1 class="serif-font">Batu</h1>
-                <span class="bio-subtitle">Arşiv & Düşünce Notları</span>
+                <span class="bio-subtitle">Hiç</span>
                 <div class="separator"></div>
                 <p class="bio-paragraph">
                     Hiç Kimse <strong>Outis</strong>; Hiç
                 </p>
             </div>
 
-        </article>
-    </main>
+        </main>
+        
+        <!-- Sağ Boşluk (Düzeni korumak için) -->
+        <aside class="right-spacer"></aside>
+        
+    </div>
 
-    <!-- FOOTER -->
+    <!-- ALT BİLGİ (FOOTER) -->
     <footer class="site-footer">
         hickimse.com tüm hakları saklıdır.
     </footer>
