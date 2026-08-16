@@ -11,6 +11,7 @@
         :root {
             --bg-page: #F0F2F5;        
             --bg-container: #FFFFFF;   
+            --bg-notes: #F8FAFC;       /* Kart arka planı için */
             --accent-primary: #1A56A6; /* Academia Mavi */
             --accent-hover: #0F3D7A;   
             --text-main: #111827;      /* Koyu Antrasit Siyah */
@@ -28,12 +29,13 @@
             overflow-x: hidden;
         }
 
-        h1, h2, h3, .serif-font {
+        /* Akademik başlıklar için Serif font */
+        h1, h2, .serif-font {
             font-family: "Georgia", "Times New Roman", serif;
         }
 
         /* ========================================================
-           ÜST MENÜ (Mevcut yapınızla birebir aynı)
+           ÜST MENÜ (Senkronize)
            ======================================================== */
         .top-navbar {
             display: flex;
@@ -51,6 +53,7 @@
         .nav-logo {
             color: #0F172A;
             font-weight: 800;
+            font-family: -apple-system, sans-serif;
             font-size: 22px;
             letter-spacing: -0.5px;
             text-decoration: none;
@@ -83,192 +86,129 @@
         }
 
         /* ========================================================
-           ANA SAYFA YERLEŞİMİ
+           SAYFA ANA YERLEŞİMİ (Nostratic Numbers ile Birebir Aynı)
            ======================================================== */
-        .home-layout {
-            max-width: 1200px;
-            margin: 60px auto;
+        .app-layout {
+            display: grid;
+            /* Sol boşluk 80px, Sağ boşluk 80px, Orta alan esnek */
+            grid-template-columns: 80px minmax(0, 1fr) 80px; 
+            max-width: 1600px; 
+            margin: 40px auto 0 auto; 
             padding: 0 20px;
+            gap: 40px; 
         }
 
-        /* KAHRAMAN BÖLÜMÜ (Hero Section) */
-        .hero-section {
+        /* Sol ve Sağ Dengeleyici Boşluklar (Timeline yerine layout koruyucu) */
+        .left-sidebar, .right-spacer {
+            display: block; 
+        }
+
+        /* ========================================================
+           ORTA İÇERİK (Kağıt/Dashboard Kartı)
+           ======================================================== */
+        .main-content {
+            background-color: var(--bg-container);
+            border: 1px solid #E2E8F0;
+            border-radius: 16px; 
+            min-height: calc(100vh - 200px);
+            padding-bottom: 50px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04), 0 2px 10px rgba(0, 0, 0, 0.02);
+            overflow: hidden; 
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .main-header {
             text-align: center;
-            margin-bottom: 80px;
-            animation: fadeIn 1s ease-out;
+            padding: 80px 20px 50px 20px;
+            background-color: #FFFFFF;
+            border-bottom: 1px solid #F1F5F9;
         }
 
-        .hero-section h1 {
-            font-size: 3.5em;
+        .main-header h1 {
+            font-size: 3.2em;
+            margin: 0 0 18px 0;
+            font-weight: 700;
             color: #0F172A;
-            margin-bottom: 15px;
             letter-spacing: -0.5px;
         }
-
-        .hero-section p {
-            font-size: 1.2em;
-            color: var(--text-muted);
-            max-width: 650px;
+        
+        .main-header p {
+            color: var(--text-muted); 
             margin: 0 auto;
+            max-width: 700px;
+            font-size: 1.15em;
+            font-weight: 500;
             line-height: 1.6;
             font-family: -apple-system, sans-serif;
         }
 
+        .section {
+            padding: 70px 60px;
+        }
+
         /* ========================================================
-           YÖNLENDİRME KARTLARI (Nostratic Numbers & Outis)
+           YÖNLENDİRME KARTLARI (Notes Tasarım Diliyle Uyumlu)
            ======================================================== */
         .cards-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin-bottom: 80px;
+            gap: 40px;
         }
 
         .route-card {
-            background-color: var(--bg-container);
+            background-color: var(--bg-notes);
             border: 1px solid var(--border-color);
-            border-radius: 16px;
+            border-top: 4px solid var(--accent-primary); /* Notes stili üst çizgi */
+            border-radius: 10px;
             padding: 50px 40px;
             text-decoration: none;
             color: inherit;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
             position: relative;
-            overflow: hidden;
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
 
-        .route-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: var(--accent-primary);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.4s ease;
-        }
-
         .route-card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(26, 86, 166, 0.08);
             border-color: var(--accent-primary);
-            box-shadow: 0 20px 40px rgba(26, 86, 166, 0.08);
-        }
-
-        .route-card:hover::before {
-            transform: scaleX(1);
         }
 
         .route-card h2 {
-            font-size: 2.2em;
+            font-size: 2em;
             margin: 0 0 15px 0;
-            color: var(--accent-primary);
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        /* Section Title tarzı vurgu çubuğu */
+        .route-card h2::before {
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 24px;
+            background: var(--accent-primary);
+            margin-right: 15px;
+            border-radius: 4px;
         }
 
         .route-card p {
-            color: var(--text-muted);
+            color: #475569;
             font-size: 1.1em;
-            line-height: 1.6;
+            line-height: 1.7;
             margin: 0;
+            padding-left: 21px; /* Başlık metni ile aynı hizaya getirmek için */
             font-family: -apple-system, sans-serif;
         }
 
         /* ========================================================
-           GÖRSEL VE MAKALE AKIŞI (Blog/Galeri Kısmı)
-           ======================================================== */
-        .feed-section {
-            background-color: var(--bg-container);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 50px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
-        }
-
-        .feed-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-            border-bottom: 1px solid #F1F5F9;
-            padding-bottom: 20px;
-        }
-
-        .feed-header h2 {
-            font-size: 2em;
-            margin: 0;
-            color: var(--text-main);
-        }
-
-        .feed-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 25px;
-        }
-
-        /* Görsel Kartları */
-        .visual-card {
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-            background: #FAFAFB;
-            transition: all 0.3s ease;
-        }
-
-        .visual-card:hover {
-            box-shadow: 0 10px 20px rgba(0,0,0,0.06);
-        }
-
-        .visual-card img {
-            width: 100%;
-            height: 240px;
-            object-fit: cover;
-            display: block;
-            border-bottom: 1px solid var(--border-color);
-            transition: transform 0.5s ease;
-        }
-
-        .visual-card:hover img {
-            transform: scale(1.03);
-        }
-
-        .visual-info {
-            padding: 20px;
-        }
-
-        .visual-info h3 {
-            margin: 0 0 8px 0;
-            font-size: 1.2em;
-            color: var(--text-main);
-            font-family: -apple-system, sans-serif;
-            font-weight: 700;
-        }
-
-        .visual-info p {
-            margin: 0;
-            color: var(--text-muted);
-            font-size: 0.95em;
-            line-height: 1.5;
-        }
-
-        .tag {
-            display: inline-block;
-            padding: 4px 10px;
-            background-color: #F1F5F9;
-            color: var(--accent-primary);
-            border-radius: 4px;
-            font-size: 0.8em;
-            font-weight: 600;
-            margin-bottom: 12px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        /* ========================================================
-           FOOTER
+           FOOTER (Alt Bilgi)
            ======================================================== */
         .site-footer {
             text-align: center;
@@ -276,122 +216,123 @@
             color: #94A3B8;
             font-size: 14px;
             font-weight: 500;
-            margin-top: 40px;
+            background-color: transparent;
+            margin-top: 20px;
+            letter-spacing: 0.5px;
         }
 
-        /* Animasyonlar */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Mobil Uyumluluk */
+        /* ========================================================
+           MOBİL UYUMLULUK (Responsive - Nostratic Numbers Birebir)
+           ======================================================== */
+        @media screen and (max-width: 1150px) {
+            .app-layout {
+                grid-template-columns: 60px minmax(0, 1fr) 60px;
+                gap: 20px;
+            }
+        }
+
         @media screen and (max-width: 950px) {
+            .app-layout {
+                display: flex; 
+                flex-direction: column;
+                margin-top: 20px;
+                padding: 0 15px;
+            }
+            .left-sidebar, .right-spacer {
+                display: none; 
+            }
             .cards-grid {
-                grid-template-columns: 1fr;
-            }
-            .hero-section h1 {
-                font-size: 2.8em;
-            }
-            .feed-section {
-                padding: 30px 20px;
+                grid-template-columns: 1fr; /* Mobilde kartlar alt alta */
             }
         }
 
         @media screen and (max-width: 768px) {
             .top-navbar {
-                flex-direction: column;
-                padding: 20px;
-                gap: 15px;
+                flex-direction: column !important;
+                padding: 20px !important;
+                gap: 15px !important;
             }
             .nav-links {
-                width: 100%;
-                justify-content: center;
+                width: 100% !important;
+                justify-content: center !important;
                 flex-wrap: wrap;
-                gap: 10px;
+                gap: 10px !important;
+            }
+            .nav-links a {
+                padding: 6px 10px;
+                font-size: 13px;
+                background-color: #FFFFFF;
+                border: 1px solid var(--border-color);
+            }
+            .main-header {
+                padding: 50px 15px 30px 15px !important;
+            }
+            .main-header h1 {
+                font-size: 2.2em !important;
+            }
+            .section {
+                padding: 40px 20px !important;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- NAVBAR -->
+    <!-- ÜST BAŞLIK / NAVBAR -->
     <nav class="top-navbar">
         <a href="https://hickimse.com" class="nav-logo">hickimse.com</a>
         <div class="nav-links">
-            <a href="/nostraticnumbers">Nostratic Numbers</a>
-            <a href="/outis">Outis</a>
+            <a href="https://hickimse.com/nostraticnumbers">Nostratic Numbers</a>
+            <a href="https://hickimse.com/outis">Outis</a>
             <a href="mailto:iletisim@hickimse.com">Contact</a>
         </div>
     </nav>
 
-    <!-- ANA İÇERİK -->
-    <main class="home-layout">
+    <!-- SAYFA ANA YERLEŞİMİ (Grid) -->
+    <div class="app-layout">
         
-        <!-- Karşılama Alanı -->
-        <header class="hero-section">
-            <h1>Disiplinlerarası Bir Arşiv</h1>
-            <p>Karşılaştırmalı tarihsel dilbilim, evrimsel dil aileleri, felsefi ve sosyolojik yapıbozumları ile kişisel görsel kayıtlar.</p>
-        </header>
+        <!-- Sol Boşluk (Düzeni korumak için) -->
+        <aside class="left-sidebar"></aside>
 
-        <!-- Yönlendirme Kartları -->
-        <section class="cards-grid">
-            <!-- Nostratic Numbers Kartı -->
-            <a href="/nostraticnumbers" class="route-card">
-                <h2>Nostratic Numbers</h2>
-                <p>Dil ailelerinin evrimsel ağaçları, fonetik ses kaymaları ve erken dönem sayılarının kökenini izleyen derin zamanlı leksikal stratigrafi haritaları.</p>
-            </a>
+        <!-- ORTA İÇERİK (Beyaz Kağıt Yüzeyi) -->
+        <main class="main-content">
 
-            <!-- Outis Kartı -->
-            <a href="/outis" class="route-card">
-                <h2>Outis</h2>
-                <p>Klasik felsefenin, sosyolojik kuramların ve kurumsal yapıların yapısal analizleri ile denemeler.</p>
-            </a>
-        </section>
-
-        <!-- Görsel ve Makale Akışı -->
-        <section class="feed-section">
-            <div class="feed-header">
-                <h2 class="serif-font">Görsel Kayıtlar & Notlar</h2>
+            <!-- Kahraman / Header Alanı -->
+            <div class="main-header">
+                <h1>Disiplinlerarası Bir Arşiv</h1>
+                <p>Karşılaştırmalı tarihsel dilbilim, evrimsel dil aileleri, felsefi ve sosyolojik yapıbozumları ile kişisel kayıt defteri.</p>
             </div>
-            
-            <div class="feed-grid">
-                <!-- Örnek Görsel Kartı 1 -->
-                <article class="visual-card">
-                    <!-- Resim kaynağını (src) kendi fotoğraflarınızla değiştirebilirsiniz -->
-                    <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=800&auto=format&fit=crop" alt="Doğa Yüksek Kontrast">
-                    <div class="visual-info">
-                        <span class="tag">Fotoğrafçılık</span>
-                        <h3>Yüksek Kontrast Doğal Elementler</h3>
-                        <p>Manuel Pro modunda, ince detayları korumak adına otomatize edilmiş keskinlik işlemlerinden arındırılmış RAW çekim denemeleri.</p>
-                    </div>
-                </article>
 
-                <!-- Örnek Görsel Kartı 2 -->
-                <article class="visual-card">
-                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop" alt="Donanım ve Sistemler">
-                    <div class="visual-info">
-                        <span class="tag">Donanım & Sistem</span>
-                        <h3>Headless Ev Sunucusu Optimizasyonu</h3>
-                        <p>Düşük seviyeli sistem yapılandırmaları, yerel ağ topolojisi ve Samba dosya paylaşımı üzerine notlar.</p>
-                    </div>
-                </article>
+            <!-- Kartlar Alanı -->
+            <div class="section">
+                <section class="cards-grid">
+                    <!-- Nostratic Numbers Kartı -->
+                    <a href="https://hickimse.com/nostraticnumbers" class="route-card">
+                        <h2 class="serif-font">Nostratic Numbers</h2>
+                        <p>Dil ailelerinin evrimsel ağaçları, fonetik ses kaymaları ve erken dönem sayılarının kökenini izleyen derin zamanlı leksikal stratigrafi haritaları.</p>
+                    </a>
 
-                <!-- Örnek Görsel Kartı 3 -->
-                <article class="visual-card">
-                    <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=800&auto=format&fit=crop" alt="Çalışma Masası ve Kitaplar">
-                    <div class="visual-info">
-                        <span class="tag">Okuma Notları</span>
-                        <h3>Kurumsal Çerçevelerin Analizi</h3>
-                        <p>Sosyolojik ve politik teorilerin dekonstrüksiyonu üzerine kenar notları ve yapısal argüman değerlendirmeleri.</p>
-                    </div>
-                </article>
+                    <!-- Outis Kartı -->
+                    <a href="https://hickimse.com/outis" class="route-card">
+                        <h2 class="serif-font">Outis</h2>
+                        <p>Klasik felsefenin, sosyolojik kuramların ve kurumsal yapıların yapısal analizleri ile denemeler.</p>
+                    </a>
+                </section>
             </div>
-        </section>
 
-    </main>
+        </main>
+        
+        <!-- Sağ Boşluk (Düzeni korumak için) -->
+        <aside class="right-spacer"></aside>
+        
+    </div>
 
-    <!-- FOOTER -->
+    <!-- ALT BİLGİ (FOOTER) -->
     <footer class="site-footer">
         hickimse.com tüm hakları saklıdır.
     </footer>
