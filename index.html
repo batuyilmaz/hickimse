@@ -49,6 +49,19 @@
             top: 0;
             z-index: 100;
         }
+        
+        .nav-logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .nav-logo-icon {
+            height: 36px;
+            width: auto;
+            display: block;
+        }
 
         .nav-logo {
             color: #0F172A;
@@ -56,11 +69,10 @@
             font-family: -apple-system, sans-serif;
             font-size: 22px;
             letter-spacing: -0.5px;
-            text-decoration: none;
             transition: color 0.2s ease;
         }
         
-        .nav-logo:hover {
+        .nav-logo-container:hover .nav-logo {
             color: var(--accent-primary);
         }
 
@@ -257,6 +269,9 @@
                 padding: 20px !important;
                 gap: 15px !important;
             }
+            .nav-logo-container {
+                margin-bottom: 5px;
+            }
             .nav-links {
                 width: 100% !important;
                 justify-content: center !important;
@@ -285,7 +300,10 @@
 
     <!-- ÜST BAŞLIK / NAVBAR -->
     <nav class="top-navbar">
-        <a href="https://hickimse.com" class="nav-logo">hickimse.com</a>
+        <a href="https://hickimse.com" class="nav-logo-container" aria-label="hickimse.com Ana Sayfa">
+            <img src="../images/logo.svg" alt="hickimse.com Logo" class="nav-logo-icon">
+            <span class="nav-logo">hickimse.com</span>
+        </a>
         <div class="nav-links">
             <a href="https://hickimse.com/nostraticnumbers">Nostratic Numbers</a>
             <a href="https://hickimse.com/outis">Outis</a>
