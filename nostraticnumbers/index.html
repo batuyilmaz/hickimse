@@ -48,26 +48,30 @@
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02); 
         }
 
-        .nav-logo {
-            color: #0F172A;
-            font-weight: 800;
-            font-family: -apple-system, sans-serif;
-            font-size: 22px;
-            letter-spacing: -0.5px;
+        .nav-logo-container {
+            display: flex;
+            align-items: center;
             text-decoration: none;
-            transition: color 0.2s ease;
-        }
-        
-        .-logo:hover {
-            color: var(--accent-primary);
         }
 
-        .-links {
+        .nav-logo-icon {
+            height: 40px;
+            width: auto;
+            display: block;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+
+        .nav-logo-container:hover .nav-logo-icon {
+            opacity: 0.8;
+            transform: scale(1.02);
+        }
+
+        .nav-links {
             display: flex;
             gap: 24px;
         }
         
-        .-links a {
+        .nav-links a {
             color: #475569;
             font-size: 14px;
             font-weight: 600;
@@ -78,7 +82,7 @@
             text-decoration: none;
         }
 
-        .-links a:hover {
+        .nav-links a:hover {
             color: var(--accent-primary);
             background-color: #F1F5F9; 
         }
@@ -389,18 +393,21 @@
         }
 
         @media screen and (max-width: 768px) {
-            .top-bar {
+            .top-navbar {
                 flex-direction: column !important;
                 padding: 20px !important;
                 gap: 15px !important;
             }
-            .-links {
+            .nav-logo-container {
+                margin-bottom: 5px;
+            }
+            .nav-links {
                 width: 100% !important;
                 justify-content: center !important;
                 flex-wrap: wrap;
                 gap: 10px !important;
             }
-            .-links a {
+            .nav-links a {
                 padding: 6px 10px;
                 font-size: 13px;
                 background-color: #FFFFFF;
@@ -439,11 +446,11 @@
     <!-- ÜST BAŞLIK / NAVBAR -->
     <nav class="top-navbar">
         <a href="https://hickimse.com" class="nav-logo-container" aria-label="hickimse.com Ana Sayfa">
-            <img src="**/images/logo.svg" alt="hickimse.com Logo" class="nav-logo-icon">
+            <img src="../images/logo.svg" alt="hickimse.com Logo" class="nav-logo-icon">
         </a>
         <div class="nav-links">
             <a href="https://hickimse.com/nostraticnumbers">Nostratic Numbers</a>
-            <a href="https://hickimse.com/outis">Outis</a>
+            <a href="https://hickimse.com/outis">Hiç Kimse</a>
             <a href="mailto:iletisim@hickimse.com">Contact</a>
         </div>
     </nav>
