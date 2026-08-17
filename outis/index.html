@@ -11,7 +11,6 @@
         :root {
             --bg-page: #F0F2F5;        
             --bg-container: #FFFFFF;   
-            --bg-notes: #F8FAFC;       /* Kart arka planı için */
             --accent-primary: #1A56A6; /* Academia Mavi */
             --accent-hover: #0F3D7A;   
             --text-main: #111827;      /* Koyu Antrasit Siyah */
@@ -27,10 +26,13 @@
             color: var(--text-main);
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         /* Akademik başlıklar için Serif font */
-        h1, h2, .serif-font {
+        h1, h2, h3, .serif-font {
             font-family: "Georgia", "Times New Roman", serif;
         }
 
@@ -49,7 +51,7 @@
             top: 0;
             z-index: 100;
         }
-        
+
         .nav-logo-container {
             display: flex;
             align-items: center;
@@ -57,7 +59,7 @@
         }
 
         .nav-logo-icon {
-            height: 40px; /* Sadece logo kaldığı için boyutu hafifçe büyütüldü (36px -> 40px) */
+            height: 40px;
             width: auto;
             display: block;
             transition: opacity 0.2s ease, transform 0.2s ease;
@@ -84,6 +86,8 @@
             text-decoration: none;
         }
 
+        /* Aktif sayfa vurgusu */
+        .nav-links a.active,
         .nav-links a:hover {
             color: var(--accent-primary);
             background-color: #F1F5F9; 
@@ -100,115 +104,87 @@
             margin: 40px auto 0 auto; 
             padding: 0 20px;
             gap: 40px; 
+            flex: 1; /* Footer'ı alta itmesi için */
         }
 
-        /* Sol ve Sağ Dengeleyici Boşluklar (Timeline yerine layout koruyucu) */
+        /* Sol ve Sağ Dengeleyici Boşluklar */
         .left-sidebar, .right-spacer {
             display: block; 
         }
 
         /* ========================================================
-           ORTA İÇERİK (Kağıt/Dashboard Kartı)
+           ORTA İÇERİK KARTI (Kağıt/Dashboard Yüzeyi)
            ======================================================== */
         .main-content {
             background-color: var(--bg-container);
             border: 1px solid #E2E8F0;
             border-radius: 16px; 
-            min-height: calc(100vh - 200px);
-            padding-bottom: 50px;
+            min-height: calc(100vh - 200px); /* Ana sayfa ve markmap ile aynı derinlik */
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04), 0 2px 10px rgba(0, 0, 0, 0.02);
             overflow: hidden; 
             animation: fadeIn 0.8s ease-out;
         }
 
-        .main-header {
-            text-align: center;
-            padding: 80px 20px 50px 20px;
-            background-color: #FFFFFF;
-            border-bottom: 1px solid #F1F5F9;
+        /* Biyografiye Özel Flex Layout (Kartın içine gömülü) */
+        .bio-layout {
+            display: flex;
+            flex-direction: row;
+            height: 100%;
         }
 
-        .main-header h1 {
-            font-size: 3.2em;
-            margin: 0 0 18px 0;
-            font-weight: 700;
-            color: #0F172A;
-            letter-spacing: -0.5px;
-        }
-        
-        .main-header p {
-            color: var(--text-muted); 
-            margin: 0 auto;
-            max-width: 700px;
-            font-size: 1.15em;
-            font-weight: 500;
-            line-height: 1.6;
-            font-family: -apple-system, sans-serif;
-        }
-
-        .section {
-            padding: 70px 60px;
-        }
-
-        /* ========================================================
-           YÖNLENDİRME KARTLARI (Notes Tasarım Diliyle Uyumlu)
-           ======================================================== */
-        .cards-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-        }
-
-        .route-card {
-            background-color: var(--bg-notes);
-            border: 1px solid var(--border-color);
-            border-top: 4px solid var(--accent-primary); /* Notes stili üst çizgi */
-            border-radius: 10px;
-            padding: 50px 40px;
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+        /* Sol Taraf: Görsel Alanı */
+        .bio-image-wrapper {
+            flex: 0 0 45%; /* Görselin kaplayacağı oran */
+            background-color: #E2E8F0;
             position: relative;
+        }
+
+        .bio-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Sağ Taraf: Metin Alanı */
+        .bio-content {
+            flex: 1;
+            padding: 80px 60px;
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
 
-        .route-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(26, 86, 166, 0.08);
-            border-color: var(--accent-primary);
-        }
-
-        .route-card h2 {
-            font-size: 2em;
-            margin: 0 0 15px 0;
-            color: var(--text-main);
-            display: flex;
-            align-items: center;
-            font-weight: 600;
+        .bio-content h1 {
+            font-size: 3.5em;
+            margin: 0 0 5px 0;
+            color: #0F172A;
             letter-spacing: -0.5px;
         }
 
-        /* Section Title tarzı vurgu çubuğu */
-        .route-card h2::before {
-            content: '';
-            display: inline-block;
-            width: 6px;
-            height: 24px;
-            background: var(--accent-primary);
-            margin-right: 15px;
-            border-radius: 4px;
+        .bio-subtitle {
+            color: var(--accent-primary);
+            font-weight: 600;
+            font-size: 1.15em;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 25px;
+            font-family: -apple-system, sans-serif;
         }
 
-        .route-card p {
-            color: #475569;
-            font-size: 1.1em;
-            line-height: 1.7;
+        .separator {
+            width: 40px;
+            height: 4px;
+            background-color: var(--accent-primary);
+            border-radius: 2px;
+            margin-bottom: 30px;
+        }
+
+        .bio-paragraph {
+            color: #334155;
+            font-size: 1.25em;
+            line-height: 1.8;
             margin: 0;
-            padding-left: 21px; /* Başlık metni ile aynı hizaya getirmek için */
-            font-family: -apple-system, sans-serif;
         }
 
         /* ========================================================
@@ -225,13 +201,14 @@
             letter-spacing: 0.5px;
         }
 
+        /* Animasyonlar */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         /* ========================================================
-           MOBİL UYUMLULUK (Responsive - Nostratic Numbers Birebir)
+           MOBİL UYUMLULUK (Responsive - Sitenin Tamamıyla Birebir)
            ======================================================== */
         @media screen and (max-width: 1150px) {
             .app-layout {
@@ -250,8 +227,16 @@
             .left-sidebar, .right-spacer {
                 display: none; 
             }
-            .cards-grid {
-                grid-template-columns: 1fr; /* Mobilde kartlar alt alta */
+            /* Mobilde kart içi düzen alt alta biner */
+            .bio-layout {
+                flex-direction: column;
+            }
+            .bio-image-wrapper {
+                height: 400px;
+                flex: none;
+            }
+            .bio-content {
+                padding: 50px 30px;
             }
         }
 
@@ -276,14 +261,14 @@
                 background-color: #FFFFFF;
                 border: 1px solid var(--border-color);
             }
-            .main-header {
-                padding: 50px 15px 30px 15px !important;
+            .bio-content h1 {
+                font-size: 2.6em;
             }
-            .main-header h1 {
-                font-size: 2.2em !important;
+            .bio-paragraph {
+                font-size: 1.1em;
             }
-            .section {
-                padding: 40px 20px !important;
+            .bio-image-wrapper {
+                height: 300px;
             }
         }
     </style>
@@ -292,13 +277,13 @@
 
     <!-- ÜST BAŞLIK / NAVBAR -->
     <nav class="top-navbar">
-        <a href="https://hickimse.com" class="nav-logo-container" aria-label="hickimse.com Mainpage">
-            <img src="**/images/logo.svg" alt="hickimse.com Logo" class="nav-logo-icon">
+        <a href="https://hickimse.com" class="nav-logo-container" aria-label="hickimse.com Ana Sayfa">
+            <img src="../images/logo.svg" alt="hickimse.com Logo" class="nav-logo-icon">
         </a>
         <div class="nav-links">
             <a href="https://hickimse.com/nostraticnumbers">Nostratic Numbers</a>
-            <a href="https://hickimse.com/outis">Outis</a>
-            <a href="adaptivesubject@gmail.com">Contact</a>
+            <a href="https://hickimse.com/outis" class="active">Outis</a>
+            <a href="mailto:iletisim@hickimse.com">Contact</a>
         </div>
     </nav>
 
@@ -308,30 +293,22 @@
         <!-- Sol Boşluk (Düzeni korumak için) -->
         <aside class="left-sidebar"></aside>
 
-        <!-- ORTA İÇERİK (Beyaz Kağıt Yüzeyi) -->
-        <main class="main-content">
-
-            <!-- Kahraman / Header Alanı -->
-            <div class="main-header">
-                <h1>Archive</h1>
-                <p>Archive</p>
+        <!-- ORTA İÇERİK KARTI (Beyaz Yüzey) -->
+        <main class="main-content bio-layout">
+            
+            <!-- Sol Taraf: Görsel Alanı -->
+            <div class="bio-image-wrapper">
+                <img src="../images/outis.jpg" alt="Outis">
             </div>
 
-            <!-- Kartlar Alanı -->
-            <div class="section">
-                <section class="cards-grid">
-                    <!-- Nostratic Numbers Kartı -->
-                    <a href="https://hickimse.com/nostraticnumbers" class="route-card">
-                        <h2 class="serif-font">Nostratic Numbers</h2>
-                        <p>Numbers</p>
-                    </a>
-
-                    <!-- Outis Kartı -->
-                    <a href="https://hickimse.com/outis" class="route-card">
-                        <h2 class="serif-font">Outis</h2>
-                        <p>Hiç Kimse</p>
-                    </a>
-                </section>
+            <!-- Sağ Taraf: Metin Alanı -->
+            <div class="bio-content">
+                <h1 class="serif-font">Outis</h1>
+                <span class="bio-subtitle">Hiç Kimse</span>
+                <div class="separator"></div>
+                <p class="bio-paragraph">
+                    Kişi, biri.
+                </p>
             </div>
 
         </main>
