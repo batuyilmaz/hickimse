@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>hickimse.com</title>
+    <title>Ana Sayfa - hickimse.com</title>
     <style>
         /* ========================================================
            GENEL TEMA VE ARAYÜZ (Premium Academia Dashboard)
@@ -50,18 +50,22 @@
             z-index: 100;
         }
 
-        .nav-logo {
-            color: #0F172A;
-            font-weight: 800;
-            font-family: -apple-system, sans-serif;
-            font-size: 22px;
-            letter-spacing: -0.5px;
+        .nav-logo-container {
+            display: flex;
+            align-items: center;
             text-decoration: none;
-            transition: color 0.2s ease;
         }
-        
-        .nav-logo:hover {
-            color: var(--accent-primary);
+
+        .nav-logo-icon {
+            height: 40px; 
+            width: auto;
+            display: block;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+
+        .nav-logo-container:hover .nav-logo-icon {
+            opacity: 0.8;
+            transform: scale(1.02);
         }
 
         .nav-links {
@@ -257,6 +261,9 @@
                 padding: 20px !important;
                 gap: 15px !important;
             }
+            .nav-logo-container {
+                margin-bottom: 5px;
+            }
             .nav-links {
                 width: 100% !important;
                 justify-content: center !important;
@@ -285,7 +292,9 @@
 
     <!-- ÜST BAŞLIK / NAVBAR -->
     <nav class="top-navbar">
-        <a href="https://hickimse.com" class="nav-logo">hickimse.com</a>
+        <a href="https://hickimse.com" class="nav-logo-container" aria-label="hickimse.com Ana Sayfa">
+            <img src="/images/logo.svg" alt="hickimse.com Logo" class="nav-logo-icon">
+        </a>
         <div class="nav-links">
             <a href="https://hickimse.com">Main Page</a>
             <a href="https://hickimse.com/outis">Outis</a>
