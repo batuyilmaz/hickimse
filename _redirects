@@ -1,0 +1,9 @@
+# Eski dosya adları -> yeni temiz adresler
+/hickimse/hickimse.html                    /                          301
+/hickimse/hickimse                         /                          301
+/outis/outis.html                          /outis/                    301
+/outis/outis                               /outis/                    301
+/nostraticnumbers/nostraticnumbers.html    /nostraticnumbers/         301
+/nostraticnumbers/nostraticnumbers         /nostraticnumbers/         301
+/images/outis.jpg                          /assets/img/outis-1400.jpg 301
+/images/logo.svg                           /assets/img/logo.svg       301
