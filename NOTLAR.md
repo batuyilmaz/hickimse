@@ -1,9 +1,9 @@
-# hickimse.com — yeniden tasarım notları
+# hiç kimse (hickimse.com) — yeniden tasarım notları
 
 Site statik (Netlify tarzı): sadece HTML/CSS/JS, derleme adımı yok. `out` klasörünün içeriğini olduğu gibi yayınlayabilirsin.
 
 ## Yapı
-- `/` ana sayfa, `/outis/` Outis, `/nostraticnumbers/` Nostratik sayılar, `404.html`
+- `/` ana sayfa, `/outis/` Outis, `/nostraticnumbers/` Nostratik sayılar, `/privacy/` gizlilik, `404.html`
 - Temiz adresler (`/outis/`, `/nostraticnumbers/`); eski `.html` adresleri `_redirects` ile yönleniyor.
 - Tüm yazı tipleri, betikler ve görseller `assets/` altında; hiçbir CDN / üçüncü taraf isteği yok. CSP (`_headers`) bu yüzden sıkı tutulabildi.
 
@@ -25,7 +25,20 @@ Site statik (Netlify tarzı): sadece HTML/CSS/JS, derleme adımı yok. `out` kla
 - İletişim e-postası tek yerde, tutarlı.
 - Eksik meta etiketleri, OG/Twitter kartı, manifest, ikonlar, robots.txt, sitemap.xml, 404 sayfası, güvenlik başlıkları, "içeriğe geç" bağlantısı, yazdırma stili eklendi.
 
+## İkinci tur (senin geri bildirimin)
+- **Analytics:** GTM-PB6CHT89, `assets/js/analytics.js` içinde. Çerez bandı yok; varsayılan açık. Altbilgideki "Privacy settings" ile ziyaretçi kapatabilir (`/privacy/` sayfasında da düğme var). Tarayıcı GPC/Do Not Track gönderiyorsa kapalı başlar. Verdiğin kodun `gtag` kısmını aynen kullandım, üstüne GTM'in standart `gtm.start` olayını ekledim (olmazsa "All Pages" tetikleyicileri çalışmayabilir). CSP, GTM ve GA alan adlarına izin verecek şekilde güncellendi (`_headers`).
+- İletişim penceresi artık ekranın ortasında (sorun `margin:0` sıfırlamasıydı).
+- Marka adı her yerde "hiç kimse" (başlıklar, logo yanı, OG görseli, manifest, alt bilgi, atıf). Alan adı ve URL'ler `hickimse.com` olarak kaldı.
+- Varsayılan tema açık; sistem koyu olsa bile açık açılır. Koyu tema yalnızca ziyaretçi seçerse.
+- Breadcrumb: `hiç kimse / Nostratic Numbers`.
+- Ana sayfa metinleri dilbilimden bağımsız (blog/deneme/teori); sayısal istatistik şeridi kaldırıldı.
+- Nostratik 1–10: Berber artık Semitic ile aynı seviyede kendi dalı; Hititçe `Anatolian` dalında, `Indo-European` ayrı dal.
+- Sol hızlı menüye "başa dön" düğmesi eklendi (mobilde de çalışır).
+- Görsel eklemeler: üst çizgide okuma ilerlemesi, imleçle düğümlerin bağlanması, boş yere tıklayınca halka dalgası, kartta dönen kenar ışığı, ince doku, ana sayfada aşağı kaydırma oku.
+- Küçük erişilebilirlik düzeltmesi (ağaçtaki form etiketleri).
+
 ## Karar vermen gereken noktalar
+0. **Gizlilik sayfası taslaktır.** "Veriler en fazla 14 ay saklanır" ve "reklam özellikleri kullanılmaz" cümleleri GA4 mülkündeki veri saklama ayarına ve GTM kapsayıcındaki etiketlere bağlı; ikisini de kontrol et ya da metni ona göre düzelt. Hukuki metin değildir.
 1. **E-posta:** şu an `adaptivesubject@gmail.com`. İstersen `iletisim@hickimse.com` gibi bir adresle değiştir (tek yerde: iletişim penceresi + sayfa altlığı).
 2. **Veri tutarsızlıkları** (kaynağını sen bilirsin):
    - 1. sayıda `*?` biçimi `*hoikʷ` olarak yazılmıştı; öyle bıraktım.

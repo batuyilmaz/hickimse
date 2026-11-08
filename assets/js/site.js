@@ -1,4 +1,4 @@
-/* hickimse — ortak betik: tema, arka plan, isim animasyonu, iletişim paneli, bildirim */
+/* hiç kimse — ortak betik: tema, arka plan, isim animasyonu, iletişim paneli, bildirim */
 (() => {
 'use strict';
 
@@ -90,14 +90,47 @@ function applyTheme(t, persist) {
 }
 $$('[data-theme-toggle]').forEach(b => b.addEventListener('click', () => applyTheme(root.dataset.theme === 'dark' ? 'light' : 'dark', true)));
 applyTheme(root.dataset.theme || 'light', false);
-matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => { if (!store.get('hk.theme')) applyTheme(e.matches ? 'dark' : 'light', false); });
 
-/* Üst bilgi: kaydırınca ince çizgi */
+/* Üst bilgi: kaydırınca ince çizgi + okuma ilerlemesi */
 const header = $('.site-header');
 if (header) {
-  const onScroll = () => header.classList.toggle('is-stuck', scrollY > 6);
+  const bar = document.createElement('div');
+  bar.className = 'progress';
+  bar.setAttribute('aria-hidden', 'true');
+  header.appendChild(bar);
+  let tick = false;
+  const onScroll = () => {
+    header.classList.toggle('is-stuck', scrollY > 6);
+    if (tick) return;
+    tick = true;
+    requestAnimationFrame(() => {
+      tick = false;
+      const max = document.documentElement.scrollHeight - innerHeight;
+      bar.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, scrollY / max) : 0).toFixed(4) + ')';
+    });
+  };
   onScroll();
   addEventListener('scroll', onScroll, { passive: true });
+  addEventListener('resize', onScroll, { passive: true });
+}
+
+/* Başa dön */
+$$('[data-top]').forEach(b => b.addEventListener('click', () => {
+  scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+  if (history.replaceState && location.hash) history.replaceState(null, '', location.pathname + location.search);
+}));
+
+/* Tıklama dalgası: boş bir yere basınca arka planda kısa bir halka açılır */
+if (!reduce) {
+  addEventListener('pointerdown', e => {
+    if (e.button || root.classList.contains('lite') || e.target.closest('a,button,input,select,textarea,summary,dialog,[role="button"],.tree-wrap,.table-wrap')) return;
+    const r = document.createElement('span');
+    r.className = 'ripple';
+    r.style.left = e.clientX + 'px';
+    r.style.top = e.clientY + 'px';
+    r.addEventListener('animationend', () => r.remove());
+    amb.appendChild(r);
+  }, { passive: true });
 }
 
 /* ==========================================================================
@@ -164,6 +197,15 @@ function drawNet(step = true) {
         ctx.globalAlpha = (1 - d / max) * .5;
         ctx.beginPath(); ctx.moveTo(n.x, n.y); ctx.lineTo(m.x, m.y); ctx.stroke();
       }
+    }
+    ctx.globalAlpha = 1;
+  }
+  // İmleç yakındaki düğümlere ince çizgilerle bağlanır
+  if (step && ptr.on) {
+    ctx.fillStyle = ctx.strokeStyle = palette[0];
+    for (const n of nodes) {
+      const d = Math.hypot(n.x - ptr.x, n.y - ptr.y);
+      if (d < 170) { ctx.globalAlpha = (1 - d / 170) * .65; ctx.beginPath(); ctx.moveTo(ptr.x, ptr.y); ctx.lineTo(n.x, n.y); ctx.stroke(); }
     }
     ctx.globalAlpha = 1;
   }
@@ -368,6 +410,27 @@ if (dlg) {
     lbl.textContent = ok ? 'Copied' : 'Copy failed. Select the address above.';
     setTimeout(() => { lbl.textContent = 'Copy address'; }, 2200);
   });
+}
+/* ==========================================================================
+   Gizlilik ayarları (istatistik açık/kapalı)
+   ========================================================================== */
+const pdlg = $('#privacy');
+const HP = window.hkPrivacy;
+if (pdlg && HP) {
+  const sw = $('#statsSwitch'), st = $('#statsState'), note = $('#statsNote');
+  const paint = v => {
+    const on = v === 'granted';
+    sw.setAttribute('aria-checked', String(on));
+    st.textContent = on ? 'On' : 'Off';
+    note.textContent = on
+      ? 'Visits are being counted. Turn this off and no further measurements are sent.'
+      : (HP.optOut && !HP.chosen() ? 'Off, because your browser sends a privacy signal (Global Privacy Control or Do Not Track).' : 'Off. Nothing is being measured and the analytics cookies were deleted.');
+  };
+  paint(HP.get());
+  HP.onChange(paint);
+  sw.addEventListener('click', () => { HP.set(sw.getAttribute('aria-checked') === 'true' ? 'denied' : 'granted'); });
+  $$('[data-privacy-open]').forEach(b => b.addEventListener('click', () => { if (typeof pdlg.showModal === 'function') pdlg.showModal(); }));
+  pdlg.addEventListener('click', e => { if (e.target === pdlg) pdlg.close(); });
 }
 $$('[data-year]').forEach(el => { el.textContent = new Date().getFullYear(); });
 })();

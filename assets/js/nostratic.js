@@ -1,4 +1,4 @@
-/* hickimse — Nostratic Numbers: tablo verisinden ağaç, karşılaştırma matrisi, aile süzgeci, kaydırma izleme.
+/* hiç kimse — Nostratic Numbers: tablo verisinden ağaç, karşılaştırma matrisi, aile süzgeci, kaydırma izleme.
    Kaynak veri her sayı bölümündeki <table class="cog"> tablosudur; buraya dokunmadan yalnızca tabloyu düzenlemek yeterlidir. */
 (() => {
 'use strict';
@@ -159,15 +159,14 @@ function render(S, opts = {}) {
   function leaf(l, px, py) {
     link(px, py, S.x3, l.y, l.idx, l.parent, l);
     const g = svgEl('g', { class: 'node node--leaf' + (l.proto ? ' proto' : ''), 'data-fam': l.idx, tabindex: 0, role: 'button',
-      'aria-label': l.lang + ': ' + l.form + '. Copy form' }, gN);
+      'aria-label': l.form + ' ' + l.lang + ' (copy form)' }, gN);
     svgEl('rect', { class: 'hit', x: S.x3 - 8, y: l.y - 13, width: 8 + 14 + S.formW + 18 + measure(l.lang, 'lang') + 10, height: 26, rx: 8 }, g);
     svgEl('circle', { class: 'dot', cx: S.x3, cy: l.y, r: 3.6 }, g);
     const ft = svgEl('text', { class: 'form', x: S.x3 + 14, y: l.y, dy: '.35em' }, g);
     ft.textContent = l.form;
+    g.appendChild(document.createTextNode(' '));
     const lt = svgEl('text', { class: 'lang', x: S.x3 + 14 + S.formW + 18, y: l.y, dy: '.35em' }, g);
     lt.textContent = l.lang;
-    const title = svgEl('title', {}, g);
-    title.textContent = 'Click to copy ' + l.form;
     l.g = g;
     nodes.push(l);
     const doCopy = async () => { if (await copy(l.form)) toast('Copied ' + l.form); else toast('Copy failed'); };
