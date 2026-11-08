@@ -12,5 +12,5 @@
   root.dataset.view = view === 'tree' || view === 'table' ? view : (innerWidth >= 860 ? 'tree' : 'table');
 
   const meta = document.querySelector('meta[name="theme-color"]');
-  if (meta) meta.content = root.dataset.theme === 'dark' ? '#090f24' : '#f1f5fa';
+  if (meta) meta.content = (root.dataset.theme === 'dark' || root.dataset.page === 'outis') ? '#090f24' : '#f1f5fa';
 })();

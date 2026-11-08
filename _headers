@@ -10,3 +10,9 @@
 
 /assets/img/*
   Cache-Control: public, max-age=2592000
+
+/assets/css/*
+  Cache-Control: no-cache
+
+/assets/js/*
+  Cache-Control: no-cache

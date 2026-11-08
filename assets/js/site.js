@@ -84,7 +84,7 @@ function applyTheme(t, persist) {
   root.dataset.theme = t;
   if (persist) store.set('hk.theme', t);
   const meta = $('meta[name="theme-color"]');
-  if (meta) meta.content = t === 'dark' ? '#090f24' : '#f1f5fa';
+  if (meta) meta.content = (t === 'dark' || root.dataset.page === 'outis') ? '#090f24' : '#f1f5fa';
   $$('[data-theme-toggle]').forEach(b => b.setAttribute('aria-label', t === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'));
   window.dispatchEvent(new Event('hk:theme'));
 }
@@ -216,7 +216,17 @@ addEventListener('resize', resize, { passive: true });
 window.addEventListener('hk:theme', () => { readPalette(); if (reduce) drawNet(false); });
 
 const kineticHooks = [];
+// Kaydırma ilerlemesi (0–1) yumuşatılır ve CSS'e --sp olarak verilir: arka plan sayfayla birlikte değişir
+let spT = 0, spV = 0, spLast = -1;
+const readSp = () => { const m = document.documentElement.scrollHeight - innerHeight; spT = m > 0 ? Math.min(1, Math.max(0, scrollY / m)) : 0; };
+addEventListener('scroll', readSp, { passive: true });
+addEventListener('resize', readSp, { passive: true });
+readSp();
 (function frame() {
+  if (!reduce) {
+    spV += (spT - spV) * .08;
+    if (Math.abs(spV - spLast) > .0004) { spLast = spV; root.style.setProperty('--sp', spV.toFixed(4)); }
+  }
   if (ptr.dirty) {
     ptr.dirty = false;
     glow.style.setProperty('--gx', ptr.x + 'px');
@@ -241,12 +251,13 @@ $$('.plate').forEach(el => {
 /* ==========================================================================
    Kayan parçalar: sayı kökleri ve "hiç kimse" kavramı (yalnızca html[data-fragments])
    ========================================================================== */
-if (root.hasAttribute('data-fragments') && !reduce) {
+if (root.hasAttribute('data-fragments') && !reduce && root.dataset.fragments !== 'none') {
   const wrap = document.createElement('div');
   wrap.className = 'fragments';
   wrap.setAttribute('aria-hidden', 'true');
   document.body.prepend(wrap);
-  const FRAGS = ['*hoikʷ • 1', '*kekʷ • 2', 'Οὖτις • nobody', '*kwed • 3', '*thtp • 4', 'nemo • nobody', '*penh • 5', '𐰇𐰔 • öz',
+  const SETS = { odyssey: ['Οὖτις • nobody', 'Πολύφημος', 'οἶνοψ πόντος', 'hiç kimse', 'νόστος • return', 'μῆτις • cunning', 'nemo', 'Ὀδυσσεύς', 'Κύκλωψ', 'Ἰθάκη'] };
+  const FRAGS = SETS[root.dataset.fragments] || ['*hoikʷ • 1', '*kekʷ • 2', 'Οὖτις • nobody', '*kwed • 3', '*thtp • 4', 'nemo • nobody', '*penh • 5', '𐰇𐰔 • öz',
     '*hetp • 6', 'hiç kimse • nobody', '*sept • 7', '*ter • 10'];
   let k = 0;
   setInterval(() => {
@@ -382,17 +393,6 @@ $$('[data-count]').forEach(el => {
 });
 
 /* ==========================================================================
-   Outis: görselde hafif imleç kayması
-   ========================================================================== */
-const art = $('.outis__art img');
-if (art && canHover && !reduce) {
-  addEventListener('pointermove', e => {
-    const x = (e.clientX / innerWidth - .5) * -14, y = (e.clientY / innerHeight - .5) * -10;
-    art.style.translate = x.toFixed(1) + 'px ' + y.toFixed(1) + 'px';
-  }, { passive: true });
-}
-
-/* ==========================================================================
    İletişim paneli
    ========================================================================== */
 const dlg = $('#contact');
@@ -415,21 +415,30 @@ if (dlg) {
    Gizlilik ayarları (istatistik açık/kapalı)
    ========================================================================== */
 const pdlg = $('#privacy');
-const HP = window.hkPrivacy;
-if (pdlg && HP) {
+if (pdlg) {
+  // Ölçüm betiği (measure.js) bir reklam/izleme engelleyici tarafından kapatılmış olabilir; pencere yine de açılmalı.
+  const HP = window.hkPrivacy;
   const sw = $('#statsSwitch'), st = $('#statsState'), note = $('#statsNote');
   const paint = v => {
     const on = v === 'granted';
     sw.setAttribute('aria-checked', String(on));
     st.textContent = on ? 'On' : 'Off';
-    note.textContent = on
-      ? 'Visits are being counted. Turn this off and no further measurements are sent.'
-      : (HP.optOut && !HP.chosen() ? 'Off, because your browser sends a privacy signal (Global Privacy Control or Do Not Track).' : 'Off. Nothing is being measured and the analytics cookies were deleted.');
+    note.textContent = !HP
+      ? 'Off. The measurement script did not load (a content blocker may be active), so nothing is being measured.'
+      : on
+        ? 'Visits are being counted. Turn this off and no further measurements are sent.'
+        : (HP.optOut && !HP.chosen() ? 'Off, because your browser sends a privacy signal (Global Privacy Control or Do Not Track).' : 'Off. Nothing is being measured and the analytics cookies were deleted.');
   };
-  paint(HP.get());
-  HP.onChange(paint);
-  sw.addEventListener('click', () => { HP.set(sw.getAttribute('aria-checked') === 'true' ? 'denied' : 'granted'); });
-  $$('[data-privacy-open]').forEach(b => b.addEventListener('click', () => { if (typeof pdlg.showModal === 'function') pdlg.showModal(); }));
+  paint(HP ? HP.get() : 'denied');
+  if (HP) {
+    HP.onChange(paint);
+    sw.addEventListener('click', () => { HP.set(sw.getAttribute('aria-checked') === 'true' ? 'denied' : 'granted'); });
+  } else {
+    sw.disabled = true;
+  }
+  const open = () => { if (typeof pdlg.showModal === 'function') { if (!pdlg.open) pdlg.showModal(); } else pdlg.setAttribute('open', ''); };
+  // Olay yetkilendirme: sonradan eklenen düğmeler de çalışır
+  document.addEventListener('click', e => { if (e.target.closest('[data-privacy-open]')) { e.preventDefault(); open(); } });
   pdlg.addEventListener('click', e => { if (e.target === pdlg) pdlg.close(); });
 }
 $$('[data-year]').forEach(el => { el.textContent = new Date().getFullYear(); });
