@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light" data-calm>
+<html lang="en" data-theme="light" data-calm data-page="cog">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Nostratic Numbers | hiç kimse</title>
-<meta name="description" content="Cognate sets for the numerals 1-7 and 10 across eight language families, as interactive trees, tables and a side-by-side comparison.">
+<title>Nostratic v2.0: Numbers | hiç kimse</title>
+<meta name="description" content="Nostratic v2.0: cognate sets for the numerals 1-7 and 10 across eight language families, with possible sound paths and subtractive 8 and 9.">
 <meta name="theme-color" content="#f1f5fa">
 <meta name="color-scheme" content="light dark">
 <meta name="contact" content="adaptivesubject@gmail.com">
@@ -13,15 +13,15 @@
 <meta property="og:site_name" content="hiç kimse">
 <meta property="og:locale" content="en_US">
 <meta property="og:url" content="https://hickimse.com/nostraticnumbers/">
-<meta property="og:title" content="Nostratic Numbers | hiç kimse">
-<meta property="og:description" content="Cognate sets for the numerals 1-7 and 10 across eight language families, as interactive trees, tables and a side-by-side comparison.">
+<meta property="og:title" content="Nostratic v2.0: Numbers | hiç kimse">
+<meta property="og:description" content="Nostratic v2.0: cognate sets for the numerals 1-7 and 10 across eight language families, with possible sound paths and subtractive 8 and 9.">
 <meta property="og:image" content="https://hickimse.com/assets/img/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="hiç kimse">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Nostratic Numbers | hiç kimse">
-<meta name="twitter:description" content="Cognate sets for the numerals 1-7 and 10 across eight language families, as interactive trees, tables and a side-by-side comparison.">
+<meta name="twitter:title" content="Nostratic v2.0: Numbers | hiç kimse">
+<meta name="twitter:description" content="Nostratic v2.0: cognate sets for the numerals 1-7 and 10 across eight language families, with possible sound paths and subtractive 8 and 9.">
 <meta name="twitter:image" content="https://hickimse.com/assets/img/og.png">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon.ico" sizes="48x48">
@@ -29,12 +29,12 @@
 <link rel="manifest" href="/manifest.webmanifest">
 <link rel="preload" href="/assets/fonts/pjs-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/source-serif-600.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css?v=55e40b2c">
-<script src="/assets/js/boot.js?v=55e40b2c"></script>
-<script src="/assets/js/measure.js?v=55e40b2c"></script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Nostratic Numbers", "url": "https://hickimse.com/nostraticnumbers/", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "hiç kimse", "url": "https://hickimse.com/"}}</script>
-<script src="/assets/js/site.js?v=55e40b2c" defer></script>
-<script src="/assets/js/nostratic.js?v=55e40b2c" defer></script>
+<link rel="stylesheet" href="/assets/css/site.css?v=9d3bfc26">
+<script src="/assets/js/boot.js?v=9d3bfc26"></script>
+<script src="/assets/js/measure.js?v=9d3bfc26"></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Nostratic v2.0: Numbers", "url": "https://hickimse.com/nostraticnumbers/", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "hiç kimse", "url": "https://hickimse.com/"}}</script>
+<script src="/assets/js/site.js?v=9d3bfc26" defer></script>
+<script src="/assets/js/cognates.js?v=9d3bfc26" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -42,7 +42,7 @@
   <div class="site-header__bar">
     <a class="brand" href="/" aria-label="hiç kimse, home"><span class="brand__mark" aria-hidden="true"></span><span class="brand__name">hiç kimse</span></a>
     <nav class="nav" aria-label="Primary">
-      <a class="nav__link" href="/#archive" aria-current="true">Archive</a>
+      <a class="nav__link" href="/archive/" aria-current="true">Archive</a>
       <a class="nav__link" href="/outis/">Outis</a>
       <a class="nav__link" href="mailto:adaptivesubject@gmail.com" data-contact data-track="contact_open">Contact</a>
       <button class="icon-btn" type="button" data-theme-toggle aria-label="Switch to dark theme"><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7z"/></svg><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
@@ -50,674 +50,250 @@
   </div>
 </header>
 
-<main id="main">
-  <div class="page-head">
+<main id="main" class="cogmain">
+  <nav class="numrail" aria-label="Numbers">
+    <button type="button" class="numrail__end" data-top aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+    <ol class="numrail__list"><li><a class="numrail__link" href="#n1" aria-label="1">1</a></li><li><a class="numrail__link" href="#n2" aria-label="2">2</a></li><li><a class="numrail__link" href="#n3" aria-label="3">3</a></li><li><a class="numrail__link" href="#n4" aria-label="4">4</a></li><li><a class="numrail__link" href="#n5" aria-label="5">5</a></li><li><a class="numrail__link" href="#n6" aria-label="6">6</a></li><li><a class="numrail__link" href="#n7" aria-label="7">7</a></li><li><a class="numrail__link" href="#n8" aria-label="8">8</a></li><li><a class="numrail__link" href="#n9" aria-label="9">9</a></li><li><a class="numrail__link" href="#n10" aria-label="10">10</a></li></ol>
+    <button type="button" class="numrail__end" data-bottom aria-label="Go to the end of the page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg></button>
+  </nav>
+
+  <div class="page-head snap">
     <div class="page-head__text">
-      <h1 class="load">Nostratic Numbers</h1>
-      <p class="page-head__sub load">Numerals 1&ndash;7 and 10</p>
-      <p class="page-head__intro load">Cognate sets for eight numerals across eight language families. Forms are transcribed in IPA. An asterisk marks a reconstructed form, and a question mark after a proto-language marks a tentative reconstruction.</p>
+      <h1 class="load"><span class="page-head__series">Nostratic <span class="ver">v2.0</span></span><span class="page-head__part">Numbers</span></h1>
+      <p class="page-head__sub load">Numerals 1&ndash;10</p>
+      <p class="page-head__intro load">Cognate sets for the numerals 1&ndash;7 and 10 across eight language families, and two notes on how 8 and 9 are counted down from ten. Forms are transcribed in IPA. An asterisk marks a reconstructed form and a question mark marks a tentative one; every Nostratic root on this page is tentative.</p>
     </div>
-    <svg class="family-art" viewBox="0 0 340 300" aria-hidden="true" focusable="false"><g style="--c:var(--f1);--i:0"><path pathLength="1" d="M26 150C150 150 190 24 316 24"/><circle class="end" cx="326" cy="24" r="6.5"/></g><g style="--c:var(--f2);--i:1"><path pathLength="1" d="M26 150C150 150 190 60 316 60"/><circle class="end" cx="326" cy="60" r="6.5"/></g><g style="--c:var(--f3);--i:2"><path pathLength="1" d="M26 150C150 150 190 96 316 96"/><circle class="end" cx="326" cy="96" r="6.5"/></g><g style="--c:var(--f4);--i:3"><path pathLength="1" d="M26 150C150 150 190 132 316 132"/><circle class="end" cx="326" cy="132" r="6.5"/></g><g style="--c:var(--f5);--i:4"><path pathLength="1" d="M26 150C150 150 190 168 316 168"/><circle class="end" cx="326" cy="168" r="6.5"/></g><g style="--c:var(--f6);--i:5"><path pathLength="1" d="M26 150C150 150 190 204 316 204"/><circle class="end" cx="326" cy="204" r="6.5"/></g><g style="--c:var(--f7);--i:6"><path pathLength="1" d="M26 150C150 150 190 240 316 240"/><circle class="end" cx="326" cy="240" r="6.5"/></g><g style="--c:var(--f8);--i:7"><path pathLength="1" d="M26 150C150 150 190 276 316 276"/><circle class="end" cx="326" cy="276" r="6.5"/></g><circle class="ring" cx="26" cy="150" r="8"/><circle class="root" cx="26" cy="150" r="8"/></svg>
+    <svg class="babel" viewBox="0 0 360 340" aria-hidden="true" focusable="false"><circle class="halo" cx="180" cy="124" r="40"/><circle class="orbit" cx="180" cy="124" r="64"/><path class="star" style="--i:0" d="M40 145L41.4 148.6L45 150L41.4 151.4L40 155L38.6 151.4L35 150L38.6 148.6Z"/><path class="star" style="--i:1" d="M322 165L323.4 168.6L327 170L323.4 171.4L322 175L320.6 171.4L317 170L320.6 168.6Z"/><path class="star" style="--i:2" d="M296 35L297.4 38.6L301 40L297.4 41.4L296 45L294.6 41.4L291 40L294.6 38.6Z"/><path class="star" style="--i:3" d="M70 55L71.4 58.6L75 60L71.4 61.4L70 65L68.6 61.4L65 60L68.6 58.6Z"/><path class="star" style="--i:4" d="M338 257L339.4 260.6L343 262L339.4 263.4L338 267L336.6 263.4L333 262L336.6 260.6Z"/><path class="star" style="--i:5" d="M24 245L25.4 248.6L29 250L25.4 251.4L24 255L22.6 251.4L19 250L22.6 248.6Z"/><line class="ground" x1="30" y1="326" x2="330" y2="326"/><g class="tower"><path class="tier" pathLength="1" style="--i:0" d="M64.0 326 L70.0 295 L290.0 295 L296.0 326"/><path class="ramp" pathLength="1" style="--i:0" d="M70.0 322 L282.0 302"/><path class="arch" style="--i:0" d="M77.5 325 v-6 a3.5 3.5 0 0 1 7 0 v6M99.5 325 v-6 a3.5 3.5 0 0 1 7 0 v6M121.5 325 v-6 a3.5 3.5 0 0 1 7 0 v6M143.5 325 v-6 a3.5 3.5 0 0 1 7 0 v6M165.5 325 v-6 a3.5 3.5 0 0 1 7 0 v6M187.5 325 v-6 a3.5 3.5 0 0 1 7 0 v6M209.5 325 v-6 a3.5 3.5 0 0 1 7 0 v6M231.5 325 v-6 a3.5 3.5 0 0 1 7 0 v6M253.5 325 v-6 a3.5 3.5 0 0 1 7 0 v6M275.5 325 v-6 a3.5 3.5 0 0 1 7 0 v6"/><path class="tier" pathLength="1" style="--i:1" d="M79.5 295 L85.5 264 L274.5 264 L280.5 295"/><path class="ramp" pathLength="1" style="--i:1" d="M85.5 291 L266.5 271"/><path class="arch" style="--i:1" d="M93.8 294 v-6 a3.5 3.5 0 0 1 7 0 v6M117.4 294 v-6 a3.5 3.5 0 0 1 7 0 v6M141.1 294 v-6 a3.5 3.5 0 0 1 7 0 v6M164.7 294 v-6 a3.5 3.5 0 0 1 7 0 v6M188.3 294 v-6 a3.5 3.5 0 0 1 7 0 v6M211.9 294 v-6 a3.5 3.5 0 0 1 7 0 v6M235.6 294 v-6 a3.5 3.5 0 0 1 7 0 v6M259.2 294 v-6 a3.5 3.5 0 0 1 7 0 v6"/><path class="tier" pathLength="1" style="--i:2" d="M95.0 264 L101.0 233 L259.0 233 L265.0 264"/><path class="ramp" pathLength="1" style="--i:2" d="M101.0 260 L251.0 240"/><path class="arch" style="--i:2" d="M108.8 263 v-6 a3.5 3.5 0 0 1 7 0 v6M131.4 263 v-6 a3.5 3.5 0 0 1 7 0 v6M153.9 263 v-6 a3.5 3.5 0 0 1 7 0 v6M176.5 263 v-6 a3.5 3.5 0 0 1 7 0 v6M199.1 263 v-6 a3.5 3.5 0 0 1 7 0 v6M221.6 263 v-6 a3.5 3.5 0 0 1 7 0 v6M244.2 263 v-6 a3.5 3.5 0 0 1 7 0 v6"/><path class="tier" pathLength="1" style="--i:3" d="M110.5 233 L116.5 202 L243.5 202 L249.5 233"/><path class="ramp" pathLength="1" style="--i:3" d="M116.5 229 L235.5 209"/><path class="arch" style="--i:3" d="M125.7 232 v-6 a3.5 3.5 0 0 1 7 0 v6M151.1 232 v-6 a3.5 3.5 0 0 1 7 0 v6M176.5 232 v-6 a3.5 3.5 0 0 1 7 0 v6M201.9 232 v-6 a3.5 3.5 0 0 1 7 0 v6M227.3 232 v-6 a3.5 3.5 0 0 1 7 0 v6"/><path class="tier" pathLength="1" style="--i:4" d="M126.0 202 L132.0 171 L228.0 171 L234.0 202"/><path class="ramp" pathLength="1" style="--i:4" d="M132.0 198 L220.0 178"/><path class="arch" style="--i:4" d="M140.5 201 v-6 a3.5 3.5 0 0 1 7 0 v6M164.5 201 v-6 a3.5 3.5 0 0 1 7 0 v6M188.5 201 v-6 a3.5 3.5 0 0 1 7 0 v6M212.5 201 v-6 a3.5 3.5 0 0 1 7 0 v6"/><path class="tier" pathLength="1" style="--i:5" d="M141.5 171 L147.5 140 L212.5 140 L218.5 171"/><path class="ramp" pathLength="1" style="--i:5" d="M147.5 167 L204.5 147"/><path class="arch" style="--i:5" d="M160.2 170 v-6 a3.5 3.5 0 0 1 7 0 v6M192.8 170 v-6 a3.5 3.5 0 0 1 7 0 v6"/><path class="spire" pathLength="1" d="M150 140 L162 130 L170 136 L178 127 L188 135 L196 129 L210 140"/></g><g class="ray" style="--c:var(--f1);--i:0"><path pathLength="1" d="M180 124 Q140.7 125.1 25.9 91.9"/><circle class="end" cx="25.9" cy="91.9" r="5.5"/></g><g class="ray" style="--c:var(--f2);--i:1"><path pathLength="1" d="M180 124 Q140.6 103.7 53.3 59.2"/><circle class="end" cx="53.3" cy="59.2" r="5.5"/></g><g class="ray" style="--c:var(--f3);--i:2"><path pathLength="1" d="M180 124 Q145.5 83.6 96.9 34.7"/><circle class="end" cx="96.9" cy="34.7" r="5.5"/></g><g class="ray" style="--c:var(--f4);--i:3"><path pathLength="1" d="M180 124 Q154.9 67.3 151.1 21.7"/><circle class="end" cx="151.1" cy="21.7" r="5.5"/></g><g class="ray" style="--c:var(--f5);--i:4"><path pathLength="1" d="M180 124 Q167.4 57.1 208.9 21.7"/><circle class="end" cx="208.9" cy="21.7" r="5.5"/></g><g class="ray" style="--c:var(--f6);--i:5"><path pathLength="1" d="M180 124 Q181.5 54.0 263.1 34.7"/><circle class="end" cx="263.1" cy="34.7" r="5.5"/></g><g class="ray" style="--c:var(--f7);--i:6"><path pathLength="1" d="M180 124 Q195.5 58.7 306.7 59.2"/><circle class="end" cx="306.7" cy="59.2" r="5.5"/></g><g class="ray" style="--c:var(--f8);--i:7"><path pathLength="1" d="M180 124 Q207.5 70.4 334.1 91.9"/><circle class="end" cx="334.1" cy="91.9" r="5.5"/></g><circle class="ring" cx="180" cy="124" r="7"/><circle class="root" cx="180" cy="124" r="7"/></svg>
   </div>
 
-  <div class="layout">
-    <nav class="numrail" aria-label="Numerals"><button type="button" class="numrail__top" data-top aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button><ol class="numrail__list"><li><a class="numrail__link" href="#n1" aria-label="Numeral 1">1</a></li><li><a class="numrail__link" href="#n2" aria-label="Numeral 2">2</a></li><li><a class="numrail__link" href="#n3" aria-label="Numeral 3">3</a></li><li><a class="numrail__link" href="#n4" aria-label="Numeral 4">4</a></li><li><a class="numrail__link" href="#n5" aria-label="Numeral 5">5</a></li><li><a class="numrail__link" href="#n6" aria-label="Numeral 6">6</a></li><li><a class="numrail__link" href="#n7" aria-label="Numeral 7">7</a></li><li><a class="numrail__link" href="#n10" aria-label="Numeral 10">10</a></li></ol></nav>
-    <div class="layout__main">
-      <ul class="legend" aria-label="Language families"><li><button type="button" class="legend__chip" data-f="1" aria-pressed="false">Afro-Asiatic</button></li><li><button type="button" class="legend__chip" data-f="2" aria-pressed="false">Indo-Anatolian</button></li><li><button type="button" class="legend__chip" data-f="3" aria-pressed="false">Uralic</button></li><li><button type="button" class="legend__chip" data-f="4" aria-pressed="false">Turkic</button></li><li><button type="button" class="legend__chip" data-f="5" aria-pressed="false">Mongolic</button></li><li><button type="button" class="legend__chip" data-f="6" aria-pressed="false">Basque</button></li><li><button type="button" class="legend__chip" data-f="7" aria-pressed="false">Tyrsenian</button></li><li><button type="button" class="legend__chip" data-f="8" aria-pressed="false">Nakh Languages</button></li></ul>
-      <p class="legend__note">Select a family to focus on it across every view.</p>
+  <section class="overview snap" id="overview" aria-labelledby="ov-title">
+    <div class="overview__head">
+      <h2 id="ov-title">All numerals side by side</h2>
+      <p>Select a numeral in the header row to jump to its tree. In each tree, select a family to fold it, a form to copy it, and the <span class="why-glyph" aria-hidden="true">?</span><span class="sr-only">question mark button</span> beside a family to see a possible sound path.</p>
+    </div>
+    <div class="table-wrap" tabindex="0" role="region" aria-label="Comparison table, scrollable"><table class="matrix"><caption class="sr-only">All numerals side by side: forms by language</caption><thead><tr><th scope="col">Language</th><th scope="col"><a href="#n1" aria-label="1, go to its tree">1</a></th><th scope="col"><a href="#n2" aria-label="2, go to its tree">2</a></th><th scope="col"><a href="#n3" aria-label="3, go to its tree">3</a></th><th scope="col"><a href="#n4" aria-label="4, go to its tree">4</a></th><th scope="col"><a href="#n5" aria-label="5, go to its tree">5</a></th><th scope="col"><a href="#n6" aria-label="6, go to its tree">6</a></th><th scope="col"><a href="#n7" aria-label="7, go to its tree">7</a></th><th scope="col"><a href="#n10" aria-label="10, go to its tree">10</a></th></tr><tr class="roots"><th scope="row">Nostratic</th><td lang="und-fonipa">*hoikʷ?</td><td lang="und-fonipa">*kekʷ?</td><td lang="und-fonipa">*kwed?</td><td lang="und-fonipa">*thtp?</td><td lang="und-fonipa">*penh?</td><td lang="und-fonipa">*hetp?</td><td lang="und-fonipa">*sept?</td><td lang="und-fonipa">*ter?</td></tr></thead><tbody data-fam="1"><tr class="fam"><th scope="rowgroup" colspan="9">Afro-Asiatic</th></tr><tr><th scope="row">Akkadian</th><td lang="und-fonipa">iʃ.teːn</td><td lang="und-fonipa">ʃi.naː</td><td lang="und-fonipa">ʃa.laːʃ</td><td lang="und-fonipa">er.be</td><td lang="und-fonipa">xa.miʃ</td><td lang="und-fonipa">ʃe.diʃ</td><td lang="und-fonipa">se.be</td><td lang="und-fonipa">e.ʃer</td></tr><tr><th scope="row">Phoenician</th><td lang="und-fonipa">ʔa.ħad</td><td lang="und-fonipa">ʃneːm</td><td lang="und-fonipa">ʃa.luːʃ</td><td lang="und-fonipa">ʔar.baʕ</td><td lang="und-fonipa">ħa.miʃ</td><td lang="und-fonipa">ʃiʃ</td><td lang="und-fonipa">ʃi.baʕ</td><td lang="und-fonipa">ʕa.ʃar</td></tr><tr><th scope="row">Arabic</th><td lang="und-fonipa">ˈwaː.ħid</td><td lang="und-fonipa">iθ.ˈnaːn</td><td lang="und-fonipa">θa.ˈlaː.θa</td><td lang="und-fonipa">ˈʔar.ba.ʕa</td><td lang="und-fonipa">ˈxam.sa</td><td lang="und-fonipa">ˈsit.ta</td><td lang="und-fonipa">ˈsab.ʕa</td><td lang="und-fonipa">ˈʕa.ʃa.ra</td></tr><tr class="proto"><th scope="row">Proto Semitic?</th><td lang="und-fonipa">*ʔa.ˈħad, *išt-</td><td lang="und-fonipa">*išt-</td><td lang="und-fonipa">*θa.ˈlaːθ</td><td lang="und-fonipa">*ˈʔar.baʕ</td><td lang="und-fonipa">*ˈxamʃ</td><td lang="und-fonipa">*ˈʃidθ</td><td lang="und-fonipa">*ˈʃabʕ</td><td lang="und-fonipa">*ˈʕaɕr</td></tr><tr><th scope="row">Berber</th><td lang="und-fonipa">jan</td><td lang="und-fonipa">sin</td><td lang="und-fonipa">kradˤ</td><td lang="und-fonipa">kːuz</td><td lang="und-fonipa">smːus</td><td lang="und-fonipa">sdis</td><td lang="und-fonipa">sa</td><td lang="und-fonipa">mraw</td></tr></tbody><tbody data-fam="2"><tr class="fam"><th scope="rowgroup" colspan="9">Indo-Anatolian</th></tr><tr><th scope="row">Hittite</th><td lang="und-fonipa">aːs</td><td lang="und-fonipa">daːn</td><td lang="und-fonipa">teɾiya</td><td lang="und-fonipa">me.ju</td><td lang="und-fonipa">pan.ta</td><td lang="und-fonipa">tuks</td><td lang="und-fonipa">sip.ta</td><td lang="und-fonipa">nat</td></tr><tr><th scope="row">Tocharian</th><td lang="und-fonipa">ʂe</td><td lang="und-fonipa">wi</td><td lang="und-fonipa">trej</td><td lang="und-fonipa">ɕtwer</td><td lang="und-fonipa">piɕ</td><td lang="und-fonipa">ʂkas</td><td lang="und-fonipa">ʂukt</td><td lang="und-fonipa">ɕak</td></tr><tr><th scope="row">Sanskrit</th><td lang="und-fonipa">ˈeː.kɐ</td><td lang="und-fonipa">dʋɐ</td><td lang="und-fonipa">t̪ɾi</td><td lang="und-fonipa">cɐ.ˈt̪uɾ</td><td lang="und-fonipa">ˈpɐɲ.cɐn</td><td lang="und-fonipa">ʂɐʂ</td><td lang="und-fonipa">ˈsɐp.t̪ɐn</td><td lang="und-fonipa">ˈd̪ɐ.ɕɐn</td></tr><tr><th scope="row">Ancient Greek</th><td lang="und-fonipa">hêːs</td><td lang="und-fonipa">dý.o</td><td lang="und-fonipa">trêːs</td><td lang="und-fonipa">tét.ta.res</td><td lang="und-fonipa">pén.te</td><td lang="und-fonipa">héks</td><td lang="und-fonipa">hep.tá</td><td lang="und-fonipa">dé.ka</td></tr><tr><th scope="row">Albanian</th><td lang="und-fonipa">ɲə</td><td lang="und-fonipa">dy</td><td lang="und-fonipa">tɾɛ</td><td lang="und-fonipa">ˈka.təɾ</td><td lang="und-fonipa">pɛs</td><td lang="und-fonipa">ɟaʃt</td><td lang="und-fonipa">ʃtat</td><td lang="und-fonipa">ðjɛt</td></tr><tr><th scope="row">Armenian</th><td lang="und-fonipa">mi</td><td lang="und-fonipa">er.ˈku</td><td lang="und-fonipa">e.ˈrekʰ</td><td lang="und-fonipa">tʃʰorkʰ</td><td lang="und-fonipa">hiŋɡ</td><td lang="und-fonipa">vetsʰ</td><td lang="und-fonipa">ewtʰn</td><td lang="und-fonipa">tasn</td></tr><tr class="proto"><th scope="row">Proto IE?</th><td lang="und-fonipa">*h₁ój.nos</td><td lang="und-fonipa">*dwóh₁</td><td lang="und-fonipa">*tré.jes</td><td lang="und-fonipa">*kʷet.wó.res</td><td lang="und-fonipa">*pén.kʷe</td><td lang="und-fonipa">*swéḱs</td><td lang="und-fonipa">*sep.tḿ̥</td><td lang="und-fonipa">*déḱm̥t</td></tr></tbody><tbody data-fam="3"><tr class="fam"><th scope="rowgroup" colspan="9">Uralic</th></tr><tr><th scope="row">Finnish</th><td lang="und-fonipa">ˈyk.si</td><td lang="und-fonipa">ˈkɑk.si</td><td lang="und-fonipa">ˈkol.me</td><td lang="und-fonipa">ˈnel.jæ</td><td lang="und-fonipa">ˈʋiː.si</td><td lang="und-fonipa">ˈkuː.si</td><td lang="und-fonipa">ˈsei̯t.se.mæn</td><td lang="und-fonipa">ˈkymː.e.nen</td></tr><tr><th scope="row">Sami</th><td lang="und-fonipa">ˈok.ta</td><td lang="und-fonipa">ˈkuok.te</td><td lang="und-fonipa">ˈkolp.ma</td><td lang="und-fonipa">ˈɲealː.je</td><td lang="und-fonipa">ˈvihtː.a</td><td lang="und-fonipa">ˈkuhtː.a</td><td lang="und-fonipa">ˈt͡ʃie.ʒa</td><td lang="und-fonipa">ˈlo.hi</td></tr><tr><th scope="row">Khanty</th><td lang="und-fonipa">it</td><td lang="und-fonipa">kæt</td><td lang="und-fonipa">xu.ɫəm</td><td lang="und-fonipa">ɲa.tæ</td><td lang="und-fonipa">wet</td><td lang="und-fonipa">xut</td><td lang="und-fonipa">tɛ.pət</td><td lang="und-fonipa">jaŋ</td></tr><tr><th scope="row">Hungarian</th><td lang="und-fonipa">ɛɟ</td><td lang="und-fonipa">ˈkɛtː.øː</td><td lang="und-fonipa">ˈhaː.rom</td><td lang="und-fonipa">neːɟ</td><td lang="und-fonipa">øt</td><td lang="und-fonipa">hɒt</td><td lang="und-fonipa">heːt</td><td lang="und-fonipa">tiːz</td></tr><tr><th scope="row">Nenets</th><td lang="und-fonipa">ŋop</td><td lang="und-fonipa">sʲi.di</td><td lang="und-fonipa">nʲa.xar</td><td lang="und-fonipa">tʲet</td><td lang="und-fonipa">səm.plʲaŋk</td><td lang="und-fonipa">matq</td><td lang="und-fonipa">sʲiqw</td><td lang="und-fonipa">juq</td></tr><tr class="proto"><th scope="row">Proto Uralic?</th><td lang="und-fonipa">*yk.ti</td><td lang="und-fonipa">*kæk.ti</td><td lang="und-fonipa">*kol.mi</td><td lang="und-fonipa">*nel.jæ</td><td lang="und-fonipa">*wit</td><td lang="und-fonipa">*ku.ti</td><td lang="und-fonipa">*ɕæ.t͡ɕæ</td><td lang="und-fonipa">*lu.ki</td></tr></tbody><tbody data-fam="4"><tr class="fam"><th scope="rowgroup" colspan="9">Turkic</th></tr><tr><th scope="row">Old Turkic</th><td lang="und-fonipa">bir</td><td lang="und-fonipa">e.ki</td><td lang="und-fonipa">yt͡ʃ</td><td lang="und-fonipa">tørt</td><td lang="und-fonipa">beʃ</td><td lang="und-fonipa">aɫ.tɯ</td><td lang="und-fonipa">je.ti</td><td lang="und-fonipa">on</td></tr><tr><th scope="row">Volga Bulgar</th><td lang="und-fonipa">*bʲir</td><td lang="und-fonipa">*e.kʲi</td><td lang="und-fonipa">*ʋət͡ʃ</td><td lang="und-fonipa">*tə.vat</td><td lang="und-fonipa">*pʲil</td><td lang="und-fonipa">*aɫ.tɯ</td><td lang="und-fonipa">*t͡ʃi.ət</td><td lang="und-fonipa">*ʋun</td></tr><tr><th scope="row">Chuvash</th><td lang="und-fonipa">pɘr.ˈre</td><td lang="und-fonipa">ik.ˈkɘ</td><td lang="und-fonipa">ʋiɕ.ˈɕɘ</td><td lang="und-fonipa">tə.ʋat.ˈtə</td><td lang="und-fonipa">pil.ˈlɘk</td><td lang="und-fonipa">ult.ˈtə</td><td lang="und-fonipa">ɕit͡ɕ.ˈt͡ɕɘ</td><td lang="und-fonipa">ʋun.ˈnə</td></tr><tr><th scope="row">Yakut</th><td lang="und-fonipa">biːr</td><td lang="und-fonipa">ik.ki</td><td lang="und-fonipa">ys</td><td lang="und-fonipa">tyørt</td><td lang="und-fonipa">biəs</td><td lang="und-fonipa">al.ta</td><td lang="und-fonipa">set.tə</td><td lang="und-fonipa">uon</td></tr><tr><th scope="row">Bashkir</th><td lang="und-fonipa">ber</td><td lang="und-fonipa">i.ke</td><td lang="und-fonipa">øs</td><td lang="und-fonipa">dyrt</td><td lang="und-fonipa">biʃ</td><td lang="und-fonipa">aɫ.tɯ</td><td lang="und-fonipa">je.te</td><td lang="und-fonipa">un</td></tr><tr class="proto"><th scope="row">Proto Turkic?</th><td lang="und-fonipa">*biːr</td><td lang="und-fonipa">*e.ki</td><td lang="und-fonipa">*yt͡ʃ</td><td lang="und-fonipa">*tøːrt</td><td lang="und-fonipa">*beːʃ</td><td lang="und-fonipa">*aɫ.tɯ</td><td lang="und-fonipa">*je.ti</td><td lang="und-fonipa">*oːn</td></tr></tbody><tbody data-fam="5"><tr class="fam"><th scope="rowgroup" colspan="9">Mongolic</th></tr><tr><th scope="row">Mongolian</th><td lang="und-fonipa">nɛɡ</td><td lang="und-fonipa">xɔ.jɔr</td><td lang="und-fonipa">ɢʊ.rəw</td><td lang="und-fonipa">dø.røw</td><td lang="und-fonipa">tʰaw</td><td lang="und-fonipa">zʊr.ʁa</td><td lang="und-fonipa">dɔ.lɔ</td><td lang="und-fonipa">a.rəw</td></tr><tr><th scope="row">Buryat</th><td lang="und-fonipa">ne.ɡeŋ</td><td lang="und-fonipa">xo.jor</td><td lang="und-fonipa">gur.baŋ</td><td lang="und-fonipa">dyr.beŋ</td><td lang="und-fonipa">ta.baŋ</td><td lang="und-fonipa">zur.gaːŋ</td><td lang="und-fonipa">do.loːŋ</td><td lang="und-fonipa">ar.baŋ</td></tr></tbody><tbody data-fam="6"><tr class="fam"><th scope="rowgroup" colspan="9">Basque</th></tr><tr><th scope="row">Basque</th><td lang="und-fonipa">bat</td><td lang="und-fonipa">bi</td><td lang="und-fonipa">hi.ɾu</td><td lang="und-fonipa">lau̯</td><td lang="und-fonipa">bos̺t</td><td lang="und-fonipa">s̺ei̯</td><td lang="und-fonipa">s̻as̻.pi</td><td lang="und-fonipa">ha.maɾ</td></tr><tr class="proto"><th scope="row">Proto Basque?</th><td lang="und-fonipa">*ba.de</td><td lang="und-fonipa">*bi.ɡa</td><td lang="und-fonipa">*hi.rur</td><td lang="und-fonipa">*laur</td><td lang="und-fonipa">*borts̻</td><td lang="und-fonipa">*se.ni</td><td lang="und-fonipa">*s̻as̻.pi</td><td lang="und-fonipa">*ha.mar</td></tr></tbody><tbody data-fam="7"><tr class="fam"><th scope="rowgroup" colspan="9">Tyrsenian</th></tr><tr><th scope="row">Etruscan</th><td lang="und-fonipa">θu</td><td lang="und-fonipa">zal</td><td lang="und-fonipa">ci</td><td lang="und-fonipa">huθ</td><td lang="und-fonipa">maχ</td><td lang="und-fonipa">śa</td><td lang="und-fonipa">semφ</td><td lang="und-fonipa">śar</td></tr></tbody><tbody data-fam="8"><tr class="fam"><th scope="rowgroup" colspan="9">Nakh Languages</th></tr><tr><th scope="row">Chechen</th><td lang="und-fonipa">tsħaʔ</td><td lang="und-fonipa">ʃiʔ</td><td lang="und-fonipa">qoʔ</td><td lang="und-fonipa">diʔ</td><td lang="und-fonipa">pxiʔ</td><td lang="und-fonipa">jalx</td><td lang="und-fonipa">worh</td><td lang="und-fonipa">itt</td></tr><tr><th scope="row">Ingush</th><td lang="und-fonipa">tsaʔ</td><td lang="und-fonipa">ʃiʔ</td><td lang="und-fonipa">qoʔ</td><td lang="und-fonipa">diʔ</td><td lang="und-fonipa">pxiʔ</td><td lang="und-fonipa">jalx</td><td lang="und-fonipa">worh</td><td lang="und-fonipa">itt</td></tr></tbody></table></div>
+  </section>
 
-      <section class="overview" id="overview" aria-labelledby="ov-title">
-        <h2 id="ov-title">All numerals side by side</h2>
-        <p>Select a numeral in the header row to jump to its section.</p>
-        <div class="table-wrap" data-matrix tabindex="0" role="region" aria-label="Comparison of all numerals by language"></div>
-      </section>
-
-      <h2 class="numeral-intro">Numeral by numeral</h2>
-      <div class="toolbar">
-        <div class="seg" role="group" aria-label="View"><button type="button" data-view="tree" aria-pressed="false">Tree</button><button type="button" data-view="table" aria-pressed="true">Table</button></div>
-        <div class="toolbar__aux" data-tree-only hidden><button type="button" class="link-btn" data-expand>Expand all</button><button type="button" class="link-btn" data-collapse>Collapse all</button></div>
-      </div>
-      <p class="tree-hint" data-tree-only hidden>In the tree, select a family or branch to fold it and a form to copy it.</p>
-
-
-    <section class="numeral" id="n1" aria-labelledby="n1-title" data-n="1" data-recon="*hoikʷ">
-      <header class="numeral__head">
-        <span class="numeral__digit" aria-hidden="true">1</span>
-        <h2 class="numeral__title" id="n1-title"><span class="sr-only">Numeral 1: </span><span class="numeral__recon" lang="und-fonipa">*hoikʷ</span><span class="numeral__cap">Nostratic reconstruction</span></h2>
-      </header>
-      <div class="numeral__body">
-        <div>
-          <div class="tree-wrap view-tree" data-tree></div>
-          <div class="table-wrap view-table" tabindex="0" role="region" aria-label="Numeral 1: forms by language">
-<table class="cog"><caption class="sr-only">Forms for numeral 1 by language</caption>
-<thead><tr><th scope="col">Language</th><th scope="col">Form (IPA)</th></tr></thead>
-<tbody data-fam="1">
-<tr class="fam"><th colspan="2" scope="colgroup">Afro-Asiatic</th></tr>
-<tr class="branch"><th colspan="2" scope="colgroup">Semitic</th></tr>
-<tr class="leaf" data-branch="Semitic"><th scope="row">Akkadian</th><td lang="und-fonipa">iʃ.teːn</td></tr>
-<tr class="leaf" data-branch="Semitic"><th scope="row">Phoenician</th><td lang="und-fonipa">ʔa.ħad</td></tr>
-<tr class="leaf" data-branch="Semitic"><th scope="row">Arabic</th><td lang="und-fonipa">ˈwaː.ħid</td></tr>
-<tr class="leaf proto" data-branch="Semitic"><th scope="row">Proto Semitic?</th><td lang="und-fonipa">*ʔa.ˈħad, *išt-</td></tr>
-<tr class="branch"><th colspan="2" scope="colgroup">Berber</th></tr>
-<tr class="leaf" data-branch="Berber"><th scope="row">Berber</th><td lang="und-fonipa">jan</td></tr>
-</tbody>
-<tbody data-fam="2">
-<tr class="fam"><th colspan="2" scope="colgroup">Indo-Anatolian</th></tr>
-<tr class="branch"><th colspan="2" scope="colgroup">Anatolian</th></tr>
-<tr class="leaf" data-branch="Anatolian"><th scope="row">Hittite</th><td lang="und-fonipa">aːs</td></tr>
-<tr class="branch"><th colspan="2" scope="colgroup">Indo-European</th></tr>
-<tr class="leaf" data-branch="Indo-European"><th scope="row">Tocharian</th><td lang="und-fonipa">ʂe</td></tr>
-<tr class="leaf" data-branch="Indo-European"><th scope="row">Sanskrit</th><td lang="und-fonipa">ˈeː.kɐ</td></tr>
-<tr class="leaf" data-branch="Indo-European"><th scope="row">Ancient Greek</th><td lang="und-fonipa">hêːs</td></tr>
-<tr class="leaf" data-branch="Indo-European"><th scope="row">Albanian</th><td lang="und-fonipa">ɲə</td></tr>
-<tr class="leaf" data-branch="Indo-European"><th scope="row">Armenian</th><td lang="und-fonipa">mi</td></tr>
-<tr class="leaf proto" data-branch="Indo-European"><th scope="row">Proto IE?</th><td lang="und-fonipa">*h₁ój.nos</td></tr>
-</tbody>
-<tbody data-fam="3">
-<tr class="fam"><th colspan="2" scope="colgroup">Uralic</th></tr>
-<tr class="leaf"><th scope="row">Finnish</th><td lang="und-fonipa">ˈyk.si</td></tr>
-<tr class="leaf"><th scope="row">Sami</th><td lang="und-fonipa">ˈok.ta</td></tr>
-<tr class="leaf"><th scope="row">Khanty</th><td lang="und-fonipa">it</td></tr>
-<tr class="leaf"><th scope="row">Hungarian</th><td lang="und-fonipa">ɛɟ</td></tr>
-<tr class="leaf"><th scope="row">Nenets</th><td lang="und-fonipa">ŋop</td></tr>
-<tr class="leaf proto"><th scope="row">Proto Uralic?</th><td lang="und-fonipa">*yk.ti</td></tr>
-</tbody>
-<tbody data-fam="4">
-<tr class="fam"><th colspan="2" scope="colgroup">Turkic</th></tr>
-<tr class="leaf"><th scope="row">Old Turkic</th><td lang="und-fonipa">bir</td></tr>
-<tr class="leaf"><th scope="row">Volga Bulgar</th><td lang="und-fonipa">*bʲir</td></tr>
-<tr class="leaf"><th scope="row">Chuvash</th><td lang="und-fonipa">pɘr.ˈre</td></tr>
-<tr class="leaf"><th scope="row">Yakut</th><td lang="und-fonipa">biːr</td></tr>
-<tr class="leaf"><th scope="row">Bashkir</th><td lang="und-fonipa">ber</td></tr>
-<tr class="leaf proto"><th scope="row">Proto Turkic?</th><td lang="und-fonipa">*biːr</td></tr>
-</tbody>
-<tbody data-fam="5">
-<tr class="fam"><th colspan="2" scope="colgroup">Mongolic</th></tr>
-<tr class="leaf"><th scope="row">Mongolian</th><td lang="und-fonipa">nɛɡ</td></tr>
-<tr class="leaf"><th scope="row">Buryat</th><td lang="und-fonipa">ne.ɡeŋ</td></tr>
-</tbody>
-<tbody data-fam="6">
-<tr class="fam"><th colspan="2" scope="colgroup">Basque</th></tr>
-<tr class="leaf"><th scope="row">Basque</th><td lang="und-fonipa">bat</td></tr>
-<tr class="leaf proto"><th scope="row">Proto Basque?</th><td lang="und-fonipa">*ba.de</td></tr>
-</tbody>
-<tbody data-fam="7">
-<tr class="fam"><th colspan="2" scope="colgroup">Tyrsenian</th></tr>
-<tr class="leaf"><th scope="row">Etruscan</th><td lang="und-fonipa">θu</td></tr>
-</tbody>
-<tbody data-fam="8">
-<tr class="fam"><th colspan="2" scope="colgroup">Nakh Languages</th></tr>
-<tr class="leaf"><th scope="row">Chechen</th><td lang="und-fonipa">tsħaʔ</td></tr>
-<tr class="leaf"><th scope="row">Ingush</th><td lang="und-fonipa">tsaʔ</td></tr>
-</tbody>
-</table>
+    <section class="cog" id="n1" data-spy data-n="1" aria-labelledby="n1-title">
+      <div class="cog__in">
+        <header class="cog__head">
+          <span class="cog__digit" aria-hidden="true">1</span>
+          <div class="cog__titles">
+            <h2 class="cog__title" id="n1-title"><span class="sr-only">Numeral 1: </span><span class="cog__recon" lang="und-fonipa">*hoikʷ?</span></h2>
+            <p class="cog__cap">Nostratic reconstruction</p>
           </div>
-        </div>
-        <aside class="notes" aria-label="Alternative reconstructions for numeral 1">
-          <h3 id="n1-notes">Alternative reconstructions</h3><p class="notes__empty">None recorded yet.</p>
-        </aside>
+        </header>
+        <div class="tree-stage" data-tree="0"><p class="tree-stage__nojs">The tree needs JavaScript. Every form is listed in the table above.</p></div>
       </div>
     </section>
-    <section class="numeral" id="n2" aria-labelledby="n2-title" data-n="2" data-recon="*kekʷ">
-      <header class="numeral__head">
-        <span class="numeral__digit" aria-hidden="true">2</span>
-        <h2 class="numeral__title" id="n2-title"><span class="sr-only">Numeral 2: </span><span class="numeral__recon" lang="und-fonipa">*kekʷ</span><span class="numeral__cap">Nostratic reconstruction</span></h2>
-      </header>
-      <div class="numeral__body">
-        <div>
-          <div class="tree-wrap view-tree" data-tree></div>
-          <div class="table-wrap view-table" tabindex="0" role="region" aria-label="Numeral 2: forms by language">
-<table class="cog"><caption class="sr-only">Forms for numeral 2 by language</caption>
-<thead><tr><th scope="col">Language</th><th scope="col">Form (IPA)</th></tr></thead>
-<tbody data-fam="1">
-<tr class="fam"><th colspan="2" scope="colgroup">Afro-Asiatic</th></tr>
-<tr class="branch"><th colspan="2" scope="colgroup">Semitic</th></tr>
-<tr class="leaf" data-branch="Semitic"><th scope="row">Akkadian</th><td lang="und-fonipa">ʃi.naː</td></tr>
-<tr class="leaf" data-branch="Semitic"><th scope="row">Phoenician</th><td lang="und-fonipa">ʃneːm</td></tr>
-<tr class="leaf" data-branch="Semitic"><th scope="row">Arabic</th><td lang="und-fonipa">iθ.ˈnaːn</td></tr>
-<tr class="leaf proto" data-branch="Semitic"><th scope="row">Proto Semitic?</th><td lang="und-fonipa">*išt-</td></tr>
-<tr class="branch"><th colspan="2" scope="colgroup">Berber</th></tr>
-<tr class="leaf" data-branch="Berber"><th scope="row">Berber</th><td lang="und-fonipa">sin</td></tr>
-</tbody>
-<tbody data-fam="2">
-<tr class="fam"><th colspan="2" scope="colgroup">Indo-Anatolian</th></tr>
-<tr class="branch"><th colspan="2" scope="colgroup">Anatolian</th></tr>
-<tr class="leaf" data-branch="Anatolian"><th scope="row">Hittite</th><td lang="und-fonipa">daːn</td></tr>
-<tr class="branch"><th colspan="2" scope="colgroup">Indo-European</th></tr>
-<tr class="leaf" data-branch="Indo-European"><th scope="row">Tocharian</th><td lang="und-fonipa">wi</td></tr>
-<tr class="leaf" data-branch="Indo-European"><th scope="row">Sanskrit</th><td lang="und-fonipa">dʋɐ</td></tr>
-<tr class="leaf" data-branch="Indo-European"><th scope="row">Ancient Greek</th><td lang="und-fonipa">dý.o</td></tr>
-<tr class="leaf" data-branch="Indo-European"><th scope="row">Albanian</th><td lang="und-fonipa">dy</td></tr>
-<tr class="leaf" data-branch="Indo-European"><th scope="row">Armenian</th><td lang="und-fonipa">er.ˈku</td></tr>
-<tr class="leaf proto" data-branch="Indo-European"><th scope="row">Proto IE?</th><td lang="und-fonipa">*dwóh₁</td></tr>
-</tbody>
-<tbody data-fam="3">
-<tr class="fam"><th colspan="2" scope="colgroup">Uralic</th></tr>
-<tr class="leaf"><th scope="row">Finnish</th><td lang="und-fonipa">ˈkɑk.si</td></tr>
-<tr class="leaf"><th scope="row">Sami</th><td lang="und-fonipa">ˈkuok.te</td></tr>
-<tr class="leaf"><th scope="row">Khanty</th><td lang="und-fonipa">kæt</td></tr>
-<tr class="leaf"><th scope="row">Hungarian</th><td lang="und-fonipa">ˈkɛtː.øː</td></tr>
-<tr class="leaf"><th scope="row">Nenets</th><td lang="und-fonipa">sʲi.di</td></tr>
-<tr class="leaf proto"><th scope="row">Proto Uralic?</th><td lang="und-fonipa">*kæk.ti</td></tr>
-</tbody>
-<tbody data-fam="4">
-<tr class="fam"><th colspan="2" scope="colgroup">Turkic</th></tr>
-<tr class="leaf"><th scope="row">Old Turkic</th><td lang="und-fonipa">e.ki</td></tr>
-<tr class="leaf"><th scope="row">Volga Bulgar</th><td lang="und-fonipa">*e.kʲi</td></tr>
-<tr class="leaf"><th scope="row">Chuvash</th><td lang="und-fonipa">ik.ˈkɘ</td></tr>
-<tr class="leaf"><th scope="row">Yakut</th><td lang="und-fonipa">ik.ki</td></tr>
-<tr class="leaf"><th scope="row">Bashkir</th><td lang="und-fonipa">i.ke</td></tr>
-<tr class="leaf proto"><th scope="row">Proto Turkic?</th><td lang="und-fonipa">*e.ki</td></tr>
-</tbody>
-<tbody data-fam="5">
-<tr class="fam"><th colspan="2" scope="colgroup">Mongolic</th></tr>
-<tr class="leaf"><th scope="row">Mongolian</th><td lang="und-fonipa">xɔ.jɔr</td></tr>
-<tr class="leaf"><th scope="row">Buryat</th><td lang="und-fonipa">xo.jor</td></tr>
-</tbody>
-<tbody data-fam="6">
-<tr class="fam"><th colspan="2" scope="colgroup">Basque</th></tr>
-<tr class="leaf"><th scope="row">Basque</th><td lang="und-fonipa">bi</td></tr>
-<tr class="leaf proto"><th scope="row">Proto Basque?</th><td lang="und-fonipa">*bi.ɡa</td></tr>
-</tbody>
-<tbody data-fam="7">
-<tr class="fam"><th colspan="2" scope="colgroup">Tyrsenian</th></tr>
-<tr class="leaf"><th scope="row">Etruscan</th><td lang="und-fonipa">zal</td></tr>
-</tbody>
-<tbody data-fam="8">
-<tr class="fam"><th colspan="2" scope="colgroup">Nakh Languages</th></tr>
-<tr class="leaf"><th scope="row">Chechen</th><td lang="und-fonipa">ʃiʔ</td></tr>
-<tr class="leaf"><th scope="row">Ingush</th><td lang="und-fonipa">ʃiʔ</td></tr>
-</tbody>
-</table>
+    <section class="cog" id="n2" data-spy data-n="2" aria-labelledby="n2-title">
+      <div class="cog__in">
+        <header class="cog__head">
+          <span class="cog__digit" aria-hidden="true">2</span>
+          <div class="cog__titles">
+            <h2 class="cog__title" id="n2-title"><span class="sr-only">Numeral 2: </span><span class="cog__recon" lang="und-fonipa">*kekʷ?</span></h2>
+            <p class="cog__cap">Nostratic reconstruction</p>
           </div>
-        </div>
-        <aside class="notes" aria-label="Alternative reconstructions for numeral 2">
-          <h3 id="n2-notes">Alternative reconstructions</h3><dl><dt>Proto Afro-Asiatic</dt><dd lang="und-fonipa">*ithd</dd><dt>Proto Indo-Anatolian</dt><dd lang="und-fonipa">*doh</dd><dt>Proto Uralic</dt><dd lang="und-fonipa">*kækti</dd><dt>Proto Turkic</dt><dd lang="und-fonipa">*hekki</dd><dt>Proto Mongolic</dt><dd lang="und-fonipa">*khohod</dd><dt>Proto Basque</dt><dd lang="und-fonipa">*kʷiga</dd><dt>Proto Tyrsenian</dt><dd lang="und-fonipa">*had</dd><dt>Proto Nakh</dt><dd lang="und-fonipa">*khiy</dd></dl>
-        </aside>
+        </header>
+        <div class="tree-stage" data-tree="1"><p class="tree-stage__nojs">The tree needs JavaScript. Every form is listed in the table above.</p></div>
       </div>
     </section>
-    <section class="numeral" id="n3" aria-labelledby="n3-title" data-n="3" data-recon="*kwed">
-      <header class="numeral__head">
-        <span class="numeral__digit" aria-hidden="true">3</span>
-        <h2 class="numeral__title" id="n3-title"><span class="sr-only">Numeral 3: </span><span class="numeral__recon" lang="und-fonipa">*kwed</span><span class="numeral__cap">Nostratic reconstruction</span></h2>
-      </header>
-      <div class="numeral__body">
-        <div>
-          <div class="tree-wrap view-tree" data-tree></div>
-          <div class="table-wrap view-table" tabindex="0" role="region" aria-label="Numeral 3: forms by language">
-<table class="cog"><caption class="sr-only">Forms for numeral 3 by language</caption>
-<thead><tr><th scope="col">Language</th><th scope="col">Form (IPA)</th></tr></thead>
-<tbody data-fam="1">
-<tr class="fam"><th colspan="2" scope="colgroup">Afro-Asiatic</th></tr>
-<tr class="branch"><th colspan="2" scope="colgroup">Semitic</th></tr>
-<tr class="leaf" data-branch="Semitic"><th scope="row">Akkadian</th><td lang="und-fonipa">ʃa.laːʃ</td></tr>
-<tr class="leaf" data-branch="Semitic"><th scope="row">Phoenician</th><td lang="und-fonipa">ʃa.luːʃ</td></tr>
-<tr class="leaf" data-branch="Semitic"><th scope="row">Arabic</th><td lang="und-fonipa">θa.ˈlaː.θa</td></tr>
-<tr class="leaf proto" data-branch="Semitic"><th scope="row">Proto Semitic?</th><td lang="und-fonipa">*θa.ˈlaːθ</td></tr>
-<tr class="branch"><th colspan="2" scope="colgroup">Berber</th></tr>
-<tr class="leaf" data-branch="Berber"><th scope="row">Berber</th><td lang="und-fonipa">kradˤ</td></tr>
-</tbody>
-<tbody data-fam="2">
-<tr class="fam"><th colspan="2" scope="colgroup">Indo-Anatolian</th></tr>
-<tr class="branch"><th colspan="2" scope="colgroup">Anatolian</th></tr>
-<tr class="leaf" data-branch="Anatolian"><th scope="row">Hittite</th><td lang="und-fonipa">teɾiya</td></tr>
-<tr class="branch"><th colspan="2" scope="colgroup">Indo-European</th></tr>
-<tr class="leaf" data-branch="Indo-European"><th scope="row">Tocharian</th><td lang="und-fonipa">trej</td></tr>
-<tr class="leaf" data-branch="Indo-European"><th scope="row">Sanskrit</th><td lang="und-fonipa">t̪ɾi</td></tr>
-<tr class="leaf" data-branch="Indo-European"><th scope="row">Ancient Greek</th><td lang="und-fonipa">trêːs</td></tr>
-<tr class="leaf" data-branch="Indo-European"><th scope="row">Albanian</th><td lang="und-fonipa">tɾɛ</td></tr>
-<tr class="leaf" data-branch="Indo-European"><th scope="row">Armenian</th><td lang="und-fonipa">e.ˈrekʰ</td></tr>
-<tr class="leaf proto" data-branch="Indo-European"><th scope="row">Proto IE?</th><td lang="und-fonipa">*tré.jes</td></tr>
-</tbody>
-<tbody data-fam="3">
-<tr class="fam"><th colspan="2" scope="colgroup">Uralic</th></tr>
-<tr class="leaf"><th scope="row">Finnish</th><td lang="und-fonipa">ˈkol.me</td></tr>
-<tr class="leaf"><th scope="row">Sami</th><td lang="und-fonipa">ˈkolp.ma</td></tr>
-<tr class="leaf"><th scope="row">Khanty</th><td lang="und-fonipa">xu.ɫəm</td></tr>
-<tr class="leaf"><th scope="row">Hungarian</th><td lang="und-fonipa">ˈhaː.rom</td></tr>
-<tr class="leaf"><th scope="row">Nenets</th><td lang="und-fonipa">nʲa.xar</td></tr>
-<tr class="leaf proto"><th scope="row">Proto Uralic?</th><td lang="und-fonipa">*kol.mi</td></tr>
-</tbody>
-<tbody data-fam="4">
-<tr class="fam"><th colspan="2" scope="colgroup">Turkic</th></tr>
-<tr class="leaf"><th scope="row">Old Turkic</th><td lang="und-fonipa">yt͡ʃ</td></tr>
-<tr class="leaf"><th scope="row">Volga Bulgar</th><td lang="und-fonipa">*ʋət͡ʃ</td></tr>
-<tr class="leaf"><th scope="row">Chuvash</th><td lang="und-fonipa">ʋiɕ.ˈɕɘ</td></tr>
-<tr class="leaf"><th scope="row">Yakut</th><td lang="und-fonipa">ys</td></tr>
-<tr class="leaf"><th scope="row">Bashkir</th><td lang="und-fonipa">øs</td></tr>
-<tr class="leaf proto"><th scope="row">Proto Turkic?</th><td lang="und-fonipa">*yt͡ʃ</td></tr>
-</tbody>
-<tbody data-fam="5">
-<tr class="fam"><th colspan="2" scope="colgroup">Mongolic</th></tr>
-<tr class="leaf"><th scope="row">Mongolian</th><td lang="und-fonipa">ɢʊ.rəw</td></tr>
-<tr class="leaf"><th scope="row">Buryat</th><td lang="und-fonipa">gur.baŋ</td></tr>
-</tbody>
-<tbody data-fam="6">
-<tr class="fam"><th colspan="2" scope="colgroup">Basque</th></tr>
-<tr class="leaf"><th scope="row">Basque</th><td lang="und-fonipa">hi.ɾu</td></tr>
-<tr class="leaf proto"><th scope="row">Proto Basque?</th><td lang="und-fonipa">*hi.rur</td></tr>
-</tbody>
-<tbody data-fam="7">
-<tr class="fam"><th colspan="2" scope="colgroup">Tyrsenian</th></tr>
-<tr class="leaf"><th scope="row">Etruscan</th><td lang="und-fonipa">ci</td></tr>
-</tbody>
-<tbody data-fam="8">
-<tr class="fam"><th colspan="2" scope="colgroup">Nakh Languages</th></tr>
-<tr class="leaf"><th scope="row">Chechen</th><td lang="und-fonipa">qoʔ</td></tr>
-<tr class="leaf"><th scope="row">Ingush</th><td lang="und-fonipa">qoʔ</td></tr>
-</tbody>
-</table>
+    <section class="cog" id="n3" data-spy data-n="3" aria-labelledby="n3-title">
+      <div class="cog__in">
+        <header class="cog__head">
+          <span class="cog__digit" aria-hidden="true">3</span>
+          <div class="cog__titles">
+            <h2 class="cog__title" id="n3-title"><span class="sr-only">Numeral 3: </span><span class="cog__recon" lang="und-fonipa">*kwed?</span></h2>
+            <p class="cog__cap">Nostratic reconstruction</p>
           </div>
-        </div>
-        <aside class="notes" aria-label="Alternative reconstructions for numeral 3">
-          <h3 id="n3-notes">Alternative reconstructions</h3><dl><dt>Proto Afro-Asiatic</dt><dd lang="und-fonipa">*thadath</dd><dt>Proto Indo-Anatolian</dt><dd lang="und-fonipa">*teriya</dd><dt>Proto Uralic</dt><dd lang="und-fonipa">*karmo</dd><dt>Proto Turkic</dt><dd lang="und-fonipa">*her, *hed</dd><dt>Proto Mongolic</dt><dd lang="und-fonipa">*kurah</dd><dt>Proto Basque</dt><dd lang="und-fonipa">*hiru</dd><dt>Proto Tyrsenian</dt><dd lang="und-fonipa">*kih</dd><dt>Proto Nakh</dt><dd lang="und-fonipa">*khoy</dd></dl>
-        </aside>
+        </header>
+        <div class="tree-stage" data-tree="2"><p class="tree-stage__nojs">The tree needs JavaScript. Every form is listed in the table above.</p></div>
       </div>
     </section>
-    <section class="numeral" id="n4" aria-labelledby="n4-title" data-n="4" data-recon="*thtp">
-      <header class="numeral__head">
-        <span class="numeral__digit" aria-hidden="true">4</span>
-        <h2 class="numeral__title" id="n4-title"><span class="sr-only">Numeral 4: </span><span class="numeral__recon" lang="und-fonipa">*thtp</span><span class="numeral__cap">Nostratic reconstruction</span></h2>
-      </header>
-      <div class="numeral__body">
-        <div>
-          <div class="tree-wrap view-tree" data-tree></div>
-          <div class="table-wrap view-table" tabindex="0" role="region" aria-label="Numeral 4: forms by language">
-<table class="cog"><caption class="sr-only">Forms for numeral 4 by language</caption>
-<thead><tr><th scope="col">Language</th><th scope="col">Form (IPA)</th></tr></thead>
-<tbody data-fam="1">
-<tr class="fam"><th colspan="2" scope="colgroup">Afro-Asiatic</th></tr>
-<tr class="branch"><th colspan="2" scope="colgroup">Semitic</th></tr>
-<tr class="leaf" data-branch="Semitic"><th scope="row">Akkadian</th><td lang="und-fonipa">er.be</td></tr>
-<tr class="leaf" data-branch="Semitic"><th scope="row">Phoenician</th><td lang="und-fonipa">ʔar.baʕ</td></tr>
-<tr class="leaf" data-branch="Semitic"><th scope="row">Arabic</th><td lang="und-fonipa">ˈʔar.ba.ʕa</td></tr>
-<tr class="leaf proto" data-branch="Semitic"><th scope="row">Proto Semitic?</th><td lang="und-fonipa">*ˈʔar.baʕ</td></tr>
-<tr class="branch"><th colspan="2" scope="colgroup">Berber</th></tr>
-<tr class="leaf" data-branch="Berber"><th scope="row">Berber</th><td lang="und-fonipa">kːuz</td></tr>
-</tbody>
-<tbody data-fam="2">
-<tr class="fam"><th colspan="2" scope="colgroup">Indo-Anatolian</th></tr>
-<tr class="branch"><th colspan="2" scope="colgroup">Anatolian</th></tr>
-<tr class="leaf" data-branch="Anatolian"><th scope="row">Hittite</th><td lang="und-fonipa">me.ju</td></tr>
-<tr class="branch"><th colspan="2" scope="colgroup">Indo-European</th></tr>
-<tr class="leaf" data-branch="Indo-European"><th scope="row">Tocharian</th><td lang="und-fonipa">ɕtwer</td></tr>
-<tr class="leaf" data-branch="Indo-European"><th scope="row">Sanskrit</th><td lang="und-fonipa">cɐ.ˈt̪uɾ</td></tr>
-<tr class="leaf" data-branch="Indo-European"><th scope="row">Ancient Greek</th><td lang="und-fonipa">tét.ta.res</td></tr>
-<tr class="leaf" data-branch="Indo-European"><th scope="row">Albanian</th><td lang="und-fonipa">ˈka.təɾ</td></tr>
-<tr class="leaf" data-branch="Indo-European"><th scope="row">Armenian</th><td lang="und-fonipa">tʃʰorkʰ</td></tr>
-<tr class="leaf proto" data-branch="Indo-European"><th scope="row">Proto IE?</th><td lang="und-fonipa">*kʷet.wó.res</td></tr>
-</tbody>
-<tbody data-fam="3">
-<tr class="fam"><th colspan="2" scope="colgroup">Uralic</th></tr>
-<tr class="leaf"><th scope="row">Finnish</th><td lang="und-fonipa">ˈnel.jæ</td></tr>
-<tr class="leaf"><th scope="row">Sami</th><td lang="und-fonipa">ˈɲealː.je</td></tr>
-<tr class="leaf"><th scope="row">Khanty</th><td lang="und-fonipa">ɲa.tæ</td></tr>
-<tr class="leaf"><th scope="row">Hungarian</th><td lang="und-fonipa">neːɟ</td></tr>
-<tr class="leaf"><th scope="row">Nenets</th><td lang="und-fonipa">tʲet</td></tr>
-<tr class="leaf proto"><th scope="row">Proto Uralic?</th><td lang="und-fonipa">*nel.jæ</td></tr>
-</tbody>
-<tbody data-fam="4">
-<tr class="fam"><th colspan="2" scope="colgroup">Turkic</th></tr>
-<tr class="leaf"><th scope="row">Old Turkic</th><td lang="und-fonipa">tørt</td></tr>
-<tr class="leaf"><th scope="row">Volga Bulgar</th><td lang="und-fonipa">*tə.vat</td></tr>
-<tr class="leaf"><th scope="row">Chuvash</th><td lang="und-fonipa">tə.ʋat.ˈtə</td></tr>
-<tr class="leaf"><th scope="row">Yakut</th><td lang="und-fonipa">tyørt</td></tr>
-<tr class="leaf"><th scope="row">Bashkir</th><td lang="und-fonipa">dyrt</td></tr>
-<tr class="leaf proto"><th scope="row">Proto Turkic?</th><td lang="und-fonipa">*tøːrt</td></tr>
-</tbody>
-<tbody data-fam="5">
-<tr class="fam"><th colspan="2" scope="colgroup">Mongolic</th></tr>
-<tr class="leaf"><th scope="row">Mongolian</th><td lang="und-fonipa">dø.røw</td></tr>
-<tr class="leaf"><th scope="row">Buryat</th><td lang="und-fonipa">dyr.beŋ</td></tr>
-</tbody>
-<tbody data-fam="6">
-<tr class="fam"><th colspan="2" scope="colgroup">Basque</th></tr>
-<tr class="leaf"><th scope="row">Basque</th><td lang="und-fonipa">lau̯</td></tr>
-<tr class="leaf proto"><th scope="row">Proto Basque?</th><td lang="und-fonipa">*laur</td></tr>
-</tbody>
-<tbody data-fam="7">
-<tr class="fam"><th colspan="2" scope="colgroup">Tyrsenian</th></tr>
-<tr class="leaf"><th scope="row">Etruscan</th><td lang="und-fonipa">huθ</td></tr>
-</tbody>
-<tbody data-fam="8">
-<tr class="fam"><th colspan="2" scope="colgroup">Nakh Languages</th></tr>
-<tr class="leaf"><th scope="row">Chechen</th><td lang="und-fonipa">diʔ</td></tr>
-<tr class="leaf"><th scope="row">Ingush</th><td lang="und-fonipa">diʔ</td></tr>
-</tbody>
-</table>
+    <section class="cog" id="n4" data-spy data-n="4" aria-labelledby="n4-title">
+      <div class="cog__in">
+        <header class="cog__head">
+          <span class="cog__digit" aria-hidden="true">4</span>
+          <div class="cog__titles">
+            <h2 class="cog__title" id="n4-title"><span class="sr-only">Numeral 4: </span><span class="cog__recon" lang="und-fonipa">*thtp?</span></h2>
+            <p class="cog__cap">Nostratic reconstruction</p>
           </div>
-        </div>
-        <aside class="notes" aria-label="Alternative reconstructions for numeral 4">
-          <h3 id="n4-notes">Alternative reconstructions</h3><dl><dt>Proto Afro-Asiatic</dt><dd lang="und-fonipa">*adba</dd><dt>Proto Indo-Anatolian</dt><dd lang="und-fonipa">*dhworh</dd><dt>Proto Uralic</dt><dd lang="und-fonipa">*deth</dd><dt>Proto Turkic</dt><dd lang="und-fonipa">*dahat</dd><dt>Proto Mongolic</dt><dd lang="und-fonipa">*dhadav</dd><dt>Proto Basque</dt><dd lang="und-fonipa">*dah</dd><dt>Proto Tyrsenian</dt><dd lang="und-fonipa">*sa</dd><dt>Proto Nakh</dt><dd lang="und-fonipa">*dih</dd></dl>
-        </aside>
+        </header>
+        <div class="tree-stage" data-tree="3"><p class="tree-stage__nojs">The tree needs JavaScript. Every form is listed in the table above.</p></div>
       </div>
     </section>
-    <section class="numeral" id="n5" aria-labelledby="n5-title" data-n="5" data-recon="*penh">
-      <header class="numeral__head">
-        <span class="numeral__digit" aria-hidden="true">5</span>
-        <h2 class="numeral__title" id="n5-title"><span class="sr-only">Numeral 5: </span><span class="numeral__recon" lang="und-fonipa">*penh</span><span class="numeral__cap">Nostratic reconstruction</span></h2>
-      </header>
-      <div class="numeral__body">
-        <div>
-          <div class="tree-wrap view-tree" data-tree></div>
-          <div class="table-wrap view-table" tabindex="0" role="region" aria-label="Numeral 5: forms by language">
-<table class="cog"><caption class="sr-only">Forms for numeral 5 by language</caption>
-<thead><tr><th scope="col">Language</th><th scope="col">Form (IPA)</th></tr></thead>
-<tbody data-fam="1">
-<tr class="fam"><th colspan="2" scope="colgroup">Afro-Asiatic</th></tr>
-<tr class="branch"><th colspan="2" scope="colgroup">Semitic</th></tr>
-<tr class="leaf" data-branch="Semitic"><th scope="row">Akkadian</th><td lang="und-fonipa">xa.miʃ</td></tr>
-<tr class="leaf" data-branch="Semitic"><th scope="row">Phoenician</th><td lang="und-fonipa">ħa.miʃ</td></tr>
-<tr class="leaf" data-branch="Semitic"><th scope="row">Arabic</th><td lang="und-fonipa">ˈxam.sa</td></tr>
-<tr class="leaf proto" data-branch="Semitic"><th scope="row">Proto Semitic?</th><td lang="und-fonipa">*ˈxamʃ</td></tr>
-<tr class="branch"><th colspan="2" scope="colgroup">Berber</th></tr>
-<tr class="leaf" data-branch="Berber"><th scope="row">Berber</th><td lang="und-fonipa">smːus</td></tr>
-</tbody>
-<tbody data-fam="2">
-<tr class="fam"><th colspan="2" scope="colgroup">Indo-Anatolian</th></tr>
-<tr class="branch"><th colspan="2" scope="colgroup">Anatolian</th></tr>
-<tr class="leaf" data-branch="Anatolian"><th scope="row">Hittite</th><td lang="und-fonipa">pan.ta</td></tr>
-<tr class="branch"><th colspan="2" scope="colgroup">Indo-European</th></tr>
-<tr class="leaf" data-branch="Indo-European"><th scope="row">Tocharian</th><td lang="und-fonipa">piɕ</td></tr>
-<tr class="leaf" data-branch="Indo-European"><th scope="row">Sanskrit</th><td lang="und-fonipa">ˈpɐɲ.cɐn</td></tr>
-<tr class="leaf" data-branch="Indo-European"><th scope="row">Ancient Greek</th><td lang="und-fonipa">pén.te</td></tr>
-<tr class="leaf" data-branch="Indo-European"><th scope="row">Albanian</th><td lang="und-fonipa">pɛs</td></tr>
-<tr class="leaf" data-branch="Indo-European"><th scope="row">Armenian</th><td lang="und-fonipa">hiŋɡ</td></tr>
-<tr class="leaf proto" data-branch="Indo-European"><th scope="row">Proto IE?</th><td lang="und-fonipa">*pén.kʷe</td></tr>
-</tbody>
-<tbody data-fam="3">
-<tr class="fam"><th colspan="2" scope="colgroup">Uralic</th></tr>
-<tr class="leaf"><th scope="row">Finnish</th><td lang="und-fonipa">ˈʋiː.si</td></tr>
-<tr class="leaf"><th scope="row">Sami</th><td lang="und-fonipa">ˈvihtː.a</td></tr>
-<tr class="leaf"><th scope="row">Khanty</th><td lang="und-fonipa">wet</td></tr>
-<tr class="leaf"><th scope="row">Hungarian</th><td lang="und-fonipa">øt</td></tr>
-<tr class="leaf"><th scope="row">Nenets</th><td lang="und-fonipa">səm.plʲaŋk</td></tr>
-<tr class="leaf proto"><th scope="row">Proto Uralic?</th><td lang="und-fonipa">*wit</td></tr>
-</tbody>
-<tbody data-fam="4">
-<tr class="fam"><th colspan="2" scope="colgroup">Turkic</th></tr>
-<tr class="leaf"><th scope="row">Old Turkic</th><td lang="und-fonipa">beʃ</td></tr>
-<tr class="leaf"><th scope="row">Volga Bulgar</th><td lang="und-fonipa">*pʲil</td></tr>
-<tr class="leaf"><th scope="row">Chuvash</th><td lang="und-fonipa">pil.ˈlɘk</td></tr>
-<tr class="leaf"><th scope="row">Yakut</th><td lang="und-fonipa">biəs</td></tr>
-<tr class="leaf"><th scope="row">Bashkir</th><td lang="und-fonipa">biʃ</td></tr>
-<tr class="leaf proto"><th scope="row">Proto Turkic?</th><td lang="und-fonipa">*beːʃ</td></tr>
-</tbody>
-<tbody data-fam="5">
-<tr class="fam"><th colspan="2" scope="colgroup">Mongolic</th></tr>
-<tr class="leaf"><th scope="row">Mongolian</th><td lang="und-fonipa">tʰaw</td></tr>
-<tr class="leaf"><th scope="row">Buryat</th><td lang="und-fonipa">ta.baŋ</td></tr>
-</tbody>
-<tbody data-fam="6">
-<tr class="fam"><th colspan="2" scope="colgroup">Basque</th></tr>
-<tr class="leaf"><th scope="row">Basque</th><td lang="und-fonipa">bos̺t</td></tr>
-<tr class="leaf proto"><th scope="row">Proto Basque?</th><td lang="und-fonipa">*borts̻</td></tr>
-</tbody>
-<tbody data-fam="7">
-<tr class="fam"><th colspan="2" scope="colgroup">Tyrsenian</th></tr>
-<tr class="leaf"><th scope="row">Etruscan</th><td lang="und-fonipa">maχ</td></tr>
-</tbody>
-<tbody data-fam="8">
-<tr class="fam"><th colspan="2" scope="colgroup">Nakh Languages</th></tr>
-<tr class="leaf"><th scope="row">Chechen</th><td lang="und-fonipa">pxiʔ</td></tr>
-<tr class="leaf"><th scope="row">Ingush</th><td lang="und-fonipa">pxiʔ</td></tr>
-</tbody>
-</table>
+    <section class="cog" id="n5" data-spy data-n="5" aria-labelledby="n5-title">
+      <div class="cog__in">
+        <header class="cog__head">
+          <span class="cog__digit" aria-hidden="true">5</span>
+          <div class="cog__titles">
+            <h2 class="cog__title" id="n5-title"><span class="sr-only">Numeral 5: </span><span class="cog__recon" lang="und-fonipa">*penh?</span></h2>
+            <p class="cog__cap">Nostratic reconstruction</p>
           </div>
-        </div>
-        <aside class="notes" aria-label="Alternative reconstructions for numeral 5">
-          <h3 id="n5-notes">Alternative reconstructions</h3><dl><dt>Proto Afro-Asiatic</dt><dd lang="und-fonipa">*khameş</dd><dt>Proto Indo-Anatolian</dt><dd lang="und-fonipa">*phenkwe</dd><dt>Proto Uralic</dt><dd lang="und-fonipa">*wed</dd><dt>Proto Turkic</dt><dd lang="und-fonipa">*ped</dd><dt>Proto Mongolic</dt><dd lang="und-fonipa">*tab</dd><dt>Proto Basque</dt><dd lang="und-fonipa">*bost</dd><dt>Proto Tyrsenian</dt><dd lang="und-fonipa">*max</dd><dt>Proto Nakh</dt><dd lang="und-fonipa">*phiy</dd></dl>
-        </aside>
+        </header>
+        <div class="tree-stage" data-tree="4"><p class="tree-stage__nojs">The tree needs JavaScript. Every form is listed in the table above.</p></div>
       </div>
     </section>
-    <section class="numeral" id="n6" aria-labelledby="n6-title" data-n="6" data-recon="*hetp">
-      <header class="numeral__head">
-        <span class="numeral__digit" aria-hidden="true">6</span>
-        <h2 class="numeral__title" id="n6-title"><span class="sr-only">Numeral 6: </span><span class="numeral__recon" lang="und-fonipa">*hetp</span><span class="numeral__cap">Nostratic reconstruction</span></h2>
-      </header>
-      <div class="numeral__body">
-        <div>
-          <div class="tree-wrap view-tree" data-tree></div>
-          <div class="table-wrap view-table" tabindex="0" role="region" aria-label="Numeral 6: forms by language">
-<table class="cog"><caption class="sr-only">Forms for numeral 6 by language</caption>
-<thead><tr><th scope="col">Language</th><th scope="col">Form (IPA)</th></tr></thead>
-<tbody data-fam="1">
-<tr class="fam"><th colspan="2" scope="colgroup">Afro-Asiatic</th></tr>
-<tr class="branch"><th colspan="2" scope="colgroup">Semitic</th></tr>
-<tr class="leaf" data-branch="Semitic"><th scope="row">Akkadian</th><td lang="und-fonipa">ʃe.diʃ</td></tr>
-<tr class="leaf" data-branch="Semitic"><th scope="row">Phoenician</th><td lang="und-fonipa">ʃiʃ</td></tr>
-<tr class="leaf" data-branch="Semitic"><th scope="row">Arabic</th><td lang="und-fonipa">ˈsit.ta</td></tr>
-<tr class="leaf proto" data-branch="Semitic"><th scope="row">Proto Semitic?</th><td lang="und-fonipa">*ˈʃidθ</td></tr>
-<tr class="branch"><th colspan="2" scope="colgroup">Berber</th></tr>
-<tr class="leaf" data-branch="Berber"><th scope="row">Berber</th><td lang="und-fonipa">sdis</td></tr>
-</tbody>
-<tbody data-fam="2">
-<tr class="fam"><th colspan="2" scope="colgroup">Indo-Anatolian</th></tr>
-<tr class="branch"><th colspan="2" scope="colgroup">Anatolian</th></tr>
-<tr class="leaf" data-branch="Anatolian"><th scope="row">Hittite</th><td lang="und-fonipa">tuks</td></tr>
-<tr class="branch"><th colspan="2" scope="colgroup">Indo-European</th></tr>
-<tr class="leaf" data-branch="Indo-European"><th scope="row">Tocharian</th><td lang="und-fonipa">ʂkas</td></tr>
-<tr class="leaf" data-branch="Indo-European"><th scope="row">Sanskrit</th><td lang="und-fonipa">ʂɐʂ</td></tr>
-<tr class="leaf" data-branch="Indo-European"><th scope="row">Ancient Greek</th><td lang="und-fonipa">héks</td></tr>
-<tr class="leaf" data-branch="Indo-European"><th scope="row">Albanian</th><td lang="und-fonipa">ɟaʃt</td></tr>
-<tr class="leaf" data-branch="Indo-European"><th scope="row">Armenian</th><td lang="und-fonipa">vetsʰ</td></tr>
-<tr class="leaf proto" data-branch="Indo-European"><th scope="row">Proto IE?</th><td lang="und-fonipa">*swéḱs</td></tr>
-</tbody>
-<tbody data-fam="3">
-<tr class="fam"><th colspan="2" scope="colgroup">Uralic</th></tr>
-<tr class="leaf"><th scope="row">Finnish</th><td lang="und-fonipa">ˈkuː.si</td></tr>
-<tr class="leaf"><th scope="row">Sami</th><td lang="und-fonipa">ˈkuhtː.a</td></tr>
-<tr class="leaf"><th scope="row">Khanty</th><td lang="und-fonipa">xut</td></tr>
-<tr class="leaf"><th scope="row">Hungarian</th><td lang="und-fonipa">hɒt</td></tr>
-<tr class="leaf"><th scope="row">Nenets</th><td lang="und-fonipa">matq</td></tr>
-<tr class="leaf proto"><th scope="row">Proto Uralic?</th><td lang="und-fonipa">*ku.ti</td></tr>
-</tbody>
-<tbody data-fam="4">
-<tr class="fam"><th colspan="2" scope="colgroup">Turkic</th></tr>
-<tr class="leaf"><th scope="row">Old Turkic</th><td lang="und-fonipa">aɫ.tɯ</td></tr>
-<tr class="leaf"><th scope="row">Volga Bulgar</th><td lang="und-fonipa">*aɫ.tɯ</td></tr>
-<tr class="leaf"><th scope="row">Chuvash</th><td lang="und-fonipa">ult.ˈtə</td></tr>
-<tr class="leaf"><th scope="row">Yakut</th><td lang="und-fonipa">al.ta</td></tr>
-<tr class="leaf"><th scope="row">Bashkir</th><td lang="und-fonipa">aɫ.tɯ</td></tr>
-<tr class="leaf proto"><th scope="row">Proto Turkic?</th><td lang="und-fonipa">*aɫ.tɯ</td></tr>
-</tbody>
-<tbody data-fam="5">
-<tr class="fam"><th colspan="2" scope="colgroup">Mongolic</th></tr>
-<tr class="leaf"><th scope="row">Mongolian</th><td lang="und-fonipa">zʊr.ʁa</td></tr>
-<tr class="leaf"><th scope="row">Buryat</th><td lang="und-fonipa">zur.gaːŋ</td></tr>
-</tbody>
-<tbody data-fam="6">
-<tr class="fam"><th colspan="2" scope="colgroup">Basque</th></tr>
-<tr class="leaf"><th scope="row">Basque</th><td lang="und-fonipa">s̺ei̯</td></tr>
-<tr class="leaf proto"><th scope="row">Proto Basque?</th><td lang="und-fonipa">*se.ni</td></tr>
-</tbody>
-<tbody data-fam="7">
-<tr class="fam"><th colspan="2" scope="colgroup">Tyrsenian</th></tr>
-<tr class="leaf"><th scope="row">Etruscan</th><td lang="und-fonipa">śa</td></tr>
-</tbody>
-<tbody data-fam="8">
-<tr class="fam"><th colspan="2" scope="colgroup">Nakh Languages</th></tr>
-<tr class="leaf"><th scope="row">Chechen</th><td lang="und-fonipa">jalx</td></tr>
-<tr class="leaf"><th scope="row">Ingush</th><td lang="und-fonipa">jalx</td></tr>
-</tbody>
-</table>
+    <section class="cog" id="n6" data-spy data-n="6" aria-labelledby="n6-title">
+      <div class="cog__in">
+        <header class="cog__head">
+          <span class="cog__digit" aria-hidden="true">6</span>
+          <div class="cog__titles">
+            <h2 class="cog__title" id="n6-title"><span class="sr-only">Numeral 6: </span><span class="cog__recon" lang="und-fonipa">*hetp?</span></h2>
+            <p class="cog__cap">Nostratic reconstruction</p>
           </div>
-        </div>
-        <aside class="notes" aria-label="Alternative reconstructions for numeral 6">
-          <h3 id="n6-notes">Alternative reconstructions</h3><dl><dt>Proto Afro-Asiatic</dt><dd lang="und-fonipa">*şed</dd><dt>Proto Indo-Anatolian</dt><dd lang="und-fonipa">*şwekh</dd><dt>Proto Uralic</dt><dd lang="und-fonipa">*khudha</dd><dt>Proto Turkic</dt><dd lang="und-fonipa">*hadta</dd><dt>Proto Mongolic</dt><dd lang="und-fonipa">*sudha</dd><dt>Proto Basque</dt><dd lang="und-fonipa">*seiyh</dd><dt>Proto Tyrsenian</dt><dd lang="und-fonipa">*hud</dd><dt>Proto Nakh</dt><dd lang="und-fonipa">*yalha</dd></dl>
-        </aside>
+        </header>
+        <div class="tree-stage" data-tree="5"><p class="tree-stage__nojs">The tree needs JavaScript. Every form is listed in the table above.</p></div>
       </div>
     </section>
-    <section class="numeral" id="n7" aria-labelledby="n7-title" data-n="7" data-recon="*sept">
-      <header class="numeral__head">
-        <span class="numeral__digit" aria-hidden="true">7</span>
-        <h2 class="numeral__title" id="n7-title"><span class="sr-only">Numeral 7: </span><span class="numeral__recon" lang="und-fonipa">*sept</span><span class="numeral__cap">Nostratic reconstruction</span></h2>
-      </header>
-      <div class="numeral__body">
-        <div>
-          <div class="tree-wrap view-tree" data-tree></div>
-          <div class="table-wrap view-table" tabindex="0" role="region" aria-label="Numeral 7: forms by language">
-<table class="cog"><caption class="sr-only">Forms for numeral 7 by language</caption>
-<thead><tr><th scope="col">Language</th><th scope="col">Form (IPA)</th></tr></thead>
-<tbody data-fam="1">
-<tr class="fam"><th colspan="2" scope="colgroup">Afro-Asiatic</th></tr>
-<tr class="branch"><th colspan="2" scope="colgroup">Semitic</th></tr>
-<tr class="leaf" data-branch="Semitic"><th scope="row">Akkadian</th><td lang="und-fonipa">se.be</td></tr>
-<tr class="leaf" data-branch="Semitic"><th scope="row">Phoenician</th><td lang="und-fonipa">ʃi.baʕ</td></tr>
-<tr class="leaf" data-branch="Semitic"><th scope="row">Arabic</th><td lang="und-fonipa">ˈsab.ʕa</td></tr>
-<tr class="leaf proto" data-branch="Semitic"><th scope="row">Proto Semitic?</th><td lang="und-fonipa">*ˈʃabʕ</td></tr>
-<tr class="branch"><th colspan="2" scope="colgroup">Berber</th></tr>
-<tr class="leaf" data-branch="Berber"><th scope="row">Berber</th><td lang="und-fonipa">sa</td></tr>
-</tbody>
-<tbody data-fam="2">
-<tr class="fam"><th colspan="2" scope="colgroup">Indo-Anatolian</th></tr>
-<tr class="branch"><th colspan="2" scope="colgroup">Anatolian</th></tr>
-<tr class="leaf" data-branch="Anatolian"><th scope="row">Hittite</th><td lang="und-fonipa">sip.ta</td></tr>
-<tr class="branch"><th colspan="2" scope="colgroup">Indo-European</th></tr>
-<tr class="leaf" data-branch="Indo-European"><th scope="row">Tocharian</th><td lang="und-fonipa">ʂukt</td></tr>
-<tr class="leaf" data-branch="Indo-European"><th scope="row">Sanskrit</th><td lang="und-fonipa">ˈsɐp.t̪ɐn</td></tr>
-<tr class="leaf" data-branch="Indo-European"><th scope="row">Ancient Greek</th><td lang="und-fonipa">hep.tá</td></tr>
-<tr class="leaf" data-branch="Indo-European"><th scope="row">Albanian</th><td lang="und-fonipa">ʃtat</td></tr>
-<tr class="leaf" data-branch="Indo-European"><th scope="row">Armenian</th><td lang="und-fonipa">ewtʰn</td></tr>
-<tr class="leaf proto" data-branch="Indo-European"><th scope="row">Proto IE?</th><td lang="und-fonipa">*sep.tḿ̥</td></tr>
-</tbody>
-<tbody data-fam="3">
-<tr class="fam"><th colspan="2" scope="colgroup">Uralic</th></tr>
-<tr class="leaf"><th scope="row">Finnish</th><td lang="und-fonipa">ˈsei̯t.se.mæn</td></tr>
-<tr class="leaf"><th scope="row">Sami</th><td lang="und-fonipa">ˈt͡ʃie.ʒa</td></tr>
-<tr class="leaf"><th scope="row">Khanty</th><td lang="und-fonipa">tɛ.pət</td></tr>
-<tr class="leaf"><th scope="row">Hungarian</th><td lang="und-fonipa">heːt</td></tr>
-<tr class="leaf"><th scope="row">Nenets</th><td lang="und-fonipa">sʲiqw</td></tr>
-<tr class="leaf proto"><th scope="row">Proto Uralic?</th><td lang="und-fonipa">*ɕæ.t͡ɕæ</td></tr>
-</tbody>
-<tbody data-fam="4">
-<tr class="fam"><th colspan="2" scope="colgroup">Turkic</th></tr>
-<tr class="leaf"><th scope="row">Old Turkic</th><td lang="und-fonipa">je.ti</td></tr>
-<tr class="leaf"><th scope="row">Volga Bulgar</th><td lang="und-fonipa">*t͡ʃi.ət</td></tr>
-<tr class="leaf"><th scope="row">Chuvash</th><td lang="und-fonipa">ɕit͡ɕ.ˈt͡ɕɘ</td></tr>
-<tr class="leaf"><th scope="row">Yakut</th><td lang="und-fonipa">set.tə</td></tr>
-<tr class="leaf"><th scope="row">Bashkir</th><td lang="und-fonipa">je.te</td></tr>
-<tr class="leaf proto"><th scope="row">Proto Turkic?</th><td lang="und-fonipa">*je.ti</td></tr>
-</tbody>
-<tbody data-fam="5">
-<tr class="fam"><th colspan="2" scope="colgroup">Mongolic</th></tr>
-<tr class="leaf"><th scope="row">Mongolian</th><td lang="und-fonipa">dɔ.lɔ</td></tr>
-<tr class="leaf"><th scope="row">Buryat</th><td lang="und-fonipa">do.loːŋ</td></tr>
-</tbody>
-<tbody data-fam="6">
-<tr class="fam"><th colspan="2" scope="colgroup">Basque</th></tr>
-<tr class="leaf"><th scope="row">Basque</th><td lang="und-fonipa">s̻as̻.pi</td></tr>
-<tr class="leaf proto"><th scope="row">Proto Basque?</th><td lang="und-fonipa">*s̻as̻.pi</td></tr>
-</tbody>
-<tbody data-fam="7">
-<tr class="fam"><th colspan="2" scope="colgroup">Tyrsenian</th></tr>
-<tr class="leaf"><th scope="row">Etruscan</th><td lang="und-fonipa">semφ</td></tr>
-</tbody>
-<tbody data-fam="8">
-<tr class="fam"><th colspan="2" scope="colgroup">Nakh Languages</th></tr>
-<tr class="leaf"><th scope="row">Chechen</th><td lang="und-fonipa">worh</td></tr>
-<tr class="leaf"><th scope="row">Ingush</th><td lang="und-fonipa">worh</td></tr>
-</tbody>
-</table>
+    <section class="cog" id="n7" data-spy data-n="7" aria-labelledby="n7-title">
+      <div class="cog__in">
+        <header class="cog__head">
+          <span class="cog__digit" aria-hidden="true">7</span>
+          <div class="cog__titles">
+            <h2 class="cog__title" id="n7-title"><span class="sr-only">Numeral 7: </span><span class="cog__recon" lang="und-fonipa">*sept?</span></h2>
+            <p class="cog__cap">Nostratic reconstruction</p>
           </div>
-        </div>
-        <aside class="notes" aria-label="Alternative reconstructions for numeral 7">
-          <h3 id="n7-notes">Alternative reconstructions</h3><dl><dt>Proto Afro-Asiatic</dt><dd lang="und-fonipa">*sebe</dd><dt>Proto Indo-Anatolian</dt><dd lang="und-fonipa">*septe</dd><dt>Proto Uralic</dt><dd lang="und-fonipa">*sethe</dd><dt>Proto Turkic</dt><dd lang="und-fonipa">*sette</dd><dt>Proto Mongolic</dt><dd lang="und-fonipa">*doloh</dd><dt>Proto Basque</dt><dd lang="und-fonipa">*saspi</dd><dt>Proto Tyrsenian</dt><dd lang="und-fonipa">*semf</dd><dt>Proto Nakh</dt><dd lang="und-fonipa">*vorh</dd></dl>
-        </aside>
+        </header>
+        <div class="tree-stage" data-tree="6"><p class="tree-stage__nojs">The tree needs JavaScript. Every form is listed in the table above.</p></div>
       </div>
     </section>
-    <section class="numeral" id="n10" aria-labelledby="n10-title" data-n="10" data-recon="*ter">
-      <header class="numeral__head">
-        <span class="numeral__digit" aria-hidden="true">10</span>
-        <h2 class="numeral__title" id="n10-title"><span class="sr-only">Numeral 10: </span><span class="numeral__recon" lang="und-fonipa">*ter</span><span class="numeral__cap">Nostratic reconstruction</span></h2>
-      </header>
-      <div class="numeral__body">
-        <div>
-          <div class="tree-wrap view-tree" data-tree></div>
-          <div class="table-wrap view-table" tabindex="0" role="region" aria-label="Numeral 10: forms by language">
-<table class="cog"><caption class="sr-only">Forms for numeral 10 by language</caption>
-<thead><tr><th scope="col">Language</th><th scope="col">Form (IPA)</th></tr></thead>
-<tbody data-fam="1">
-<tr class="fam"><th colspan="2" scope="colgroup">Afro-Asiatic</th></tr>
-<tr class="branch"><th colspan="2" scope="colgroup">Semitic</th></tr>
-<tr class="leaf" data-branch="Semitic"><th scope="row">Akkadian</th><td lang="und-fonipa">e.ʃer</td></tr>
-<tr class="leaf" data-branch="Semitic"><th scope="row">Phoenician</th><td lang="und-fonipa">ʕa.ʃar</td></tr>
-<tr class="leaf" data-branch="Semitic"><th scope="row">Arabic</th><td lang="und-fonipa">ˈʕa.ʃa.ra</td></tr>
-<tr class="leaf proto" data-branch="Semitic"><th scope="row">Proto Semitic?</th><td lang="und-fonipa">*ˈʕaɕr</td></tr>
-<tr class="branch"><th colspan="2" scope="colgroup">Berber</th></tr>
-<tr class="leaf" data-branch="Berber"><th scope="row">Berber</th><td lang="und-fonipa">mraw</td></tr>
-</tbody>
-<tbody data-fam="2">
-<tr class="fam"><th colspan="2" scope="colgroup">Indo-Anatolian</th></tr>
-<tr class="branch"><th colspan="2" scope="colgroup">Anatolian</th></tr>
-<tr class="leaf" data-branch="Anatolian"><th scope="row">Hittite</th><td lang="und-fonipa">nat</td></tr>
-<tr class="branch"><th colspan="2" scope="colgroup">Indo-European</th></tr>
-<tr class="leaf" data-branch="Indo-European"><th scope="row">Tocharian</th><td lang="und-fonipa">ɕak</td></tr>
-<tr class="leaf" data-branch="Indo-European"><th scope="row">Sanskrit</th><td lang="und-fonipa">ˈd̪ɐ.ɕɐn</td></tr>
-<tr class="leaf" data-branch="Indo-European"><th scope="row">Ancient Greek</th><td lang="und-fonipa">dé.ka</td></tr>
-<tr class="leaf" data-branch="Indo-European"><th scope="row">Albanian</th><td lang="und-fonipa">ðjɛt</td></tr>
-<tr class="leaf" data-branch="Indo-European"><th scope="row">Armenian</th><td lang="und-fonipa">tasn</td></tr>
-<tr class="leaf proto" data-branch="Indo-European"><th scope="row">Proto IE?</th><td lang="und-fonipa">*déḱm̥t</td></tr>
-</tbody>
-<tbody data-fam="3">
-<tr class="fam"><th colspan="2" scope="colgroup">Uralic</th></tr>
-<tr class="leaf"><th scope="row">Finnish</th><td lang="und-fonipa">ˈkymː.e.nen</td></tr>
-<tr class="leaf"><th scope="row">Sami</th><td lang="und-fonipa">ˈlo.hi</td></tr>
-<tr class="leaf"><th scope="row">Khanty</th><td lang="und-fonipa">jaŋ</td></tr>
-<tr class="leaf"><th scope="row">Hungarian</th><td lang="und-fonipa">tiːz</td></tr>
-<tr class="leaf"><th scope="row">Nenets</th><td lang="und-fonipa">juq</td></tr>
-<tr class="leaf proto"><th scope="row">Proto Uralic?</th><td lang="und-fonipa">*lu.ki</td></tr>
-</tbody>
-<tbody data-fam="4">
-<tr class="fam"><th colspan="2" scope="colgroup">Turkic</th></tr>
-<tr class="leaf"><th scope="row">Old Turkic</th><td lang="und-fonipa">on</td></tr>
-<tr class="leaf"><th scope="row">Volga Bulgar</th><td lang="und-fonipa">*ʋun</td></tr>
-<tr class="leaf"><th scope="row">Chuvash</th><td lang="und-fonipa">ʋun.ˈnə</td></tr>
-<tr class="leaf"><th scope="row">Yakut</th><td lang="und-fonipa">uon</td></tr>
-<tr class="leaf"><th scope="row">Bashkir</th><td lang="und-fonipa">un</td></tr>
-<tr class="leaf proto"><th scope="row">Proto Turkic?</th><td lang="und-fonipa">*oːn</td></tr>
-</tbody>
-<tbody data-fam="5">
-<tr class="fam"><th colspan="2" scope="colgroup">Mongolic</th></tr>
-<tr class="leaf"><th scope="row">Mongolian</th><td lang="und-fonipa">a.rəw</td></tr>
-<tr class="leaf"><th scope="row">Buryat</th><td lang="und-fonipa">ar.baŋ</td></tr>
-</tbody>
-<tbody data-fam="6">
-<tr class="fam"><th colspan="2" scope="colgroup">Basque</th></tr>
-<tr class="leaf"><th scope="row">Basque</th><td lang="und-fonipa">ha.maɾ</td></tr>
-<tr class="leaf proto"><th scope="row">Proto Basque?</th><td lang="und-fonipa">*ha.mar</td></tr>
-</tbody>
-<tbody data-fam="7">
-<tr class="fam"><th colspan="2" scope="colgroup">Tyrsenian</th></tr>
-<tr class="leaf"><th scope="row">Etruscan</th><td lang="und-fonipa">śar</td></tr>
-</tbody>
-<tbody data-fam="8">
-<tr class="fam"><th colspan="2" scope="colgroup">Nakh Languages</th></tr>
-<tr class="leaf"><th scope="row">Chechen</th><td lang="und-fonipa">itt</td></tr>
-<tr class="leaf"><th scope="row">Ingush</th><td lang="und-fonipa">itt</td></tr>
-</tbody>
-</table>
+    <section class="cog sub" id="n8" data-spy data-n="8" aria-labelledby="n8-title">
+      <div class="cog__in">
+        <header class="cog__head">
+          <span class="cog__digit" aria-hidden="true">8</span>
+          <div class="cog__titles">
+            <h2 class="cog__title" id="n8-title"><span class="sr-only">Numeral 8: </span>Eight, counted down from ten</h2>
+            <p class="cog__cap">Counting by subtraction</p>
           </div>
+        </header>
+        <div class="sub__box">
+          <div class="sub__lead"><svg class="tendots" viewBox="0 0 218 24" role="img" aria-label="8 of ten: ten minus 2"><circle cx="10" cy="12" r="7" class="on" style="--i:0"/><circle cx="32" cy="12" r="7" class="on" style="--i:1"/><circle cx="54" cy="12" r="7" class="on" style="--i:2"/><circle cx="76" cy="12" r="7" class="on" style="--i:3"/><circle cx="98" cy="12" r="7" class="on" style="--i:4"/><circle cx="120" cy="12" r="7" class="on" style="--i:5"/><circle cx="142" cy="12" r="7" class="on" style="--i:6"/><circle cx="164" cy="12" r="7" class="on" style="--i:7"/><circle cx="186" cy="12" r="7" class="off" style="--i:8"/><circle cx="208" cy="12" r="7" class="off" style="--i:9"/></svg><p>No shared Nostratic form for 8 is set out here. Several languages build it by subtraction instead: “two short of ten”. The same idea reappears one decade up, where 18 is “two from twenty”.</p></div>
+          <ul class="sub__grid">
+          <li class="sub__card" data-fam="3">
+            <p class="sub__lang"><span class="sub__dot" aria-hidden="true"></span>Finnish<span class="sub__fam">Uralic</span></p>
+            <p class="sub__form">kahdeksan</p>
+            <p class="sub__gloss">kah- “two” + -deksa-, often read as “ten”: two (short of) ten.</p>
+          </li>
+          <li class="sub__card" data-fam="3">
+            <p class="sub__lang"><span class="sub__dot" aria-hidden="true"></span>Northern Sami<span class="sub__fam">Uralic</span></p>
+            <p class="sub__form">gávcci</p>
+            <p class="sub__gloss">Same formation as Finnish, shortened.</p>
+          </li>
+          <li class="sub__card" data-fam="3">
+            <p class="sub__lang"><span class="sub__dot" aria-hidden="true"></span>Meadow Mari<span class="sub__fam">Uralic</span></p>
+            <p class="sub__form">kandaše</p>
+            <p class="sub__gloss">ka- “two” + -daše, the same “ten” element.</p>
+          </li>
+          <li class="sub__card" data-fam="3">
+            <p class="sub__lang"><span class="sub__dot" aria-hidden="true"></span>Mansi<span class="sub__fam">Uralic</span></p>
+            <p class="sub__form">ńololow</p>
+            <p class="sub__gloss">Contains low “ten”.</p>
+          </li>
+          <li class="sub__card" data-fam="2">
+            <p class="sub__lang"><span class="sub__dot" aria-hidden="true"></span>Latin<span class="sub__fam">Indo-Anatolian</span></p>
+            <p class="sub__form">duodēvīgintī</p>
+            <p class="sub__gloss">duo “two” + dē “from” + vīgintī “twenty”.</p><p class="sub__eq">18 = 20 − 2</p>
+          </li>
+          <li class="sub__card" data-fam="7">
+            <p class="sub__lang"><span class="sub__dot" aria-hidden="true"></span>Etruscan<span class="sub__fam">Tyrsenian</span></p>
+            <p class="sub__form" lang="grc">eslem zaθrum</p>
+            <p class="sub__gloss">esl- “two” + -em “from” + zaθrum “twenty”.</p><p class="sub__eq">18 = 20 − 2</p>
+          </li>
+          </ul>
         </div>
-        <aside class="notes" aria-label="Alternative reconstructions for numeral 10">
-          <h3 id="n10-notes">Alternative reconstructions</h3><dl><dt>Proto Afro-Asiatic</dt><dd lang="und-fonipa">*aşer</dd><dt>Proto Indo-Anatolian</dt><dd lang="und-fonipa">*das</dd><dt>Proto Uralic</dt><dd lang="und-fonipa">*tid</dd><dt>Proto Turkic</dt><dd lang="und-fonipa">*hum</dd><dt>Proto Mongolic</dt><dd lang="und-fonipa">*arav</dd><dt>Proto Basque</dt><dd lang="und-fonipa">*hamar</dd><dt>Proto Tyrsenian</dt><dd lang="und-fonipa">*sar</dd><dt>Proto Nakh</dt><dd lang="und-fonipa">*itt</dd></dl>
-        </aside>
+      </div>
+    </section>
+    <section class="cog sub" id="n9" data-spy data-n="9" aria-labelledby="n9-title">
+      <div class="cog__in">
+        <header class="cog__head">
+          <span class="cog__digit" aria-hidden="true">9</span>
+          <div class="cog__titles">
+            <h2 class="cog__title" id="n9-title"><span class="sr-only">Numeral 9: </span>Nine, counted down from ten</h2>
+            <p class="cog__cap">Counting by subtraction</p>
+          </div>
+        </header>
+        <div class="sub__box">
+          <div class="sub__lead"><svg class="tendots" viewBox="0 0 218 24" role="img" aria-label="9 of ten: ten minus 1"><circle cx="10" cy="12" r="7" class="on" style="--i:0"/><circle cx="32" cy="12" r="7" class="on" style="--i:1"/><circle cx="54" cy="12" r="7" class="on" style="--i:2"/><circle cx="76" cy="12" r="7" class="on" style="--i:3"/><circle cx="98" cy="12" r="7" class="on" style="--i:4"/><circle cx="120" cy="12" r="7" class="on" style="--i:5"/><circle cx="142" cy="12" r="7" class="on" style="--i:6"/><circle cx="164" cy="12" r="7" class="on" style="--i:7"/><circle cx="186" cy="12" r="7" class="on" style="--i:8"/><circle cx="208" cy="12" r="7" class="off" style="--i:9"/></svg><p>Nine follows the same pattern as “one short of ten”, and the decade numbers show it most clearly.</p></div>
+          <ul class="sub__grid">
+          <li class="sub__card" data-fam="3">
+            <p class="sub__lang"><span class="sub__dot" aria-hidden="true"></span>Finnish<span class="sub__fam">Uralic</span></p>
+            <p class="sub__form">yhdeksän</p>
+            <p class="sub__gloss">yh- “one” + -deksä-: one (short of) ten.</p>
+          </li>
+          <li class="sub__card" data-fam="3">
+            <p class="sub__lang"><span class="sub__dot" aria-hidden="true"></span>Northern Sami<span class="sub__fam">Uralic</span></p>
+            <p class="sub__form">ovcci</p>
+            <p class="sub__gloss">Same formation as Finnish.</p>
+          </li>
+          <li class="sub__card" data-fam="3">
+            <p class="sub__lang"><span class="sub__dot" aria-hidden="true"></span>Meadow Mari<span class="sub__fam">Uralic</span></p>
+            <p class="sub__form">indeše</p>
+            <p class="sub__gloss">The same “ten” element as kandaše.</p>
+          </li>
+          <li class="sub__card" data-fam="3">
+            <p class="sub__lang"><span class="sub__dot" aria-hidden="true"></span>Mansi<span class="sub__fam">Uralic</span></p>
+            <p class="sub__form">ontolow</p>
+            <p class="sub__gloss">Contains low “ten”.</p>
+          </li>
+          <li class="sub__card" data-fam="2">
+            <p class="sub__lang"><span class="sub__dot" aria-hidden="true"></span>Latin<span class="sub__fam">Indo-Anatolian</span></p>
+            <p class="sub__form">ūndēvīgintī</p>
+            <p class="sub__gloss">ūnus “one” + dē “from” + vīgintī “twenty”.</p><p class="sub__eq">19 = 20 − 1</p>
+          </li>
+          <li class="sub__card" data-fam="2">
+            <p class="sub__lang"><span class="sub__dot" aria-hidden="true"></span>Sanskrit<span class="sub__fam">Indo-Anatolian</span></p>
+            <p class="sub__form">ūnaviṃśati</p>
+            <p class="sub__gloss">ūna “lacking” + viṃśati “twenty”.</p><p class="sub__eq">19 = 20 − 1</p>
+          </li>
+          <li class="sub__card" data-fam="2">
+            <p class="sub__lang"><span class="sub__dot" aria-hidden="true"></span>Ancient Greek<span class="sub__fam">Indo-Anatolian</span></p>
+            <p class="sub__form" lang="grc">ἑνὸς δέοντες εἴκοσι</p>
+            <p class="sub__gloss">“twenty lacking one”.</p><p class="sub__eq">19 = 20 − 1</p>
+          </li>
+          <li class="sub__card" data-fam="7">
+            <p class="sub__lang"><span class="sub__dot" aria-hidden="true"></span>Etruscan<span class="sub__fam">Tyrsenian</span></p>
+            <p class="sub__form" lang="grc">θunem cialχ</p>
+            <p class="sub__gloss">θu- “one” + -em “from” + cialχ “thirty”.</p><p class="sub__eq">29 = 30 − 1</p>
+          </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section class="cog" id="n10" data-spy data-n="10" aria-labelledby="n10-title">
+      <div class="cog__in">
+        <header class="cog__head">
+          <span class="cog__digit" aria-hidden="true">10</span>
+          <div class="cog__titles">
+            <h2 class="cog__title" id="n10-title"><span class="sr-only">Numeral 10: </span><span class="cog__recon" lang="und-fonipa">*ter?</span></h2>
+            <p class="cog__cap">Nostratic reconstruction</p>
+          </div>
+        </header>
+        <div class="tree-stage" data-tree="7"><p class="tree-stage__nojs">The tree needs JavaScript. Every form is listed in the table above.</p></div>
       </div>
     </section>
 
-      <section class="cite" aria-labelledby="cite-title">
+  <section class="endzone snap" id="end" aria-label="Citation and next page">
+    <div class="endzone__in">
+      <a class="pager" href="/nostraticpronouns/">
+        <span class="pager__k">Next in Nostratic v2.0</span>
+        <span class="pager__t">Pronouns<span class="pager__arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+        <ul class="pager__roots" aria-hidden="true"><li><span>1sg</span><b lang="und-fonipa">*mi?</b></li><li><span>2sg</span><b lang="und-fonipa">*ti?</b></li><li><span>1pl</span><b lang="und-fonipa">*me?</b></li><li><span>2pl</span><b lang="und-fonipa">*te?</b></li><li><span>who</span><b lang="und-fonipa">*kʷi?</b></li></ul>
+      </a>
+      <div class="cite">
         <h2 id="cite-title">Cite this page</h2>
-        <p id="citeText">hiç kimse. &ldquo;Nostratic Numbers.&rdquo; https://hickimse.com/nostraticnumbers/ (accessed <span data-accessed>8 November 2026</span>).</p>
+        <p id="citeText">hiç kimse. &ldquo;Nostratic v2.0: Numbers.&rdquo; https://hickimse.com/nostraticnumbers/ (accessed <span data-accessed>24 November 2026</span>).</p>
         <button type="button" class="btn" data-cite data-track="cite_copy"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><span>Copy citation</span></button>
-      </section>
+      </div>
     </div>
-  </div>
+  </section>
+  <script type="application/json" id="cogData">[{"id":"n1","label":"1","title":"Numeral 1","recon":"*hoikʷ?","fams":[{"i":1,"n":"Afro-Asiatic","k":[{"b":"Semitic","k":[["Akkadian","iʃ.teːn"],["Phoenician","ʔa.ħad"],["Arabic","ˈwaː.ħid"],["Proto Semitic?","*ʔa.ˈħad, *išt-"]]},{"b":"Berber","k":[["Berber","jan"]]}]},{"i":2,"n":"Indo-Anatolian","k":[{"b":"Anatolian","k":[["Hittite","aːs"]]},{"b":"Indo-European","k":[["Tocharian","ʂe"],["Sanskrit","ˈeː.kɐ"],["Ancient Greek","hêːs"],["Albanian","ɲə"],["Armenian","mi"],["Proto IE?","*h₁ój.nos"]]}]},{"i":3,"n":"Uralic","k":[["Finnish","ˈyk.si"],["Sami","ˈok.ta"],["Khanty","it"],["Hungarian","ɛɟ"],["Nenets","ŋop"],["Proto Uralic?","*yk.ti"]]},{"i":4,"n":"Turkic","k":[["Old Turkic","bir"],["Volga Bulgar","*bʲir"],["Chuvash","pɘr.ˈre"],["Yakut","biːr"],["Bashkir","ber"],["Proto Turkic?","*biːr"]]},{"i":5,"n":"Mongolic","k":[["Mongolian","nɛɡ"],["Buryat","ne.ɡeŋ"]]},{"i":6,"n":"Basque","k":[["Basque","bat"],["Proto Basque?","*ba.de"]]},{"i":7,"n":"Tyrsenian","k":[["Etruscan","θu"]]},{"i":8,"n":"Nakh Languages","k":[["Chechen","tsħaʔ"],["Ingush","tsaʔ"]]}],"paths":{"1":{"fit":"w","chain":["*hoikʷ?","*ʔoikʷ-","*ʔaħad"],"note":"h > ʔ and kʷ > ħ (labiovelar to pharyngeal); Akkadian ištēn and Berber yan point to separate stems."},"2":{"fit":"p","chain":["*hoikʷ?","*h₁oi-","*h₁oi-ko-, *h₁oi-no-"],"note":"h > h₁; the velar survives in Sanskrit éka, other branches take the suffix *-no-."},"3":{"fit":"p","chain":["*hoikʷ?","*oikʷ-","*ük-ti"],"note":"Initial h lost, oi > ü, kʷ > k, then the numeral suffix *-ti (as in *käk-ti “two”)."},"4":{"fit":"w","chain":["*hoikʷ?","*boi-","*biːr"],"note":"Needs a labial onset (kʷ anticipated as b-) and oi > iː; -r as a numeral formant."},"5":{"fit":"w","chain":["*hoikʷ?","*nikʷ-","*nigen"],"note":"kʷ > g fits, but the initial n- has no source in the root."},"6":{"fit":"w","chain":["*hoikʷ?","*bo-","*bade"],"note":"b- from the labial part of kʷ; the rest of *bade is unexplained."},"7":{"fit":"w","chain":["*hoikʷ?","θu"],"note":"Etruscan θu is closer to the t- roots; probably a replacement."},"8":{"fit":"w","chain":["*hoikʷ?","*kʲħa-","*tsħaʔ"],"note":"kʷ > kʲ > ts with h kept as ħ, which requires metathesis."}}},{"id":"n2","label":"2","title":"Numeral 2","recon":"*kekʷ?","fams":[{"i":1,"n":"Afro-Asiatic","k":[{"b":"Semitic","k":[["Akkadian","ʃi.naː"],["Phoenician","ʃneːm"],["Arabic","iθ.ˈnaːn"],["Proto Semitic?","*išt-"]]},{"b":"Berber","k":[["Berber","sin"]]}]},{"i":2,"n":"Indo-Anatolian","k":[{"b":"Anatolian","k":[["Hittite","daːn"]]},{"b":"Indo-European","k":[["Tocharian","wi"],["Sanskrit","dʋɐ"],["Ancient Greek","dý.o"],["Albanian","dy"],["Armenian","er.ˈku"],["Proto IE?","*dwóh₁"]]}]},{"i":3,"n":"Uralic","k":[["Finnish","ˈkɑk.si"],["Sami","ˈkuok.te"],["Khanty","kæt"],["Hungarian","ˈkɛtː.øː"],["Nenets","sʲi.di"],["Proto Uralic?","*kæk.ti"]]},{"i":4,"n":"Turkic","k":[["Old Turkic","e.ki"],["Volga Bulgar","*e.kʲi"],["Chuvash","ik.ˈkɘ"],["Yakut","ik.ki"],["Bashkir","i.ke"],["Proto Turkic?","*e.ki"]]},{"i":5,"n":"Mongolic","k":[["Mongolian","xɔ.jɔr"],["Buryat","xo.jor"]]},{"i":6,"n":"Basque","k":[["Basque","bi"],["Proto Basque?","*bi.ɡa"]]},{"i":7,"n":"Tyrsenian","k":[["Etruscan","zal"]]},{"i":8,"n":"Nakh Languages","k":[["Chechen","ʃiʔ"],["Ingush","ʃiʔ"]]}],"paths":{"1":{"fit":"w","chain":["*kekʷ?","*ćeć-","*θin-"],"note":"k palatalised before e (k > ć > θ/š/s) and the dual ending *-n; Semitic *θn may be its own root."},"2":{"fit":"w","chain":["*kekʷ?","*kʷo-","*dwóh₁"],"note":"Only the labial element is shared (kʷ > w); *dwo- is best treated as a separate root."},"3":{"fit":"s","chain":["*kekʷ?","*käkʷ-","*käk-ti"],"note":"e > ä, kʷ > k and the suffix *-ti. Finnish kaksi, Khanty kät and Hungarian kettő continue it directly."},"4":{"fit":"p","chain":["*kekʷ?","*ekʷi","*eki"],"note":"Initial k lost before a front vowel, kʷ > k."},"5":{"fit":"w","chain":["*kekʷ?","*kojar"],"note":"Only the initial velar is shared; -yar is a Mongolic numeral formant."},"6":{"fit":"w","chain":["*kekʷ?","*kʷe-","*biga"],"note":"First syllable lost and kʷ > b (labiovelar to labial)."},"7":{"fit":"w","chain":["*kekʷ?","zal"],"note":"No regular path to Etruscan zal."},"8":{"fit":"p","chain":["*kekʷ?","*ćiʔ","ʃiʔ"],"note":"k palatalised before a front vowel (k > ć > š); final kʷ > glottal stop."}}},{"id":"n3","label":"3","title":"Numeral 3","recon":"*kwed?","fams":[{"i":1,"n":"Afro-Asiatic","k":[{"b":"Semitic","k":[["Akkadian","ʃa.laːʃ"],["Phoenician","ʃa.luːʃ"],["Arabic","θa.ˈlaː.θa"],["Proto Semitic?","*θa.ˈlaːθ"]]},{"b":"Berber","k":[["Berber","kradˤ"]]}]},{"i":2,"n":"Indo-Anatolian","k":[{"b":"Anatolian","k":[["Hittite","teɾiya"]]},{"b":"Indo-European","k":[["Tocharian","trej"],["Sanskrit","t̪ɾi"],["Ancient Greek","trêːs"],["Albanian","tɾɛ"],["Armenian","e.ˈrekʰ"],["Proto IE?","*tré.jes"]]}]},{"i":3,"n":"Uralic","k":[["Finnish","ˈkol.me"],["Sami","ˈkolp.ma"],["Khanty","xu.ɫəm"],["Hungarian","ˈhaː.rom"],["Nenets","nʲa.xar"],["Proto Uralic?","*kol.mi"]]},{"i":4,"n":"Turkic","k":[["Old Turkic","yt͡ʃ"],["Volga Bulgar","*ʋət͡ʃ"],["Chuvash","ʋiɕ.ˈɕɘ"],["Yakut","ys"],["Bashkir","øs"],["Proto Turkic?","*yt͡ʃ"]]},{"i":5,"n":"Mongolic","k":[["Mongolian","ɢʊ.rəw"],["Buryat","gur.baŋ"]]},{"i":6,"n":"Basque","k":[["Basque","hi.ɾu"],["Proto Basque?","*hi.rur"]]},{"i":7,"n":"Tyrsenian","k":[["Etruscan","ci"]]},{"i":8,"n":"Nakh Languages","k":[["Chechen","qoʔ"],["Ingush","qoʔ"]]}],"paths":{"1":{"fit":"w","chain":["*kwed?","*kʷrad-","*θalaːθ"],"note":"Berber kraḍ keeps the k and the dental (d > ḍ); Semitic *θalāθ is a separate root."},"2":{"fit":"w","chain":["*kwed?","*trejes"],"note":"Only the dental is shared (d > t); *tri- looks like a replacement."},"3":{"fit":"p","chain":["*kwed?","*kʷol-","*kolmi"],"note":"w > o, d > l (lenition), then the formant *-mi (Finnish kolme)."},"4":{"fit":"p","chain":["*kwed?","*üd-","*ütʃ"],"note":"Initial k lost, w > ü, d > č (affricated before a front vowel)."},"5":{"fit":"p","chain":["*kwed?","*ɢur-","*ɢurban"],"note":"k > ɢ, w > u, d > r (rhotacism), then the formant -ban."},"6":{"fit":"p","chain":["*kwed?","*hur-","*hirur"],"note":"k > h (aspiration), w > u/i, d > r."},"7":{"fit":"p","chain":["*kwed?","*ki","ci"],"note":"kw > k before i and the final dental lost."},"8":{"fit":"p","chain":["*kwed?","*qo-","*qoʔ"],"note":"k > q before a back vowel, w > o, final d > ʔ."}}},{"id":"n4","label":"4","title":"Numeral 4","recon":"*thtp?","fams":[{"i":1,"n":"Afro-Asiatic","k":[{"b":"Semitic","k":[["Akkadian","er.be"],["Phoenician","ʔar.baʕ"],["Arabic","ˈʔar.ba.ʕa"],["Proto Semitic?","*ˈʔar.baʕ"]]},{"b":"Berber","k":[["Berber","kːuz"]]}]},{"i":2,"n":"Indo-Anatolian","k":[{"b":"Anatolian","k":[["Hittite","me.ju"]]},{"b":"Indo-European","k":[["Tocharian","ɕtwer"],["Sanskrit","cɐ.ˈt̪uɾ"],["Ancient Greek","tét.ta.res"],["Albanian","ˈka.təɾ"],["Armenian","tʃʰorkʰ"],["Proto IE?","*kʷet.wó.res"]]}]},{"i":3,"n":"Uralic","k":[["Finnish","ˈnel.jæ"],["Sami","ˈɲealː.je"],["Khanty","ɲa.tæ"],["Hungarian","neːɟ"],["Nenets","tʲet"],["Proto Uralic?","*nel.jæ"]]},{"i":4,"n":"Turkic","k":[["Old Turkic","tørt"],["Volga Bulgar","*tə.vat"],["Chuvash","tə.ʋat.ˈtə"],["Yakut","tyørt"],["Bashkir","dyrt"],["Proto Turkic?","*tøːrt"]]},{"i":5,"n":"Mongolic","k":[["Mongolian","dø.røw"],["Buryat","dyr.beŋ"]]},{"i":6,"n":"Basque","k":[["Basque","lau̯"],["Proto Basque?","*laur"]]},{"i":7,"n":"Tyrsenian","k":[["Etruscan","huθ"]]},{"i":8,"n":"Nakh Languages","k":[["Chechen","diʔ"],["Ingush","diʔ"]]}],"paths":{"1":{"fit":"w","chain":["*thtp?","*ʔarbaʕ"],"note":"No regular path; Semitic *ʔarbaʕ and Berber kkuz look like replacements."},"2":{"fit":"w","chain":["*thtp?","*tetw-","*kʷetwóres"],"note":"p > w fits the medial cluster, but initial t > kʷ is irregular."},"3":{"fit":"w","chain":["*thtp?","*nelljä"],"note":"Uralic *nelljä is a replacement; Nenets tʲet may keep the old t-."},"4":{"fit":"p","chain":["*thtp?","*tört-","*tøːrt"],"note":"th > t, medial t > r (rhotacism), final p > t."},"5":{"fit":"p","chain":["*thtp?","*dörp-","*dörben"],"note":"th > d, t > r and the final labial kept as b in -ben."},"6":{"fit":"w","chain":["*thtp?","*laur"],"note":"No regular path to Basque laur."},"7":{"fit":"p","chain":["*thtp?","*htθ","huθ"],"note":"Initial th > h (debuccalisation), second t > θ, final p lost."},"8":{"fit":"p","chain":["*thtp?","*diʔ"],"note":"th > d, the cluster simplified and final p > ʔ."}}},{"id":"n5","label":"5","title":"Numeral 5","recon":"*penh?","fams":[{"i":1,"n":"Afro-Asiatic","k":[{"b":"Semitic","k":[["Akkadian","xa.miʃ"],["Phoenician","ħa.miʃ"],["Arabic","ˈxam.sa"],["Proto Semitic?","*ˈxamʃ"]]},{"b":"Berber","k":[["Berber","smːus"]]}]},{"i":2,"n":"Indo-Anatolian","k":[{"b":"Anatolian","k":[["Hittite","pan.ta"]]},{"b":"Indo-European","k":[["Tocharian","piɕ"],["Sanskrit","ˈpɐɲ.cɐn"],["Ancient Greek","pén.te"],["Albanian","pɛs"],["Armenian","hiŋɡ"],["Proto IE?","*pén.kʷe"]]}]},{"i":3,"n":"Uralic","k":[["Finnish","ˈʋiː.si"],["Sami","ˈvihtː.a"],["Khanty","wet"],["Hungarian","øt"],["Nenets","səm.plʲaŋk"],["Proto Uralic?","*wit"]]},{"i":4,"n":"Turkic","k":[["Old Turkic","beʃ"],["Volga Bulgar","*pʲil"],["Chuvash","pil.ˈlɘk"],["Yakut","biəs"],["Bashkir","biʃ"],["Proto Turkic?","*beːʃ"]]},{"i":5,"n":"Mongolic","k":[["Mongolian","tʰaw"],["Buryat","ta.baŋ"]]},{"i":6,"n":"Basque","k":[["Basque","bos̺t"],["Proto Basque?","*borts̻"]]},{"i":7,"n":"Tyrsenian","k":[["Etruscan","maχ"]]},{"i":8,"n":"Nakh Languages","k":[["Chechen","pxiʔ"],["Ingush","pxiʔ"]]}],"paths":{"1":{"fit":"w","chain":["*penh?","*xamʃ"],"note":"Only a possible h > x is shared; Semitic *xamš is best treated as its own root."},"2":{"fit":"s","chain":["*penh?","*pénkʷe"],"note":"p, e and n kept; final h hardened to kʷ with the ending -e."},"3":{"fit":"p","chain":["*penh?","*wen-","*wit"],"note":"p > w (lenition), n lost, h > t."},"4":{"fit":"p","chain":["*penh?","*bēh-","*beːʃ"],"note":"p > b, e lengthened after the loss of n, h > š."},"5":{"fit":"w","chain":["*penh?","*tabun"],"note":"No regular path to Mongolic *tabun."},"6":{"fit":"p","chain":["*penh?","*bors-","*borts̻"],"note":"p > b, n > r, h > ts."},"7":{"fit":"p","chain":["*penh?","*meh-","maχ"],"note":"p > m by assimilation to the nasal, h > χ."},"8":{"fit":"s","chain":["*penh?","*pxiʔ"],"note":"p kept, h > x, n lost."}}},{"id":"n6","label":"6","title":"Numeral 6","recon":"*hetp?","fams":[{"i":1,"n":"Afro-Asiatic","k":[{"b":"Semitic","k":[["Akkadian","ʃe.diʃ"],["Phoenician","ʃiʃ"],["Arabic","ˈsit.ta"],["Proto Semitic?","*ˈʃidθ"]]},{"b":"Berber","k":[["Berber","sdis"]]}]},{"i":2,"n":"Indo-Anatolian","k":[{"b":"Anatolian","k":[["Hittite","tuks"]]},{"b":"Indo-European","k":[["Tocharian","ʂkas"],["Sanskrit","ʂɐʂ"],["Ancient Greek","héks"],["Albanian","ɟaʃt"],["Armenian","vetsʰ"],["Proto IE?","*swéḱs"]]}]},{"i":3,"n":"Uralic","k":[["Finnish","ˈkuː.si"],["Sami","ˈkuhtː.a"],["Khanty","xut"],["Hungarian","hɒt"],["Nenets","matq"],["Proto Uralic?","*ku.ti"]]},{"i":4,"n":"Turkic","k":[["Old Turkic","aɫ.tɯ"],["Volga Bulgar","*aɫ.tɯ"],["Chuvash","ult.ˈtə"],["Yakut","al.ta"],["Bashkir","aɫ.tɯ"],["Proto Turkic?","*aɫ.tɯ"]]},{"i":5,"n":"Mongolic","k":[["Mongolian","zʊr.ʁa"],["Buryat","zur.gaːŋ"]]},{"i":6,"n":"Basque","k":[["Basque","s̺ei̯"],["Proto Basque?","*se.ni"]]},{"i":7,"n":"Tyrsenian","k":[["Etruscan","śa"]]},{"i":8,"n":"Nakh Languages","k":[["Chechen","jalx"],["Ingush","jalx"]]}],"paths":{"1":{"fit":"w","chain":["*hetp?","*ʃidθ"],"note":"No regular path; Semitic *šidθ and Berber sdis look like replacements."},"2":{"fit":"w","chain":["*hetp?","*swéḱs"],"note":"Only the vowel is shared; *swéḱs is a separate root."},"3":{"fit":"p","chain":["*hetp?","*kut-","*kuti"],"note":"h > k (laryngeal hardened to a velar), e > u, t kept, final p lost."},"4":{"fit":"w","chain":["*hetp?","*alt-","*aɫtɯ"],"note":"Initial h lost and e > a; the l before t is unexplained."},"5":{"fit":"w","chain":["*hetp?","*ǰirguɣan"],"note":"No regular path to Mongolic *ǰirguɣan."},"6":{"fit":"w","chain":["*hetp?","*seni"],"note":"No regular path to Basque *seni."},"7":{"fit":"w","chain":["*hetp?","śa"],"note":"No regular path to Etruscan śa."},"8":{"fit":"w","chain":["*hetp?","*jalx"],"note":"h > j, t > l and p > x would all be needed."}}},{"id":"n7","label":"7","title":"Numeral 7","recon":"*sept?","fams":[{"i":1,"n":"Afro-Asiatic","k":[{"b":"Semitic","k":[["Akkadian","se.be"],["Phoenician","ʃi.baʕ"],["Arabic","ˈsab.ʕa"],["Proto Semitic?","*ˈʃabʕ"]]},{"b":"Berber","k":[["Berber","sa"]]}]},{"i":2,"n":"Indo-Anatolian","k":[{"b":"Anatolian","k":[["Hittite","sip.ta"]]},{"b":"Indo-European","k":[["Tocharian","ʂukt"],["Sanskrit","ˈsɐp.t̪ɐn"],["Ancient Greek","hep.tá"],["Albanian","ʃtat"],["Armenian","ewtʰn"],["Proto IE?","*sep.tḿ̥"]]}]},{"i":3,"n":"Uralic","k":[["Finnish","ˈsei̯t.se.mæn"],["Sami","ˈt͡ʃie.ʒa"],["Khanty","tɛ.pət"],["Hungarian","heːt"],["Nenets","sʲiqw"],["Proto Uralic?","*ɕæ.t͡ɕæ"]]},{"i":4,"n":"Turkic","k":[["Old Turkic","je.ti"],["Volga Bulgar","*t͡ʃi.ət"],["Chuvash","ɕit͡ɕ.ˈt͡ɕɘ"],["Yakut","set.tə"],["Bashkir","je.te"],["Proto Turkic?","*je.ti"]]},{"i":5,"n":"Mongolic","k":[["Mongolian","dɔ.lɔ"],["Buryat","do.loːŋ"]]},{"i":6,"n":"Basque","k":[["Basque","s̻as̻.pi"],["Proto Basque?","*s̻as̻.pi"]]},{"i":7,"n":"Tyrsenian","k":[["Etruscan","semφ"]]},{"i":8,"n":"Nakh Languages","k":[["Chechen","worh"],["Ingush","worh"]]}],"paths":{"1":{"fit":"p","chain":["*sept?","*ʃapt-","*ʃabʕ"],"note":"s > š, p > b and the final t > ʕ."},"2":{"fit":"s","chain":["*sept?","*septḿ̥"],"note":"s, e, p and t all kept, with the numeral ending *-m̥."},"3":{"fit":"p","chain":["*sept?","*ɕet-","*ɕæt͡ɕæ"],"note":"s > ś, p lost, t > č."},"4":{"fit":"p","chain":["*sept?","*jet-","*jeti"],"note":"s > y (as in Turkic yeti), p lost, t kept."},"5":{"fit":"w","chain":["*sept?","*doluɣan"],"note":"No regular path to Mongolic *doluɣan."},"6":{"fit":"s","chain":["*sept?","*sapt-","*s̻as̻pi"],"note":"s > z, p kept, t lost; the first syllable reduplicated."},"7":{"fit":"s","chain":["*sept?","*sepʰ-","semφ"],"note":"s kept, p > φ (aspirated), t lost, with m before the labial."},"8":{"fit":"w","chain":["*sept?","*worh"],"note":"No regular path to Nakh worh."}}},{"id":"n10","label":"10","title":"Numeral 10","recon":"*ter?","fams":[{"i":1,"n":"Afro-Asiatic","k":[{"b":"Semitic","k":[["Akkadian","e.ʃer"],["Phoenician","ʕa.ʃar"],["Arabic","ˈʕa.ʃa.ra"],["Proto Semitic?","*ˈʕaɕr"]]},{"b":"Berber","k":[["Berber","mraw"]]}]},{"i":2,"n":"Indo-Anatolian","k":[{"b":"Anatolian","k":[["Hittite","nat"]]},{"b":"Indo-European","k":[["Tocharian","ɕak"],["Sanskrit","ˈd̪ɐ.ɕɐn"],["Ancient Greek","dé.ka"],["Albanian","ðjɛt"],["Armenian","tasn"],["Proto IE?","*déḱm̥t"]]}]},{"i":3,"n":"Uralic","k":[["Finnish","ˈkymː.e.nen"],["Sami","ˈlo.hi"],["Khanty","jaŋ"],["Hungarian","tiːz"],["Nenets","juq"],["Proto Uralic?","*lu.ki"]]},{"i":4,"n":"Turkic","k":[["Old Turkic","on"],["Volga Bulgar","*ʋun"],["Chuvash","ʋun.ˈnə"],["Yakut","uon"],["Bashkir","un"],["Proto Turkic?","*oːn"]]},{"i":5,"n":"Mongolic","k":[["Mongolian","a.rəw"],["Buryat","ar.baŋ"]]},{"i":6,"n":"Basque","k":[["Basque","ha.maɾ"],["Proto Basque?","*ha.mar"]]},{"i":7,"n":"Tyrsenian","k":[["Etruscan","śar"]]},{"i":8,"n":"Nakh Languages","k":[["Chechen","itt"],["Ingush","itt"]]}],"paths":{"1":{"fit":"p","chain":["*ter?","*ʕer-","*ʕaɕr"],"note":"t > ʕ is irregular; the final r is kept."},"2":{"fit":"w","chain":["*ter?","*déḱm̥t"],"note":"Only the dental onset matches (t > d)."},"3":{"fit":"p","chain":["*ter?","*tir-","tiːz"],"note":"Hungarian tíz keeps t and has r > z; Proto-Uralic *luki is a replacement."},"4":{"fit":"w","chain":["*ter?","*oːn"],"note":"No regular path to Turkic *ōn."},"5":{"fit":"w","chain":["*ter?","*har-","*harban"],"note":"t > h with r kept, then the formant -ban."},"6":{"fit":"p","chain":["*ter?","*har-","*hamar"],"note":"t > h, r kept, with an inserted -ma-."},"7":{"fit":"s","chain":["*ter?","śar"],"note":"t > ś (palatalised), r kept."},"8":{"fit":"w","chain":["*ter?","*et-","itt"],"note":"r lost and the vowel fronted: *ter > *et > itt."}}}]</script>
 </main>
 <footer class="site-footer">
   <p>&copy; <span data-year>2026</span> hiç kimse. All rights reserved.</p>
   <nav class="site-footer__links" aria-label="Footer">
     <a href="/">Home</a>
-    <a href="/#archive">Archive</a>
+    <a href="/archive/">Archive</a>
     <a href="/outis/">Outis</a>
     <a href="mailto:adaptivesubject@gmail.com" data-contact data-track="contact_open">Contact</a>
     <a href="/privacy/">Privacy</a>

@@ -240,7 +240,7 @@ readSp();
 })();
 
 /* Plaka üzerinde imleç ışığı */
-$$('.plate').forEach(el => {
+$$('.card').forEach(el => {
   el.addEventListener('pointermove', e => {
     const r = el.getBoundingClientRect();
     el.style.setProperty('--mx', (e.clientX - r.left) + 'px');
@@ -283,9 +283,10 @@ $$('[data-cycle]').forEach(el => {
 
   function build(text) {
     el.textContent = '';
-    chars = Array.from(text).map(ch => {
+    chars = Array.from(text).map((ch, i) => {
       const s = document.createElement('span');
       s.className = 'k';
+      s.style.setProperty('--i', i);
       s.textContent = ch;
       s._x = s._y = 0;
       el.appendChild(s);
