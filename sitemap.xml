@@ -1,9 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://hickimse.com/</loc><lastmod>2026-11-24</lastmod></url>
-  <url><loc>https://hickimse.com/nostraticnumbers/</loc><lastmod>2026-11-24</lastmod></url>
-  <url><loc>https://hickimse.com/outis/</loc><lastmod>2026-11-24</lastmod></url>
-  <url><loc>https://hickimse.com/privacy/</loc><lastmod>2026-11-24</lastmod></url>
-  <url><loc>https://hickimse.com/archive/</loc><lastmod>2026-11-24</lastmod></url>
-  <url><loc>https://hickimse.com/nostraticpronouns/</loc><lastmod>2026-11-24</lastmod></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url><loc>https://hickimse.com/</loc><lastmod>2026-11-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hickimse.com/"/><xhtml:link rel="alternate" hreflang="tr" href="https://hickimse.com/tr/"/></url>
+  <url><loc>https://hickimse.com/tr/</loc><lastmod>2026-11-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hickimse.com/"/><xhtml:link rel="alternate" hreflang="tr" href="https://hickimse.com/tr/"/></url>
+  <url><loc>https://hickimse.com/archive/</loc><lastmod>2026-11-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hickimse.com/archive/"/><xhtml:link rel="alternate" hreflang="tr" href="https://hickimse.com/tr/archive/"/></url>
+  <url><loc>https://hickimse.com/tr/archive/</loc><lastmod>2026-11-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hickimse.com/archive/"/><xhtml:link rel="alternate" hreflang="tr" href="https://hickimse.com/tr/archive/"/></url>
+  <url><loc>https://hickimse.com/outis/</loc><lastmod>2026-11-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hickimse.com/outis/"/><xhtml:link rel="alternate" hreflang="tr" href="https://hickimse.com/tr/outis/"/></url>
+  <url><loc>https://hickimse.com/tr/outis/</loc><lastmod>2026-11-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hickimse.com/outis/"/><xhtml:link rel="alternate" hreflang="tr" href="https://hickimse.com/tr/outis/"/></url>
+  <url><loc>https://hickimse.com/nostraticnumbers/</loc><lastmod>2026-11-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hickimse.com/nostraticnumbers/"/><xhtml:link rel="alternate" hreflang="tr" href="https://hickimse.com/tr/nostraticnumbers/"/></url>
+  <url><loc>https://hickimse.com/tr/nostraticnumbers/</loc><lastmod>2026-11-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hickimse.com/nostraticnumbers/"/><xhtml:link rel="alternate" hreflang="tr" href="https://hickimse.com/tr/nostraticnumbers/"/></url>
+  <url><loc>https://hickimse.com/nostraticpronouns/</loc><lastmod>2026-11-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hickimse.com/nostraticpronouns/"/><xhtml:link rel="alternate" hreflang="tr" href="https://hickimse.com/tr/nostraticpronouns/"/></url>
+  <url><loc>https://hickimse.com/tr/nostraticpronouns/</loc><lastmod>2026-11-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hickimse.com/nostraticpronouns/"/><xhtml:link rel="alternate" hreflang="tr" href="https://hickimse.com/tr/nostraticpronouns/"/></url>
+  <url><loc>https://hickimse.com/turkic/</loc><lastmod>2026-11-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hickimse.com/turkic/"/><xhtml:link rel="alternate" hreflang="tr" href="https://hickimse.com/tr/turkic/"/></url>
+  <url><loc>https://hickimse.com/tr/turkic/</loc><lastmod>2026-11-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hickimse.com/turkic/"/><xhtml:link rel="alternate" hreflang="tr" href="https://hickimse.com/tr/turkic/"/></url>
+  <url><loc>https://hickimse.com/privacy/</loc><lastmod>2026-11-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hickimse.com/privacy/"/><xhtml:link rel="alternate" hreflang="tr" href="https://hickimse.com/tr/privacy/"/></url>
+  <url><loc>https://hickimse.com/tr/privacy/</loc><lastmod>2026-11-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hickimse.com/privacy/"/><xhtml:link rel="alternate" hreflang="tr" href="https://hickimse.com/tr/privacy/"/></url>
 </urlset>

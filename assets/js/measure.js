@@ -1,6 +1,6 @@
 /* hiç kimse — Google Tag Manager / Analytics (dosya adı bilerek "analytics" değil: engelleyiciler o adı kapatıyor).
    Varsayılan açık, çerez bandı yok. Ziyaretçi sonradan "Privacy settings" penceresinden kapatabilir.
-   Tarayıcı Global Privacy Control / Do Not Track gönderiyorsa, kullanıcı başka seçim yapmadıkça kapalı sayılır. */
+   Tarayıcının Do Not Track / GPC ayarından bağımsız olarak varsayılan açıktır (site sahibinin tercihi). */
 (() => {
 'use strict';
 const GTM_ID = 'GTM-PB6CHT89';
@@ -61,10 +61,10 @@ function set(v, persist) {
   listeners.forEach(f => f(v));
 }
 
-/* Başlangıç: kayıtlı seçim → GPC/DNT (kapalı) → varsayılan açık */
+/* Başlangıç: kayıtlı seçim varsa o, yoksa açık */
 const saved = store.get(KEY);
-const optOut = navigator.globalPrivacyControl === true || navigator.doNotTrack === '1';
-set(saved === 'granted' || saved === 'denied' ? saved : (optOut ? 'denied' : 'granted'), false);
+const optOut = false;
+set(saved === 'denied' ? 'denied' : 'granted', false);
 
 window.hkPrivacy = {
   get: () => state,

@@ -3,6 +3,8 @@
   const root = document.documentElement;
   const read = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
   root.classList.add('js');
+  // İki dil: sayfanın diline göre metin seçer
+  window.hkT = (en, tr) => (root.lang === 'tr' ? tr : en);
 
   const saved = read('hk.theme');
   // Varsayılan tema her zaman açık; yalnızca ziyaretçi değiştirdiyse koyu açılır.

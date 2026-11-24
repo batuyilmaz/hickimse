@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>hiç kimse</title>
+    <link>https://hickimse.com/</link>
+    <atom:link href="https://hickimse.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <description>Essays, notes and theories on any subject, written by nobody in particular.</description>
+    <language>en</language>
+    <item>
+      <title>Turkic Numerals and Pronouns</title>
+      <link>https://hickimse.com/turkic/</link>
+      <guid isPermaLink="true">https://hickimse.com/turkic/</guid>
+      <pubDate>Tue, 24 Nov 2026 09:00:00 +0300</pubDate>
+      <description>Turkic numerals and pronouns compared syllable by syllable, with the sound shifts behind them and a note on Uralic and Basque.</description>
+    </item>
+    <item>
+      <title>Nostratic v2.0: Pronouns</title>
+      <link>https://hickimse.com/nostraticpronouns/</link>
+      <guid isPermaLink="true">https://hickimse.com/nostraticpronouns/</guid>
+      <pubDate>Tue, 24 Nov 2026 09:00:00 +0300</pubDate>
+      <description>Personal and interrogative pronouns, from “I” and “they” to “who” and “what”, across eight language families, with possible sound paths.</description>
+    </item>
+    <item>
+      <title>Nostratic v2.0: Numbers</title>
+      <link>https://hickimse.com/nostraticnumbers/</link>
+      <guid isPermaLink="true">https://hickimse.com/nostraticnumbers/</guid>
+      <pubDate>Sun, 08 Nov 2026 09:00:00 +0300</pubDate>
+      <description>Cognate sets for the numerals 1–7 and 10 across eight language families, with possible sound paths and the subtractive 8 and 9.</description>
+    </item>
+    <item>
+      <title>Outis</title>
+      <link>https://hickimse.com/outis/</link>
+      <guid isPermaLink="true">https://hickimse.com/outis/</guid>
+      <pubDate>Sun, 08 Nov 2026 09:00:00 +0300</pubDate>
+      <description>Οὖτις, Greek for “nobody”. A small cave, and something watching from it.</description>
+    </item>
+  </channel>
+</rss>

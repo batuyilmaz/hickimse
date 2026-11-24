@@ -23,7 +23,7 @@ let DATA = [];
 try { DATA = JSON.parse($('#cogData').textContent); } catch (e) { return; }
 
 /* ---- 1. Veri modeli ---- */
-const mkLeaf = (k, fi) => ({ type: 'leaf', idx: k[2] || fi, lang: k[0], form: k[1], proto: k[0].startsWith('Proto'), cross: !!k[2] });
+const mkLeaf = (k, fi) => ({ type: 'leaf', idx: k[2] || fi, lang: k[0], form: k[1], proto: !!k[3], cross: !!k[2] });
 const sections = DATA.map((d, i) => {
   const host = $('[data-tree="' + i + '"]');
   const groups = d.roots.map((r, gi) => ({
@@ -178,7 +178,7 @@ function render(S, opts = {}) {
   canvas.style.height = (S.H * s).toFixed(0) + 'px';
   S.host.appendChild(canvas);
   S.canvas = canvas;
-  const svg = svgEl('svg', { class: 'tree', viewBox: '0 0 ' + S.W.toFixed(0) + ' ' + S.H.toFixed(0), width: (S.W * s).toFixed(0), height: (S.H * s).toFixed(0), role: 'group', 'aria-label': S.title + ': tree of forms by language family' }, canvas);
+  const svg = svgEl('svg', { class: 'tree', viewBox: '0 0 ' + S.W.toFixed(0) + ' ' + S.H.toFixed(0), width: (S.W * s).toFixed(0), height: (S.H * s).toFixed(0), role: 'group', 'aria-label': S.title + hkT(': tree of forms by language family', ': dil ailelerine göre biçim ağacı') }, canvas);
   S.svg = svg;
   const defs = svgEl('defs', {}, svg);
   const gL = svgEl('g', {}, svg);
@@ -217,7 +217,7 @@ function render(S, opts = {}) {
   };
   const drawFam = (f, x, y, labelX) => {
     const labelW = measure(f.name, 'fam-label');
-    const g = svgEl('g', { class: 'node node--fam' + (f.open ? '' : ' node--collapsed'), 'data-fam': f.idx, tabindex: 0, role: 'button', 'aria-expanded': String(f.open), 'aria-label': f.name + (f.open ? ', expanded' : ', collapsed') }, gN);
+    const g = svgEl('g', { class: 'node node--fam' + (f.open ? '' : ' node--collapsed'), 'data-fam': f.idx, tabindex: 0, role: 'button', 'aria-expanded': String(f.open), 'aria-label': f.name + (f.open ? hkT(', expanded', ', açık') : hkT(', collapsed', ', kapalı')) }, gN);
     svgEl('rect', { class: 'hit', x: x - 10, y: y - 14, width: labelX - x + 12 + labelW, height: 28, rx: 8 }, g);
     svgEl('circle', { class: 'dot', cx: x, cy: y, r: 5.5 }, g);
     svgEl('text', { class: 'fam-label', x: labelX, y, dy: '.35em' }, g).textContent = f.name;
@@ -229,7 +229,7 @@ function render(S, opts = {}) {
   };
   const drawBranch = (k, f, x, y) => {
     const bw = measure(k.name, 'branch-label');
-    const bg = svgEl('g', { class: 'node node--branch' + (k.open ? '' : ' node--collapsed'), 'data-fam': f.idx, tabindex: 0, role: 'button', 'aria-expanded': String(k.open), 'aria-label': k.name + ' (' + f.name + ')' + (k.open ? ', expanded' : ', collapsed') }, gN);
+    const bg = svgEl('g', { class: 'node node--branch' + (k.open ? '' : ' node--collapsed'), 'data-fam': f.idx, tabindex: 0, role: 'button', 'aria-expanded': String(k.open), 'aria-label': k.name + ' (' + f.name + ')' + (k.open ? hkT(', expanded', ', açık') : hkT(', collapsed', ', kapalı')) }, gN);
     svgEl('rect', { class: 'hit', x: x - 10, y: y - 13, width: 24 + bw, height: 26, rx: 8 }, bg);
     svgEl('circle', { class: 'dot', cx: x, cy: y, r: 4.5 }, bg);
     svgEl('text', { class: 'branch-label', x: x + 13, y, dy: '.35em' }, bg).textContent = k.name;
@@ -238,7 +238,7 @@ function render(S, opts = {}) {
     activate(bg, () => toggle(S, k));
   };
   const drawLeaf = (l, x, y, langX) => {
-    const g = svgEl('g', { class: 'node node--leaf' + (l.proto ? ' proto' : '') + (l.cross ? ' cross' : ''), 'data-fam': l.idx, tabindex: 0, role: 'button', 'aria-label': l.form + ' ' + l.lang + ' (copy form)' }, gN);
+    const g = svgEl('g', { class: 'node node--leaf' + (l.proto ? ' proto' : '') + (l.cross ? ' cross' : ''), 'data-fam': l.idx, tabindex: 0, role: 'button', 'aria-label': l.form + ' ' + l.lang + hkT(' (copy form)', ' (biçimi kopyala)') }, gN);
     svgEl('rect', { class: 'hit', x: x - 8, y: y - 13, width: langX - x + measure(l.lang, 'lang') + 18, height: 26, rx: 8 }, g);
     svgEl('circle', { class: 'dot', cx: x, cy: y, r: 3.6 }, g);
     svgEl('text', { class: 'form', x: x + 12, y, dy: '.35em' }, g).textContent = l.form;
@@ -246,7 +246,7 @@ function render(S, opts = {}) {
     svgEl('text', { class: 'lang', x: langX, y, dy: '.35em' }, g).textContent = l.lang;
     l.g = g;
     nodes.push(l);
-    activate(g, async () => { toast(await copy(l.form) ? 'Copied ' + l.form : 'Copy failed'); });
+    activate(g, async () => { toast(await copy(l.form) ? hkT('Copied ', 'Kopyalandı: ') + l.form : hkT('Copy failed', 'Kopyalanamadı')); });
   };
 
   if (wide) {
@@ -310,7 +310,7 @@ function render(S, opts = {}) {
     b.className = 'why-btn';
     b.dataset.fam = f.idx;
     b.textContent = '?';
-    b.setAttribute('aria-label', 'Possible sound path: ' + f.name + (S.groups.length > 1 ? ' (' + S.groups[f.gi].recon + ')' : ''));
+    b.setAttribute('aria-label', hkT('Possible sound path: ', 'Olası ses yolağı: ') + f.name + (S.groups.length > 1 ? ' (' + S.groups[f.gi].recon + ')' : ''));
     b.setAttribute('aria-haspopup', 'dialog');
     b.setAttribute('aria-expanded', 'false');
     b.style.left = (f.bx * s).toFixed(1) + 'px';
@@ -380,8 +380,8 @@ why.setAttribute('aria-labelledby', 'whyTitle');
 why.tabIndex = -1;
 why.hidden = true;
 why.innerHTML = '<div class="why__head"><span class="why__dot" aria-hidden="true"></span><h3 class="why__title" id="whyTitle"></h3>' +
-  '<button type="button" class="why__x" aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>' +
-  '<p class="why__k">Possible sound path</p><ol class="deriv"></ol>';
+  '<button type="button" class="why__x" aria-label="' + hkT('Close', 'Kapat') + '"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>' +
+  '<p class="why__k">' + hkT('Possible sound path', 'Olası ses yolağı') + '</p><ol class="deriv"></ol>';
 document.body.appendChild(why);
 let whyFrom = null, whyY = 0;
 
@@ -401,7 +401,7 @@ function openWhy(S, f, btn) {
     ol.appendChild(li);
   };
   if (f.path) f.path.forEach((r, i) => row(r[0], r[1], i ? '' : 'deriv__root'));
-  else { row(S.groups[f.gi].recon, '', 'deriv__root'); row('No regular path', '', 'deriv__none'); }
+  else { row(S.groups[f.gi].recon, '', 'deriv__root'); row(hkT('No regular path', 'Düzenli yol yok'), '', 'deriv__none'); }
   why.hidden = false;
   const sheet = innerWidth < 640;
   why.classList.toggle('why--sheet', sheet);
@@ -467,9 +467,9 @@ $$('[data-bottom]').forEach(b => b.addEventListener('click', () => {
 /* ---- 8. Alıntı ---- */
 const cite = $('[data-cite]');
 const accessed = $('[data-accessed]');
-if (accessed) accessed.textContent = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+if (accessed) accessed.textContent = new Date().toLocaleDateString(hkT('en-GB', 'tr-TR'), { day: 'numeric', month: 'long', year: 'numeric' });
 if (cite) cite.addEventListener('click', async () => {
-  toast(await copy($('#citeText').textContent.trim().replace(/\s+/g, ' ')) ? 'Citation copied' : 'Copy failed');
+  toast(await copy($('#citeText').textContent.trim().replace(/\s+/g, ' ')) ? hkT('Citation copied', 'Kaynakça kopyalandı') : hkT('Copy failed', 'Kopyalanamadı'));
 });
 
 /* ---- 9. Başlangıç ---- */

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>hiç kimse</title>
+    <link>https://hickimse.com/tr/</link>
+    <atom:link href="https://hickimse.com/tr/feed.xml" rel="self" type="application/rss+xml"/>
+    <description>Her konuda denemeler, notlar ve teoriler; yazanı hiç kimse.</description>
+    <language>tr</language>
+    <item>
+      <title>Türk Dillerinde Sayılar ve Zamirler</title>
+      <link>https://hickimse.com/tr/turkic/</link>
+      <guid isPermaLink="true">https://hickimse.com/tr/turkic/</guid>
+      <pubDate>Tue, 24 Nov 2026 09:00:00 +0300</pubDate>
+      <description>Türk dillerindeki sayılar ve zamirler, hece hece ve arkalarındaki ses değişimleriyle; Ural ve Bask üzerine bir dipnotla.</description>
+    </item>
+    <item>
+      <title>Nostratik v2.0: Zamirler</title>
+      <link>https://hickimse.com/tr/nostraticpronouns/</link>
+      <guid isPermaLink="true">https://hickimse.com/tr/nostraticpronouns/</guid>
+      <pubDate>Tue, 24 Nov 2026 09:00:00 +0300</pubDate>
+      <description>Kişi ve soru zamirleri, “ben” ve “onlar”dan “kim” ve “ne”ye, sekiz dil ailesinde ve olası ses yolaklarıyla.</description>
+    </item>
+    <item>
+      <title>Nostratik v2.0: Sayılar</title>
+      <link>https://hickimse.com/tr/nostraticnumbers/</link>
+      <guid isPermaLink="true">https://hickimse.com/tr/nostraticnumbers/</guid>
+      <pubDate>Sun, 08 Nov 2026 09:00:00 +0300</pubDate>
+      <description>1–7 ve 10 sayıları için sekiz dil ailesinde soydaş kümeleri; olası ses yolakları ve eksiltmeyle sayılan 8 ile 9.</description>
+    </item>
+    <item>
+      <title>Outis</title>
+      <link>https://hickimse.com/tr/outis/</link>
+      <guid isPermaLink="true">https://hickimse.com/tr/outis/</guid>
+      <pubDate>Sun, 08 Nov 2026 09:00:00 +0300</pubDate>
+      <description>Οὖτις, Yunanca “hiç kimse”. Küçük bir mağara ve içinden bakan bir şey.</description>
+    </item>
+  </channel>
+</rss>

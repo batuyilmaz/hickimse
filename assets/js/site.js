@@ -85,7 +85,7 @@ function applyTheme(t, persist) {
   if (persist) store.set('hk.theme', t);
   const meta = $('meta[name="theme-color"]');
   if (meta) meta.content = (t === 'dark' || root.dataset.page === 'outis') ? '#090f24' : '#f1f5fa';
-  $$('[data-theme-toggle]').forEach(b => b.setAttribute('aria-label', t === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'));
+  $$('[data-theme-toggle]').forEach(b => b.setAttribute('aria-label', t === 'dark' ? hkT('Switch to light theme', 'Açık temaya geç') : hkT('Switch to dark theme', 'Koyu temaya geç')));
   window.dispatchEvent(new Event('hk:theme'));
 }
 $$('[data-theme-toggle]').forEach(b => b.addEventListener('click', () => applyTheme(root.dataset.theme === 'dark' ? 'light' : 'dark', true)));
@@ -120,30 +120,16 @@ $$('[data-top]').forEach(b => b.addEventListener('click', () => {
   if (history.replaceState && location.hash) history.replaceState(null, '', location.pathname + location.search);
 }));
 
-/* Tıklama dalgası: boş bir yere basınca arka planda kısa bir halka açılır */
-if (!reduce) {
-  addEventListener('pointerdown', e => {
-    if (e.button || root.classList.contains('lite') || e.target.closest('a,button,input,select,textarea,summary,dialog,[role="button"],.tree-wrap,.table-wrap')) return;
-    const r = document.createElement('span');
-    r.className = 'ripple';
-    r.style.left = e.clientX + 'px';
-    r.style.top = e.clientY + 'px';
-    r.addEventListener('animationend', () => r.remove());
-    amb.appendChild(r);
-  }, { passive: true });
-}
-
 /* ==========================================================================
    Arka plan: küreler, nokta ızgarası, ağ ve imleç ışığı
    ========================================================================== */
 const amb = document.createElement('div');
 amb.className = 'ambient';
 amb.setAttribute('aria-hidden', 'true');
-amb.innerHTML = '<div class="orb orb--a"></div><div class="orb orb--b"></div><div class="orb orb--c"></div><div class="dots"></div><canvas class="net"></canvas><div class="glow"></div>';
+amb.innerHTML = '<div class="orb orb--a"></div><div class="orb orb--b"></div><div class="orb orb--c"></div><div class="dots"></div><canvas class="net"></canvas>';
 document.body.prepend(amb);
 
 const ptr = { x: innerWidth / 2, y: innerHeight * .4, on: false, dirty: false };
-const glow = $('.glow', amb);
 const setPtr = e => { ptr.x = e.clientX; ptr.y = e.clientY; ptr.on = e.pointerType === 'mouse' || e.pointerType === 'pen' || e.type === 'pointerdown'; ptr.dirty = true; };
 addEventListener('pointermove', setPtr, { passive: true });
 addEventListener('pointerdown', setPtr, { passive: true });
@@ -179,10 +165,6 @@ function drawNet(step = true) {
   for (let i = 0; i < nodes.length; i++) {
     const n = nodes[i];
     if (step) {
-      if (ptr.on) {
-        const dx = ptr.x - n.x, dy = ptr.y - n.y, d = Math.hypot(dx, dy);
-        if (d < 170 && d > 1) { const f = (170 - d) / 170 * .07; n.vx -= dx / d * f; n.vy -= dy / d * f; }
-      }
       n.vx *= .99; n.vy *= .99;
       if (Math.hypot(n.vx, n.vy) < .16) { n.vx += (Math.random() - .5) * .07; n.vy += (Math.random() - .5) * .07; }
       n.x += n.vx; n.y += n.vy;
@@ -200,15 +182,6 @@ function drawNet(step = true) {
     }
     ctx.globalAlpha = 1;
   }
-  // İmleç yakındaki düğümlere ince çizgilerle bağlanır
-  if (step && ptr.on) {
-    ctx.fillStyle = ctx.strokeStyle = palette[0];
-    for (const n of nodes) {
-      const d = Math.hypot(n.x - ptr.x, n.y - ptr.y);
-      if (d < 170) { ctx.globalAlpha = (1 - d / 170) * .65; ctx.beginPath(); ctx.moveTo(ptr.x, ptr.y); ctx.lineTo(n.x, n.y); ctx.stroke(); }
-    }
-    ctx.globalAlpha = 1;
-  }
 }
 readPalette();
 resize();
@@ -216,6 +189,7 @@ addEventListener('resize', resize, { passive: true });
 window.addEventListener('hk:theme', () => { readPalette(); if (reduce) drawNet(false); });
 
 const kineticHooks = [];
+const dots = $('.dots', amb), par = { x: 0, y: 0 };
 // Kaydırma ilerlemesi (0–1) yumuşatılır ve CSS'e --sp olarak verilir: arka plan sayfayla birlikte değişir
 let spT = 0, spV = 0, spLast = -1;
 const readSp = () => { const m = document.documentElement.scrollHeight - innerHeight; spT = m > 0 ? Math.min(1, Math.max(0, scrollY / m)) : 0; };
@@ -227,10 +201,11 @@ readSp();
     spV += (spT - spV) * .08;
     if (Math.abs(spV - spLast) > .0004) { spLast = spV; root.style.setProperty('--sp', spV.toFixed(4)); }
   }
-  if (ptr.dirty) {
-    ptr.dirty = false;
-    glow.style.setProperty('--gx', ptr.x + 'px');
-    glow.style.setProperty('--gy', ptr.y + 'px');
+  // Çok hafif: nokta ızgarası imlece doğru birkaç piksel kayar (göze batmaz, dokunmatikte yok)
+  if (!reduce && ptr.on) {
+    par.x += ((ptr.x / innerWidth - .5) - par.x) * .04;
+    par.y += ((ptr.y / innerHeight - .5) - par.y) * .04;
+    dots.style.transform = 'translate3d(' + (par.x * -10).toFixed(2) + 'px,' + (par.y * -10).toFixed(2) + 'px,0)';
   }
   if (!reduce) {
     if (!document.hidden && !root.classList.contains('lite')) drawNet(true);
@@ -408,8 +383,8 @@ if (dlg) {
   if (btn) btn.addEventListener('click', async () => {
     const lbl = $('.lbl', btn);
     const ok = await copy(EMAIL);
-    lbl.textContent = ok ? 'Copied' : 'Copy failed. Select the address above.';
-    setTimeout(() => { lbl.textContent = 'Copy address'; }, 2200);
+    lbl.textContent = ok ? hkT('Copied', 'Kopyalandı') : hkT('Copy failed. Select the address above.', 'Kopyalanamadı. Yukarıdaki adresi seçin.');
+    setTimeout(() => { lbl.textContent = hkT('Copy address', 'Adresi kopyala'); }, 2200);
   });
 }
 /* ==========================================================================
@@ -423,12 +398,12 @@ if (pdlg) {
   const paint = v => {
     const on = v === 'granted';
     sw.setAttribute('aria-checked', String(on));
-    st.textContent = on ? 'On' : 'Off';
+    st.textContent = on ? hkT('On', 'Açık') : hkT('Off', 'Kapalı');
     note.textContent = !HP
-      ? 'Off. The measurement script did not load (a content blocker may be active), so nothing is being measured.'
+      ? hkT('Off. The measurement script did not load (a content blocker may be active), so nothing is being measured.', 'Kapalı. Ölçüm betiği yüklenmedi (bir içerik engelleyici açık olabilir), hiçbir şey ölçülmüyor.')
       : on
-        ? 'Visits are being counted. Turn this off and no further measurements are sent.'
-        : (HP.optOut && !HP.chosen() ? 'Off, because your browser sends a privacy signal (Global Privacy Control or Do Not Track).' : 'Off. Nothing is being measured and the analytics cookies were deleted.');
+        ? hkT('Visits are being counted. Turn this off and no further measurements are sent.', 'Ziyaretler sayılıyor. Kapatırsanız artık hiçbir ölçüm gönderilmez.')
+        : hkT('Off. Nothing is being measured and the analytics cookies were deleted.', 'Kapalı. Hiçbir şey ölçülmüyor; analiz çerezleri silindi.');
   };
   paint(HP ? HP.get() : 'denied');
   if (HP) {
@@ -442,5 +417,32 @@ if (pdlg) {
   document.addEventListener('click', e => { if (e.target.closest('[data-privacy-open]')) { e.preventDefault(); open(); } });
   pdlg.addEventListener('click', e => { if (e.target === pdlg) pdlg.close(); });
 }
+/* ==========================================================================
+   Outis bulmacası: siteye dağılmış beş işaret
+   ========================================================================== */
+const MARKS = ['μ', 'ῆ', 'τ', 'ι', 'ς'];
+const readMarks = () => { try { return JSON.parse(localStorage.getItem('hk.marks') || '[]').filter(n => n >= 0 && n < 5); } catch (e) { return []; } };
+const saveMarks = m => { try { localStorage.setItem('hk.marks', JSON.stringify(m)); } catch (e) { /* özel mod */ } };
+const paintClues = () => { const m = readMarks(); $$('[data-clue]').forEach(b => b.classList.toggle('found', m.includes(+b.dataset.clue))); };
+$$('[data-clue]').forEach(b => b.addEventListener('click', e => {
+  e.preventDefault();
+  e.stopPropagation();
+  const n = +b.dataset.clue;
+  const m = readMarks();
+  if (!m.includes(n)) { m.push(n); saveMarks(m); }
+  paintClues();
+  toast(m.length >= 5
+    ? hkT('All five marks found. Nobody is waiting in the cave.', 'Beş işaretin hepsi bulundu. Mağarada hiç kimse bekliyor.')
+    : hkT('A mark: ', 'Bir işaret: ') + MARKS[n] + ' (' + m.length + '/5)', 3400);
+  window.hkTrack && window.hkTrack('clue_found', { label: String(n) });
+}));
+paintClues();
+$$('[data-forget-marks]').forEach(b => b.addEventListener('click', () => {
+  saveMarks([]);
+  paintClues();
+  toast(hkT('The marks are gone. Nobody remembers.', 'İşaretler silindi. Hiç kimse hatırlamıyor.'), 3200);
+}));
+window.hk && (window.hk.marks = { read: readMarks, save: saveMarks, letters: MARKS });
+
 $$('[data-year]').forEach(el => { el.textContent = new Date().getFullYear(); });
 })();

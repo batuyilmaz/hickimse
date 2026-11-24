@@ -19,7 +19,7 @@ const seen = () => { try { return sessionStorage.getItem(KEY) === '1'; } catch (
 const markSeen = () => { try { sessionStorage.setItem(KEY, '1'); } catch (e) { /* özel mod vb. */ } };
 const wait = ms => new Promise(r => setTimeout(r, ms));
 
-console.log('%cΟὖτις', 'font:600 30px Georgia,serif;color:#6fb8ff', '\nnobody is here. (nobody is also watching.)');
+console.log('%cΟὖτις', 'font:600 30px Georgia,serif;color:#6fb8ff', hkT('\nnobody is here. (nobody is also watching.)\nfive marks are hidden on five pages. collect them.', '\nburada hiç kimse yok. (hiç kimse de izliyor.)\nbeş sayfada beş işaret saklı. topla onları.'));
 
 /* ==========================================================================
    Mağara ışığı: imleç etrafında açılan bir meşale, arka planı karartır
@@ -118,9 +118,9 @@ async function play() {
   spark.className = 'spark';
   intro.appendChild(spark);
   const lines = [
-    ['il il--small', '“Tell me your name.”'],
+    ['il il--small', hkT('“Tell me your name.”', '“Söyle bana adını.”')],
     ['il il--big', '“Οὖτις.”'],
-    ['il il--big', '“Nobody.”']
+    ['il il--big', hkT('“Nobody.”', '“Hiç kimse.”')]
   ];
   await nap(1500);
   for (const [cls, text] of lines) {
@@ -154,8 +154,8 @@ if (reduce || seen()) reveal(true); else play();
 /* ==========================================================================
    Göze dokunmak
    ========================================================================== */
-const TALK = ['Who’s there?', 'Nobody.', 'Nobody? Then who is staring at me?', 'Stop that.'];
-const BLIND = ['Nobody answers.', 'Nobody did it.', 'Ask nobody.'];
+const TALK = hkT(['Who’s there?', 'Nobody.', 'Nobody? Then who is staring at me?', 'Stop that.'], ['Kim var orada?', 'Hiç kimse.', 'Hiç kimse mi? Peki bana bakan kim?', 'Kes şunu.']);
+const BLIND = hkT(['Nobody answers.', 'Nobody did it.', 'Ask nobody.'], ['Hiç kimse cevap vermiyor.', 'Hiç kimse yaptı.', 'Hiç kimseye sor.']);
 let blindI = 0;
 
 function poke() {
@@ -173,7 +173,7 @@ function poke() {
   eye.classList.add('eye--poked');
   page.classList.add('shake');
   setTimeout(() => page.classList.remove('shake'), 650);
-  hint.textContent = 'Nobody did it.';
+  hint.textContent = hkT('Nobody did it.', 'Hiç kimse yaptı.');
   hint.classList.add('show');
   hk.toast('Οὖτίς με κτείνει δόλῳ οὐδὲ βίηφιν. “Nobody is killing me by guile or by force.”', 7000);
 }
@@ -185,10 +185,34 @@ eye.addEventListener('pointerdown', () => { holdT = setTimeout(() => { if (!stat
 ['pointerup', 'pointerleave', 'pointercancel'].forEach(t => eye.addEventListener(t, () => { clearTimeout(holdT); eye.classList.remove('eye--wide'); }));
 
 /* ==========================================================================
+   Beş işaret: bulunanlar burada dizilir; hepsi bulununca mağaradan çıkış açılır
+   ========================================================================== */
+const DOOR = (root.lang === 'tr' ? '/tr' : '') + '/outis/metis/';
+const marksBox = $('#marks');
+const readM = () => (window.hk && window.hk.marks ? window.hk.marks.read() : []);
+const allFound = () => readM().length >= 5;
+function paintMarks() {
+  if (!marksBox) return;
+  const m = readM(), L = ['μ', 'ῆ', 'τ', 'ι', 'ς'];
+  marksBox.querySelectorAll('.marks__slot').forEach((el, i) => {
+    const on = m.includes(i);
+    el.textContent = on ? L[i] : '';
+    el.classList.toggle('on', on);
+  });
+  marksBox.classList.toggle('done', m.length >= 5);
+  const door = $('#door');
+  if (door) door.hidden = m.length < 5;
+  const c = $('#marksCount');
+  if (c) c.textContent = m.length + ' / 5';
+}
+paintMarks();
+addEventListener('storage', paintMarks);
+
+/* ==========================================================================
    Yazılan kelimeler
    ========================================================================== */
 let buf = '';
-const GREEK = 'Οὖτίς με κτείνει δόλῳ οὐδὲ βίηφιν. “Nobody is killing me by guile or by force.”';
+const GREEK = 'Οὖτίς με κτείνει δόλῳ οὐδὲ βίηφιν. ' + hkT('“Nobody is killing me by guile or by force.”', '“Hiç kimse öldürüyor beni, hileyle, zorla değil.”');
 function ship() {
   if (document.querySelector('.ship') || reduce) return;
   const d = document.createElement('div');
@@ -197,17 +221,17 @@ function ship() {
   d.innerHTML = '<svg viewBox="0 0 96 64"><path d="M6 44h84c-6 12-16 16-26 16H32C22 60 12 56 6 44z"/><path d="M48 44V6"/><path d="M48 8c18 4 26 18 26 32H48z"/><path d="M48 14c-12 4-18 14-18 26h18"/></svg>';
   d.addEventListener('animationend', () => d.remove());
   document.body.appendChild(d);
-  hk.toast('Ὀδυσσεύς. Still sailing home.', 3200);
+  hk.toast(hkT('Ὀδυσσεύς. Still sailing home.', 'Ὀδυσσεύς. Hâlâ eve yelken açıyor.'), 3200);
 }
 const WORDS = {
-  wine() { const on = root.classList.toggle('wine'); hk.toast(on ? 'οἶνοψ πόντος: the wine-dark sea.' : 'The sea is just water again.', 3200); },
+  wine() { const on = root.classList.toggle('wine'); hk.toast(on ? hkT('οἶνοψ πόντος: the wine-dark sea.', 'οἶνοψ πόντος: şarap renkli deniz.') : hkT('The sea is just water again.', 'Deniz yine yalnızca su.'), 3200); },
   outis() { hk.toast(GREEK, 7000); },
   nobody() { hk.toast(GREEK, 7000); },
-  hickimse() { hk.toast('That is the old spelling. Nobody minds.', 3600); },
+  hickimse() { hk.toast(hkT('That is the old spelling. Nobody minds.', 'Eski yazılışı bu. Hiç kimse aldırmaz.'), 3600); },
   hiçkimse() { hk.toast(GREEK, 7000); },
   odysseus: ship,
-  metis() { hk.toast('μῆτις means cunning. It also sounds a little like “nobody”.', 5200); },
-  polyphemus() { hk.toast('Πολύφημος: “much spoken of”. Everyone knows his name. No one knows who blinded him.', 6200); }
+  metis() { if (allFound()) { location.href = DOOR; return; } hk.toast(hkT('μῆτις means cunning. It also sounds a little like “nobody”. Find the five marks first.', 'μῆτις kurnazlık demek; kulağa biraz “hiç kimse” gibi de gelir. Önce beş işareti bul.'), 5200); },
+  polyphemus() { hk.toast(hkT('Πολύφημος: “much spoken of”. Everyone knows his name. No one knows who blinded him.', 'Πολύφημος: “çok konuşulan”. Herkes adını bilir; onu kimin kör ettiğini kimse bilmez.'), 6200); }
 };
 addEventListener('keydown', e => {
   if (e.ctrlKey || e.metaKey || e.altKey || e.key.length !== 1) return;
